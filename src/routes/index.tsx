@@ -128,9 +128,10 @@ function Index() {
             <a href="#special" className="transition-colors hover:text-primary">
               Why Beame
             </a>
-            <a href="#chatbots" className="transition-colors hover:text-primary">
-              Chatbots
+            <a href="#order" className="transition-colors hover:text-primary">
+              Order
             </a>
+
             <a href="#contact" className="transition-colors hover:text-primary">
               Contact
             </a>
