@@ -142,20 +142,20 @@ function Index() {
       <main id="top">
         <section className="hero-beame">
           <div className="container-beame relative mx-auto max-w-[860px] text-center">
-            <span className="hero-badge reveal">● Now onboarding new businesses</span>
+            <span className="hero-badge reveal">● Now live across Ekiti State</span>
             <h1 className="reveal mt-5 text-[clamp(2.2rem,5vw,4.25rem)] leading-[1.02]">
-              AI that answers, sells and follows up — 24/7
+              Reimagining Logistics and Ride-Hailing in Ekiti State
             </h1>
             <p className="reveal mx-auto mt-4 max-w-[720px] text-[clamp(1rem,1.8vw,1.15rem)] opacity-95">
-              Beame.ng builds smart chatbots, automation and websites that keep your
-              business responding to every customer, on every channel, at any hour.
+              Your friendly neighborhood problem-solvers, powered by smart technology and
+              a passion for making life easier.
             </p>
             <div className="reveal mt-8 flex flex-wrap justify-center gap-3">
-              <a href="#chatbots" className="btn-beame">
-                Talk to our bot
+              <a href="#order" className="btn-beame">
+                Get Started
               </a>
               <a href="#contact" className="btn-beame">
-                Book a free demo
+                Talk to us
               </a>
             </div>
           </div>
@@ -163,10 +163,11 @@ function Index() {
 
         <section id="services" className="section-beame">
           <div className="container-beame">
-            <h2 className="section-title reveal">What we build</h2>
+            <h2 className="section-title reveal">Our Services</h2>
             <p className="section-lead reveal">
-              Everything you need to turn conversations into customers.
+              Deliveries and rides across Ado-Ekiti and beyond — fast, safe and friendly.
             </p>
+
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {services.map((s) => (
                 <article key={s.title} className="card-beame reveal p-4.5">
