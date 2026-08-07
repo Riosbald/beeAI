@@ -249,15 +249,14 @@ function Index() {
           </div>
         </section>
 
-
         <section id="contact" className="cta-beame section-beame">
           <div className="container-beame">
             <div className="cta-panel reveal">
               <h2 className="section-title text-[inherit]">
-                Ready to never miss a customer again?
+                Ready to get moving?
               </h2>
               <p className="section-lead text-[inherit] opacity-95">
-                Book a free 20-minute demo and see your own assistant in action.
+                Send us a message and we'll dispatch a rider or driver to you.
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <a href="mailto:hello@beame.ng" className="btn-beame">
@@ -274,10 +273,11 @@ function Index() {
 
       <footer className="footer-beame">
         <div className="container-beame">
-          <p>© {new Date().getFullYear()} Beame.ng — AI chatbots & automation.</p>
-          <p className="mt-1.5 text-sm opacity-80">Lagos, Nigeria</p>
+          <p>© {new Date().getFullYear()} Beame.ng — Logistics & ride-hailing.</p>
+          <p className="mt-1.5 text-sm opacity-80">Ado-Ekiti, Ekiti State, Nigeria</p>
         </div>
       </footer>
+
     </div>
   );
 }
