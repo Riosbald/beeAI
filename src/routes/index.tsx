@@ -190,7 +190,7 @@ function Index() {
         <section id="special" className="section-beame pt-0">
           <div className="container-beame">
             <div className="card-beame reveal p-6 md:p-8">
-              <h2 className="section-title">Why businesses choose Beame</h2>
+              <h2 className="section-title">Why Ekiti rides with Beame</h2>
               <ul className="mx-auto mt-6 grid max-w-[860px] gap-3.5">
                 {reasons.map((r) => (
                   <li key={r} className="check-item">
@@ -199,9 +199,10 @@ function Index() {
                 ))}
               </ul>
               <blockquote className="quote-beame mx-auto mt-6 max-w-[860px]">
-                “Our WhatsApp used to go quiet after 6pm. Now Beame replies instantly and
-                we close orders while we sleep.”
+                “I ordered lunch during lectures and it got to me before the break ended.
+                Beame just works in Ado.”
               </blockquote>
+
             </div>
           </div>
         </section>
