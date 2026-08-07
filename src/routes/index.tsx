@@ -2,28 +2,28 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 
 import showcase from "@/assets/beame-showcase.jpg";
-import serviceChatbot from "@/assets/service-chatbot.jpg";
-import serviceAutomation from "@/assets/service-automation.jpg";
-import serviceWeb from "@/assets/service-web.jpg";
-import serviceSupport from "@/assets/service-support.jpg";
+import serviceFood from "@/assets/service-food.jpg";
+import serviceGroceries from "@/assets/service-groceries.jpg";
+import servicePharmacy from "@/assets/service-pharmacy.jpg";
+import serviceRide from "@/assets/service-ride.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Beame.ng — AI Chatbots & Automation for Nigerian Businesses" },
+      { title: "Beame.ng — Logistics & Ride-Hailing in Ekiti State" },
       {
         name: "description",
         content:
-          "Beame.ng builds AI chatbots, WhatsApp and Messenger assistants, websites and automation that sell for you 24/7.",
+          "Food, groceries and pharmacy delivery plus safe ride-hailing across Ekiti State — fast, friendly and powered by smart technology.",
       },
       {
         property: "og:title",
-        content: "Beame.ng — AI Chatbots & Automation for Nigerian Businesses",
+        content: "Beame.ng — Logistics & Ride-Hailing in Ekiti State",
       },
       {
         property: "og:description",
         content:
-          "AI chatbots, WhatsApp and Messenger assistants, websites and automation that sell for you 24/7.",
+          "Food, groceries and pharmacy delivery plus safe ride-hailing across Ekiti State.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -34,33 +34,34 @@ export const Route = createFileRoute("/")({
 
 const services = [
   {
-    img: serviceChatbot,
-    title: "AI Chatbots",
-    body: "Trained on your business so every customer gets an instant, on-brand answer — day or night.",
+    img: serviceFood,
+    title: "Food Delivery",
+    body: "We're the bridge between your cravings and local restaurants, ensuring your meals arrive piping hot and right on time.",
   },
   {
-    img: serviceAutomation,
-    title: "Sales Automation",
-    body: "Capture leads, follow up automatically and track what actually converts.",
+    img: serviceGroceries,
+    title: "Groceries Delivery",
+    body: "Forget lugging heavy bags home. We'll bring the supermarket to your doorstep, giving you more time for the things you love.",
   },
   {
-    img: serviceWeb,
-    title: "Websites & Apps",
-    body: "Fast, mobile-first sites designed to turn visitors into paying customers.",
+    img: servicePharmacy,
+    title: "Pharmaceutical Delivery",
+    body: "Need medication? We've got you covered. Quick, discreet and reliable — just what the doctor ordered.",
   },
   {
-    img: serviceSupport,
-    title: "Support Desk",
-    body: "WhatsApp, Messenger and web chat in one place with human handover when it matters.",
+    img: serviceRide,
+    title: "Ride-Hailing",
+    body: "Commuting to work or heading out for the night, our drivers are ready to get you there safely and comfortably.",
   },
 ];
 
 const reasons = [
-  "Live in days, not months — we handle setup, training and launch.",
-  "Built for Nigerian businesses: Naira pricing, local payment and delivery flows.",
-  "Works where your customers already are — WhatsApp, Instagram and Messenger.",
-  "Real humans on standby whenever the bot should hand over.",
+  "Ekiti born and bred — we know every street, campus and market.",
+  "Live tracking and honest Naira pricing with no hidden charges.",
+  "Vetted riders and drivers, trained for safety and courtesy.",
+  "Real humans on WhatsApp whenever you need a hand.",
 ];
+
 
 function useReveal() {
   const root = useRef<HTMLDivElement>(null);
