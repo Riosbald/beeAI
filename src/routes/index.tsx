@@ -212,34 +212,34 @@ function Index() {
             <div className="card-beame reveal p-5 text-center md:p-6">
               <img
                 src={showcase}
-                alt="Team reviewing an AI chat assistant on a laptop"
+                alt="Beame dispatch rider preparing a delivery in Ekiti State"
                 loading="lazy"
                 width={1280}
                 height={800}
                 className="mx-auto mb-5 max-h-[360px] w-full rounded-2xl object-cover"
               />
-              <h2 className="section-title">Built with you, not just for you</h2>
+              <h2 className="section-title">Built for your everyday</h2>
               <p className="section-lead">
-                We map your customer journey, train the assistant on your real answers and
-                stay on hand as your business grows.
+                From market runs to midnight rides, we combine local know-how with smart
+                dispatch technology so nothing keeps you waiting.
               </p>
             </div>
           </div>
         </section>
 
-        <section id="chatbots" className="section-beame pt-0">
+        <section id="order" className="section-beame pt-0">
           <div className="container-beame">
             <div className="card-beame reveal p-6 text-center md:p-8">
-              <h2 className="section-title">Try our assistants</h2>
+              <h2 className="section-title">Place an order or book a ride</h2>
               <p className="section-lead">
-                Say hello on the channel you prefer — the bot replies in seconds.
+                Reach us on the channel you prefer — we respond in minutes.
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3.5">
                 <a href="https://wa.me/2348000000000" className="btn-beame btn-solid">
-                  WhatsApp bot
+                  Order on WhatsApp
                 </a>
-                <a href="https://m.me/beame.ng" className="btn-beame btn-solid">
-                  Messenger bot
+                <a href="tel:+2348000000000" className="btn-beame btn-solid">
+                  Book a ride
                 </a>
                 <a href="https://instagram.com/beame.ng" className="btn-beame btn-solid">
                   Instagram DM
@@ -248,6 +248,7 @@ function Index() {
             </div>
           </div>
         </section>
+
 
         <section id="contact" className="cta-beame section-beame">
           <div className="container-beame">
