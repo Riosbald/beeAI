@@ -113,6 +113,8 @@ export function ExpertChat() {
           <span className="absolute -right-0.5 -top-0.5 h-4 w-4 rounded-full bg-emerald-500 ring-2 ring-card" />
         )}
       </button>
-    </div>
+      </div>
+    </>
   );
 }
+
