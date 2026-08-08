@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 
+import { ExpertChat } from "@/components/ExpertChat";
 import showcase from "@/assets/beame-showcase.jpg";
 import serviceChatbot from "@/assets/service-chatbot.jpg";
 import serviceAutomation from "@/assets/service-automation.jpg";
@@ -273,6 +274,8 @@ function Index() {
           <p className="mt-1.5 text-sm opacity-80">Lagos, Nigeria</p>
         </div>
       </footer>
+
+      <ExpertChat />
     </div>
   );
 }
