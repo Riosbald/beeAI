@@ -4,12 +4,16 @@ import expertAvatar from "@/assets/expert-avatar.png";
 
 const BOT_ID = "75f76610-4010-4847-aec0-3bbcd202fba6";
 
+type BotpressClient = {
+  init: (config: Record<string, unknown>) => void;
+  open: () => void;
+  close: () => void;
+  on?: (event: string, handler: () => void) => void;
+};
+
 declare global {
   interface Window {
-    botpressWebChat?: {
-      init: (config: Record<string, unknown>) => void;
-      sendEvent: (event: Record<string, unknown>) => void;
-    };
+    botpress?: BotpressClient;
   }
 }
 
@@ -21,32 +25,32 @@ export function ExpertChat() {
     let cancelled = false;
 
     const init = () => {
-      if (cancelled || !window.botpressWebChat) return;
-      window.botpressWebChat.init({
+      const bp = window.botpress;
+      if (cancelled || !bp) return;
+      bp.on?.("webchat:ready", () => !cancelled && setReady(true));
+      bp.on?.("webchat:opened", () => !cancelled && setOpen(true));
+      bp.on?.("webchat:closed", () => !cancelled && setOpen(false));
+      bp.init({
         botId: BOT_ID,
         clientId: BOT_ID,
-        hostUrl: "https://cdn.botpress.cloud/webchat/v2",
-        messagingUrl: "https://messaging.botpress.cloud",
-        webhookId: "6f1e2da0-a98a-43c6-a84d-7fc8cfda2b2f",
-        botName: "Beame Expert",
-        botAvatarUrl: `${window.location.origin}${expertAvatar}`,
-        botConversationDescription: "Beame.ng AI expert — replies in seconds, 24/7",
-        composerPlaceholder: "Ask our expert anything…",
-        lazySocket: true,
-        showPoweredBy: false,
-        hideWidget: true,
-        useSessionStorage: true,
-        enableConversationDeletion: true,
-        showConversationsButton: false,
-        themeName: "prism",
-        frontendVersion: "v2",
-        theme: "prism",
-        themeColor: "#E22733",
+        selector: "#beame-webchat",
+        configuration: {
+          botName: "Beame Expert",
+          botDescription: "Beame.ng AI expert — instant answers, 24/7",
+          botAvatar: `${window.location.origin}${expertAvatar}`,
+          composerPlaceholder: "Ask our expert anything…",
+          color: "#E22733",
+          variant: "solid",
+          themeMode: "light",
+          fontFamily: "inter",
+          radius: 1.5,
+          showPoweredBy: false,
+        },
       });
       setReady(true);
     };
 
-    if (window.botpressWebChat) {
+    if (window.botpress) {
       init();
       return () => {
         cancelled = true;
@@ -65,10 +69,13 @@ export function ExpertChat() {
   }, []);
 
   const toggle = () => {
-    if (!window.botpressWebChat) return;
-    window.botpressWebChat.sendEvent({ type: open ? "hide" : "show" });
+    const bp = window.botpress;
+    if (!bp) return;
+    if (open) bp.close();
+    else bp.open();
     setOpen((v) => !v);
   };
+
 
   return (
     <div className="fixed bottom-5 right-5 z-[10000] flex items-center gap-3">
