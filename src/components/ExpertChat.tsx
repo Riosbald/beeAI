@@ -38,8 +38,6 @@ export function ExpertChat() {
         useSessionStorage: true,
         enableConversationDeletion: true,
         showConversationsButton: false,
-        stylesheet:
-          "https://webchat-styler-css.botpress.app/prod/code/1a4d0b5b-4b8f-4f2f-8a2f-000000000000/v31752/style.css",
         themeName: "prism",
         frontendVersion: "v2",
         theme: "prism",
