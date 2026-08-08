@@ -28,8 +28,6 @@ export function ExpertChat() {
       const bp = window.botpress;
       if (cancelled || !bp) return;
       bp.on?.("webchat:ready", () => !cancelled && setReady(true));
-      bp.on?.("webchat:opened", () => !cancelled && setOpen(true));
-      bp.on?.("webchat:closed", () => !cancelled && setOpen(false));
       bp.init({
         botId: BOT_ID,
         clientId: BOT_ID,
