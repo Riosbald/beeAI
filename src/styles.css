@@ -433,18 +433,18 @@
 }
 
 /* Botpress webchat — render inside the branded Beame panel, hide default launcher */
-.bpFab,
-[class*="bpFab"] {
+#beame-webchat iframe[name="fab"] {
   display: none !important;
 }
 
-#beame-webchat > div,
-#beame-webchat .bpWebchat {
+#beame-webchat iframe[name="webchat"] {
   position: static !important;
+  inset: auto !important;
   width: 100% !important;
   height: 100% !important;
   max-height: 100% !important;
-  inset: auto !important;
   border-radius: 0 !important;
   box-shadow: none !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
