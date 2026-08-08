@@ -76,9 +76,19 @@ export function ExpertChat() {
     setOpen((v) => !v);
   };
 
-
   return (
-    <div className="fixed bottom-5 right-5 z-[10000] flex items-center gap-3">
+    <>
+      <div
+        id="beame-webchat"
+        aria-hidden={!open}
+        className={`fixed bottom-28 right-5 z-[10000] h-[min(620px,70vh)] w-[min(400px,calc(100vw-2.5rem))] overflow-hidden rounded-3xl border border-border bg-card shadow-2xl transition-all duration-200 ${
+          open
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-3 opacity-0"
+        }`}
+      />
+      <div className="fixed bottom-5 right-5 z-[10000] flex items-center gap-3">
+
       {!open && (
         <span className="hidden rounded-full bg-card px-3.5 py-2 text-sm font-semibold text-foreground shadow-lg ring-1 ring-border sm:inline-flex">
           Chat with a Beame expert
