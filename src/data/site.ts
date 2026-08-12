@@ -1,3 +1,22 @@
+export const buildItems = [
+  {
+    title: "AI Chatbots",
+    body: "Trained on your business so every customer gets an instant, on-brand answer — day or night.",
+  },
+  {
+    title: "Sales Automation",
+    body: "Capture leads, follow up automatically and track what actually converts.",
+  },
+  {
+    title: "Websites & Apps",
+    body: "Fast, mobile-first sites designed to turn visitors into paying customers.",
+  },
+  {
+    title: "Support Desk",
+    body: "WhatsApp, Messenger and web chat in one place with human handover when it matters.",
+  },
+];
+
 export const agenticPhases = [
   {
     letter: "A",
