@@ -24,7 +24,7 @@ export function SiteHeader() {
     <header ref={header} className="site-header">
       <div className="container-beame flex items-center justify-between py-3.5">
         <Link to="/" className="brand-mark">
-          agenticplug<span className="text-foreground">.ai</span>
+          beame<span className="text-foreground">.ng</span>
         </Link>
         <nav className="hidden gap-7 text-sm font-semibold text-muted-foreground md:flex">
           {nav.map((n) => (

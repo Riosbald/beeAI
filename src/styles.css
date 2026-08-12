@@ -448,3 +448,62 @@
   opacity: 1 !important;
   transform: none !important;
 }
+
+@layer components {
+  .status-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .status-yes {
+    background: color-mix(in oklab, oklch(0.72 0.16 150) 20%, transparent);
+    color: oklch(0.42 0.14 150);
+  }
+
+  .status-wip {
+    background: color-mix(in oklab, oklch(0.8 0.15 85) 26%, transparent);
+    color: oklch(0.45 0.13 70);
+  }
+
+  .status-no {
+    background: color-mix(in oklab, var(--primary) 16%, transparent);
+    color: var(--primary);
+  }
+
+  .status-unknown {
+    background: color-mix(in oklab, var(--muted-foreground) 16%, transparent);
+    color: var(--muted-foreground);
+  }
+
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+    font-size: 0.9rem;
+  }
+
+  .matrix-table th,
+  .matrix-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .matrix-table thead th {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted-foreground);
+  }
+
+  .matrix-table tbody th {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+}

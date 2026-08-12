@@ -100,11 +100,11 @@ export const homeFaqs = [
     a: "To turn visibility into revenue by making purchases possible inside the agent experience, using agent-to-agent transaction protocols and clean, machine-readable product data.",
   },
   {
-    q: "Who is agenticplug.ai and what is your core mission?",
-    a: "agenticplug.ai is an Agentic Commerce Optimization company that makes businesses discoverable, recommendable, and transactable by AI shopping agents.",
+    q: "Who is Beame.ng and what is your core mission?",
+    a: "Beame.ng is an Agentic Commerce Optimization company that makes businesses discoverable, recommendable, and transactable by AI shopping agents.",
   },
   {
-    q: "What sets agenticplug.ai apart from traditional SEO agencies?",
+    q: "What sets Beame.ng apart from traditional SEO agencies?",
     a: "We combine strategy with engineering. Through our sister company 360 Automation AI we implement MCP, agentic commerce protocols, custom APIs, and structured data layers — not just content recommendations.",
   },
   {
@@ -112,7 +112,7 @@ export const homeFaqs = [
     a: "Established businesses with real products, services, or expertise — ecommerce, local services, healthcare, professional services, and B2B — where buyers now start their research inside an AI assistant.",
   },
   {
-    q: "What does a typical engagement with agenticplug.ai look like?",
+    q: "What does a typical engagement with Beame.ng look like?",
     a: "It starts with a free AI Visibility Health Check, followed by a roadmap through the A.G.E.N.T.I.C. phases, implementation sprints, and ongoing tracking and reporting.",
   },
   {
@@ -147,7 +147,7 @@ export const serviceFaqs = [
     a: "Structured data and content changes are usually reflected within weeks; durable share-of-voice gains typically build over three to six months.",
   },
   {
-    q: "What is agenticplug.ai?",
+    q: "What is Beame.ng?",
     a: "An Agentic Commerce Optimization company preparing brands for the agentic commerce era.",
   },
   {
@@ -155,7 +155,7 @@ export const serviceFaqs = [
     a: "A seven-phase system — Audit, Graph, Equip, Network, Track, Influence, Convert — that moves a brand from AI search visibility to agentic revenue.",
   },
   {
-    q: "Who founded agenticplug.ai?",
+    q: "Who founded Beame.ng?",
     a: "Shahzad Safri, founder of one of the top AI consultancies in Kansas City and an expert in AEO/GEO.",
   },
 ];
@@ -185,7 +185,7 @@ export const testimonials = [
   {
     name: "Tarence Jones",
     quote:
-      "agenticplug.ai helped us shape up our AEO strategy and doubled our share of voice",
+      "Beame.ng helped us shape up our AEO strategy and doubled our share of voice",
   },
   {
     name: "Sam Thompson",

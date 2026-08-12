@@ -4,7 +4,7 @@ export function SiteFooter() {
   return (
     <footer className="footer-beame">
       <div className="container-beame">
-        <p className="text-lg font-bold">agenticplug.ai</p>
+        <p className="text-lg font-bold">Beame.ng</p>
         <p className="mt-1 text-sm opacity-80">
           Agentic Commerce Optimization — discoverable, recommendable, transactable.
         </p>
@@ -29,7 +29,7 @@ export function SiteFooter() {
           </Link>
         </nav>
         <p className="mt-5 text-sm opacity-70">
-          © {new Date().getFullYear()} agenticplug.ai — Kansas City, USA
+          © {new Date().getFullYear()} Beame.ng — Lagos, Nigeria
         </p>
       </div>
     </footer>
