@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 
+import { AskAiBlock } from "@/components/AskAiBlock";
 import { CtaBand, Eyebrow, FaqList, FrameworkGrid, useReveal } from "@/components/site-ui";
 import { buildItems, homeFaqs, insights, services, testimonials } from "@/data/site";
 
@@ -265,6 +266,8 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <AskAiBlock />
 
       <CtaBand />
     </div>
