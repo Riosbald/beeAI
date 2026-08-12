@@ -1,30 +1,26 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 
-import { ExpertChat } from "@/components/ExpertChat";
-import showcase from "@/assets/beame-showcase.jpg";
-import serviceChatbot from "@/assets/service-chatbot.jpg";
-import serviceAutomation from "@/assets/service-automation.jpg";
-import serviceWeb from "@/assets/service-web.jpg";
-import serviceSupport from "@/assets/service-support.jpg";
+import { CtaBand, Eyebrow, FaqList, FrameworkGrid, useReveal } from "@/components/site-ui";
+import { homeFaqs, insights, services, testimonials } from "@/data/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Beame.ng — AI Chatbots & Automation for Nigerian Businesses" },
+      { title: "Beame.ng — Agentic Commerce Optimization & AI Search Visibility" },
       {
         name: "description",
         content:
-          "Beame.ng builds AI chatbots, WhatsApp and Messenger assistants, websites and automation that sell for you 24/7.",
+          "Beame.ng makes your brand discoverable, recommendable and transactable by AI shopping agents. Start with a free AI Visibility Health Check.",
       },
       {
         property: "og:title",
-        content: "Beame.ng — AI Chatbots & Automation for Nigerian Businesses",
+        content: "Beame.ng — Agentic Commerce Optimization & AI Search Visibility",
       },
       {
         property: "og:description",
         content:
-          "AI chatbots, WhatsApp and Messenger assistants, websites and automation that sell for you 24/7.",
+          "AEO, GEO and agentic commerce engineering that gets your brand cited by ChatGPT, Gemini, Perplexity and Copilot.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -33,249 +29,229 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const services = [
+const stats = [
+  { value: "40%", label: "of buying journeys now start inside an AI assistant" },
+  { value: "AEO / GEO", label: "answer and generative engine optimization, engineered" },
+  { value: "$0", label: "for your first AI Visibility Health Check" },
+];
+
+const longform = [
   {
-    img: serviceChatbot,
-    title: "AI Chatbots",
-    body: "Trained on your business so every customer gets an instant, on-brand answer — day or night.",
+    title: "Search didn't die — it moved inside the assistant",
+    body: "Your customers no longer scan ten blue links. They ask an assistant, get one synthesized answer, and act on it. If your brand is not part of that answer, you are not in the consideration set at all. Beame.ng rebuilds how machines read your business: entities, claims, evidence and structured data that models can quote with confidence.",
   },
   {
-    img: serviceAutomation,
-    title: "Sales Automation",
-    body: "Capture leads, follow up automatically and track what actually converts.",
+    title: "Agents buy differently than humans",
+    body: "An AI shopping agent needs machine-readable inventory, pricing, availability and policies — not a beautiful product page. We connect your catalog to the agentic layer through MCP servers, clean feeds and transaction protocols such as ACP, UCP and AP2, so an agent can go from recommendation to checkout without a human in the loop.",
   },
   {
-    img: serviceWeb,
-    title: "Websites & Apps",
-    body: "Fast, mobile-first sites designed to turn visitors into paying customers.",
+    title: "Authority is corroborated, not claimed",
+    body: "Models cross-check what you say about yourself against what the rest of the web says. We build the external trust layer — reviews, directories, press, expert commentary and consistent business data — so your claims survive verification and your brand keeps getting cited.",
   },
   {
-    img: serviceSupport,
-    title: "Support Desk",
-    body: "WhatsApp, Messenger and web chat in one place with human handover when it matters.",
+    title: "If you can't measure it, you can't defend it",
+    body: "We monitor prompt sets across ChatGPT, Gemini, Perplexity, Claude and Copilot, log citations and sentiment, track AI bot crawl activity, and report share of voice and agent-mediated conversions — so every phase of the work ties back to revenue.",
   },
 ];
 
-const reasons = [
-  "Live in days, not months — we handle setup, training and launch.",
-  "Built for Nigerian businesses: Naira pricing, local payment and delivery flows.",
-  "Works where your customers already are — WhatsApp, Instagram and Messenger.",
-  "Real humans on standby whenever the bot should hand over.",
-];
+function AuditForm() {
+  const [sent, setSent] = useState(false);
 
-function useReveal() {
-  const root = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = root.current;
-    if (!el) return;
-
-    const targets = Array.from(el.querySelectorAll<HTMLElement>(".reveal"));
-    if (!("IntersectionObserver" in window)) {
-      targets.forEach((t) => t.classList.add("is-visible"));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.16, rootMargin: "0px 0px -80px 0px" },
-    );
-
-    targets.forEach((t) => observer.observe(t));
-    return () => observer.disconnect();
-  }, []);
-
-  return root;
-}
-
-function useStickyHeader() {
-  const header = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const update = () => {
-      header.current?.classList.toggle("scrolled", window.scrollY > 12);
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
-
-  return header;
+  return (
+    <form
+      className="mx-auto mt-8 grid max-w-[620px] gap-3 text-left sm:grid-cols-2"
+      onSubmit={(e) => {
+        e.preventDefault();
+        setSent(true);
+      }}
+    >
+      <input
+        required
+        name="name"
+        placeholder="Your name"
+        className="rounded-2xl border border-border bg-background px-4 py-3 text-foreground"
+      />
+      <input
+        required
+        type="email"
+        name="email"
+        placeholder="Work email"
+        className="rounded-2xl border border-border bg-background px-4 py-3 text-foreground"
+      />
+      <input
+        required
+        name="website"
+        placeholder="Your website"
+        className="rounded-2xl border border-border bg-background px-4 py-3 text-foreground sm:col-span-2"
+      />
+      <button type="submit" className="btn-beame btn-solid sm:col-span-2">
+        Get my free health check
+      </button>
+      {sent && (
+        <p className="sm:col-span-2 text-center text-sm font-semibold text-primary">
+          Thanks — we'll send your AI Visibility Health Check within two business days.
+        </p>
+      )}
+    </form>
+  );
 }
 
 function Index() {
   const root = useReveal();
-  const header = useStickyHeader();
 
   return (
     <div ref={root}>
-      <header ref={header} className="site-header">
-        <div className="container-beame flex items-center justify-between py-3.5">
-          <a href="#top" className="brand-mark">
-            beame<span className="text-foreground">.ng</span>
-          </a>
-          <nav className="hidden gap-7 text-sm font-semibold text-muted-foreground md:flex">
-            <a href="#services" className="transition-colors hover:text-primary">
-              Services
+      <section className="hero-beame">
+        <div className="container-beame relative mx-auto max-w-[900px] text-center">
+          <span className="hero-badge reveal">● Agentic Commerce Optimization</span>
+          <h1 className="reveal mt-5 text-[clamp(2.2rem,5vw,4.25rem)] leading-[1.02]">
+            Get your brand recommended by AI agents
+          </h1>
+          <p className="reveal mx-auto mt-4 max-w-[720px] text-[clamp(1rem,1.8vw,1.15rem)] opacity-95">
+            Beame.ng makes businesses discoverable, recommendable and transactable across
+            ChatGPT, Gemini, Perplexity, Claude and Copilot — then wires them into the
+            agentic checkout layer.
+          </p>
+          <div className="reveal mt-8 flex flex-wrap justify-center gap-3">
+            <a href="#audit" className="btn-beame">
+              Free AI Visibility Health Check
             </a>
-            <a href="#special" className="transition-colors hover:text-primary">
-              Why Beame
-            </a>
-            <a href="#chatbots" className="transition-colors hover:text-primary">
-              Chatbots
-            </a>
-            <a href="#contact" className="transition-colors hover:text-primary">
-              Contact
-            </a>
-          </nav>
+            <Link to="/protocols" className="btn-beame">
+              Protocol Tracker
+            </Link>
+          </div>
         </div>
-      </header>
+      </section>
 
-      <main id="top">
-        <section className="hero-beame">
-          <div className="container-beame relative mx-auto max-w-[860px] text-center">
-            <span className="hero-badge reveal">● Now onboarding new businesses</span>
-            <h1 className="reveal mt-5 text-[clamp(2.2rem,5vw,4.25rem)] leading-[1.02]">
-              AI that answers, sells and follows up — 24/7
-            </h1>
-            <p className="reveal mx-auto mt-4 max-w-[720px] text-[clamp(1rem,1.8vw,1.15rem)] opacity-95">
-              Beame.ng builds smart chatbots, automation and websites that keep your
-              business responding to every customer, on every channel, at any hour.
-            </p>
-            <div className="reveal mt-8 flex flex-wrap justify-center gap-3">
-              <a href="#chatbots" className="btn-beame">
-                Talk to our bot
-              </a>
-              <a href="#contact" className="btn-beame">
-                Book a free demo
-              </a>
-            </div>
-          </div>
-        </section>
+      <section className="section-beame">
+        <div className="container-beame grid gap-4 sm:grid-cols-3">
+          {stats.map((s) => (
+            <article key={s.value} className="card-beame reveal p-5 text-center">
+              <p className="text-3xl font-extrabold text-primary">{s.value}</p>
+              <p className="mt-2 text-[0.95rem] text-muted-foreground">{s.label}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
-        <section id="services" className="section-beame">
-          <div className="container-beame">
-            <h2 className="section-title reveal">What we build</h2>
-            <p className="section-lead reveal">
-              Everything you need to turn conversations into customers.
-            </p>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {services.map((s) => (
-                <article key={s.title} className="card-beame reveal p-4.5">
-                  <img
-                    src={s.img}
-                    alt={s.title}
-                    loading="lazy"
-                    width={800}
-                    height={600}
-                    className="mb-3.5 h-[180px] w-full rounded-2xl object-cover"
-                  />
-                  <h3 className="mb-2 text-lg text-primary">{s.title}</h3>
-                  <p className="text-[0.96rem] text-muted-foreground">{s.body}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="special" className="section-beame pt-0">
-          <div className="container-beame">
-            <div className="card-beame reveal p-6 md:p-8">
-              <h2 className="section-title">Why businesses choose Beame</h2>
-              <ul className="mx-auto mt-6 grid max-w-[860px] gap-3.5">
-                {reasons.map((r) => (
-                  <li key={r} className="check-item">
-                    {r}
-                  </li>
-                ))}
-              </ul>
-              <blockquote className="quote-beame mx-auto mt-6 max-w-[860px]">
-                “Our WhatsApp used to go quiet after 6pm. Now Beame replies instantly and
-                we close orders while we sleep.”
-              </blockquote>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-beame pt-0">
-          <div className="container-beame">
-            <div className="card-beame reveal p-5 text-center md:p-6">
-              <img
-                src={showcase}
-                alt="Team reviewing an AI chat assistant on a laptop"
-                loading="lazy"
-                width={1280}
-                height={800}
-                className="mx-auto mb-5 max-h-[360px] w-full rounded-2xl object-cover"
-              />
-              <h2 className="section-title">Built with you, not just for you</h2>
-              <p className="section-lead">
-                We map your customer journey, train the assistant on your real answers and
-                stay on hand as your business grows.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="chatbots" className="section-beame pt-0">
-          <div className="container-beame">
-            <div className="card-beame reveal p-6 text-center md:p-8">
-              <h2 className="section-title">Try our assistants</h2>
-              <p className="section-lead">
-                Say hello on the channel you prefer — the bot replies in seconds.
-              </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-3.5">
-                <a href="https://wa.me/2348000000000" className="btn-beame btn-solid">
-                  WhatsApp bot
-                </a>
-                <a href="https://m.me/beame.ng" className="btn-beame btn-solid">
-                  Messenger bot
-                </a>
-                <a href="https://instagram.com/beame.ng" className="btn-beame btn-solid">
-                  Instagram DM
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" className="cta-beame section-beame">
-          <div className="container-beame">
-            <div className="cta-panel reveal">
-              <h2 className="section-title text-[inherit]">
-                Ready to never miss a customer again?
-              </h2>
-              <p className="section-lead text-[inherit] opacity-95">
-                Book a free 20-minute demo and see your own assistant in action.
-              </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <a href="mailto:hello@beame.ng" className="btn-beame">
-                  hello@beame.ng
-                </a>
-                <a href="tel:+2348000000000" className="btn-beame">
-                  Call us
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer className="footer-beame">
+      <section id="audit" className="section-beame pt-0">
         <div className="container-beame">
-          <p>© {new Date().getFullYear()} Beame.ng — AI chatbots & automation.</p>
-          <p className="mt-1.5 text-sm opacity-80">Lagos, Nigeria</p>
+          <div className="card-beame reveal p-6 md:p-8">
+            <Eyebrow>Start here</Eyebrow>
+            <h2 className="section-title">Free AI Visibility Health Check</h2>
+            <p className="section-lead">
+              We run your brand through the prompts your customers actually use, and send
+              back what the assistants say — and who they recommend instead.
+            </p>
+            <AuditForm />
+          </div>
         </div>
-      </footer>
+      </section>
 
-      <ExpertChat />
+      <section id="services" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>Services</Eyebrow>
+          <h2 className="section-title reveal">Strategy plus engineering</h2>
+          <p className="section-lead reveal">
+            Four practices that move a brand from invisible to transactable.
+          </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {services.map((s) => (
+              <article key={s.title} className="card-beame reveal p-5">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary">
+                  {s.kicker}
+                </p>
+                <h3 className="mt-2 text-xl">{s.title}</h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  {s.tag}
+                </p>
+                <p className="mt-3 text-[0.96rem] text-muted-foreground">{s.body}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-7 text-center">
+            <Link to="/services" className="btn-beame btn-solid">
+              Explore all services
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section id="platform" className="section-beame pt-0">
+        <div className="container-beame">
+          <div className="card-beame reveal p-6 text-center md:p-8">
+            <Eyebrow>The platform</Eyebrow>
+            <h2 className="section-title">A.G.E.N.T.I.C. Commerce OS</h2>
+            <p className="section-lead">
+              One operating system for AI visibility: audit, knowledge graph, structured
+              content, agent integrations, tracking, trust signals and agentic checkout —
+              managed in a single roadmap.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-beame pt-0">
+        <div className="container-beame grid gap-5 md:grid-cols-2">
+          {longform.map((l) => (
+            <article key={l.title} className="card-beame reveal p-6">
+              <h2 className="text-2xl">{l.title}</h2>
+              <p className="mt-3 text-[0.98rem] leading-relaxed text-muted-foreground">
+                {l.body}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="framework" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>Framework</Eyebrow>
+          <h2 className="section-title reveal">The seven A.G.E.N.T.I.C. phases</h2>
+          <FrameworkGrid />
+        </div>
+      </section>
+
+      <section className="section-beame pt-0">
+        <div className="container-beame">
+          <h2 className="section-title reveal">What clients say</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <blockquote key={t.name} className="card-beame reveal p-5">
+                <p className="text-[0.98rem]">“{t.quote}”</p>
+                <footer className="mt-3 text-sm font-bold text-primary">{t.name}</footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="section-beame pt-0">
+        <div className="container-beame">
+          <h2 className="section-title reveal">Frequently asked questions</h2>
+          <FaqList items={homeFaqs} />
+        </div>
+      </section>
+
+      <section id="insights" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>Insights</Eyebrow>
+          <h2 className="section-title reveal">From the Beame.ng desk</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {insights.map((i) => (
+              <article key={i.title} className="card-beame reveal p-5">
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  {i.date} · {i.author}
+                </p>
+                <h3 className="mt-2 text-lg">{i.title}</h3>
+                <p className="mt-2 text-[0.95rem] text-muted-foreground">{i.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CtaBand />
     </div>
   );
 }
