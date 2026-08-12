@@ -30,7 +30,7 @@ function answer(input: string) {
   const hit = canned.find((c) => c.match.some((m) => q.includes(m)));
   return (
     hit?.reply ??
-    "Good question. A Beame.ng strategist can answer that properly — book the free AI Visibility Health Check and we'll cover it on the call."
+    "Good question. A strategist can answer that properly — book the free AI Visibility Health Check and we'll cover it on the call."
   );
 }
 
@@ -40,7 +40,7 @@ export function ExpertChat() {
   const [messages, setMessages] = useState<Msg[]>([
     {
       role: "bot",
-      text: "Hi — I'm the Beame.ng expert. Ask me about AEO, agentic commerce or how the audit works.",
+      text: "Hi — I'm your AI commerce expert. Ask me about AEO, agentic commerce or how the audit works.",
     },
   ]);
 
@@ -57,7 +57,7 @@ export function ExpertChat() {
       {open && (
         <div className="card-beame mb-3 flex h-[420px] w-[min(92vw,340px)] flex-col overflow-hidden p-0">
           <div className="flex items-center justify-between border-b border-border px-4 py-3">
-            <p className="text-sm font-bold">Beame.ng Expert</p>
+            <p className="text-sm font-bold">AI Commerce Expert</p>
             <button
               type="button"
               aria-label="Close chat"
@@ -100,7 +100,7 @@ export function ExpertChat() {
         onClick={() => setOpen((o) => !o)}
         className="btn-beame btn-solid shadow-lg"
       >
-        {open ? "Hide expert" : "Ask the Beame expert"}
+        {open ? "Hide expert" : "Ask an expert"}
       </button>
     </div>
   );
