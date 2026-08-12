@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CtaBand, Eyebrow, FaqList, FrameworkGrid, useReveal } from "@/components/site-ui";
 import { services } from "@/data/site";
 import { serviceFaqs } from "@/data/site";
+import { serviceImages } from "@/data/service-images";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -55,8 +56,14 @@ function ServicesPage() {
 
       <section className="section-beame">
         <div className="container-beame grid gap-5 md:grid-cols-2">
-          {services.map((s) => (
+          {services.map((s, i) => (
             <article key={s.title} className="card-beame reveal p-6">
+              <img
+                src={serviceImages[i]?.src}
+                alt={serviceImages[i]?.alt ?? s.title}
+                loading="lazy"
+                className="mb-5 h-48 w-full rounded-2xl object-cover"
+              />
               <p className="text-xs font-bold uppercase tracking-widest text-primary">
                 {s.kicker}
               </p>

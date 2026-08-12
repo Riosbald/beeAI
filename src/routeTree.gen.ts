@@ -11,8 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AboutDottxtRouteImport } from './routes/about[.]txt'
+import { Route as IndexDottxtRouteImport } from './routes/index[.]txt'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as ProtocolsRouteImport } from './routes/protocols'
+import { Route as ProtocolsDottxtRouteImport } from './routes/protocols[.]txt'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ServicesDottxtRouteImport } from './routes/services[.]txt'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,9 +30,29 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutDottxtRoute = AboutDottxtRouteImport.update({
+  id: '/about.txt',
+  path: '/about.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexDottxtRoute = IndexDottxtRouteImport.update({
+  id: '/index.txt',
+  path: '/index.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProtocolsRoute = ProtocolsRouteImport.update({
   id: '/protocols',
   path: '/protocols',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProtocolsDottxtRoute = ProtocolsDottxtRouteImport.update({
+  id: '/protocols.txt',
+  path: '/protocols.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -34,39 +60,104 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesDottxtRoute = ServicesDottxtRouteImport.update({
+  id: '/services.txt',
+  path: '/services.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about.txt': typeof AboutDottxtRoute
+  '/index.txt': typeof IndexDottxtRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/protocols': typeof ProtocolsRoute
+  '/protocols.txt': typeof ProtocolsDottxtRoute
   '/services': typeof ServicesRoute
+  '/services.txt': typeof ServicesDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about.txt': typeof AboutDottxtRoute
+  '/index.txt': typeof IndexDottxtRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/protocols': typeof ProtocolsRoute
+  '/protocols.txt': typeof ProtocolsDottxtRoute
   '/services': typeof ServicesRoute
+  '/services.txt': typeof ServicesDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about.txt': typeof AboutDottxtRoute
+  '/index.txt': typeof IndexDottxtRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/protocols': typeof ProtocolsRoute
+  '/protocols.txt': typeof ProtocolsDottxtRoute
   '/services': typeof ServicesRoute
+  '/services.txt': typeof ServicesDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/protocols' | '/services'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/about.txt'
+    | '/index.txt'
+    | '/llms.txt'
+    | '/protocols'
+    | '/protocols.txt'
+    | '/services'
+    | '/services.txt'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/protocols' | '/services'
-  id: '__root__' | '/' | '/about' | '/protocols' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/about.txt'
+    | '/index.txt'
+    | '/llms.txt'
+    | '/protocols'
+    | '/protocols.txt'
+    | '/services'
+    | '/services.txt'
+    | '/sitemap.xml'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/about.txt'
+    | '/index.txt'
+    | '/llms.txt'
+    | '/protocols'
+    | '/protocols.txt'
+    | '/services'
+    | '/services.txt'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AboutDottxtRoute: typeof AboutDottxtRoute
+  IndexDottxtRoute: typeof IndexDottxtRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
   ProtocolsRoute: typeof ProtocolsRoute
+  ProtocolsDottxtRoute: typeof ProtocolsDottxtRoute
   ServicesRoute: typeof ServicesRoute
+  ServicesDottxtRoute: typeof ServicesDottxtRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -85,11 +176,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about.txt': {
+      id: '/about.txt'
+      path: '/about.txt'
+      fullPath: '/about.txt'
+      preLoaderRoute: typeof AboutDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/index.txt': {
+      id: '/index.txt'
+      path: '/index.txt'
+      fullPath: '/index.txt'
+      preLoaderRoute: typeof IndexDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/protocols': {
       id: '/protocols'
       path: '/protocols'
       fullPath: '/protocols'
       preLoaderRoute: typeof ProtocolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/protocols.txt': {
+      id: '/protocols.txt'
+      path: '/protocols.txt'
+      fullPath: '/protocols.txt'
+      preLoaderRoute: typeof ProtocolsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -99,14 +218,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services.txt': {
+      id: '/services.txt'
+      path: '/services.txt'
+      fullPath: '/services.txt'
+      preLoaderRoute: typeof ServicesDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AboutDottxtRoute: AboutDottxtRoute,
+  IndexDottxtRoute: IndexDottxtRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
   ProtocolsRoute: ProtocolsRoute,
+  ProtocolsDottxtRoute: ProtocolsDottxtRoute,
   ServicesRoute: ServicesRoute,
+  ServicesDottxtRoute: ServicesDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
