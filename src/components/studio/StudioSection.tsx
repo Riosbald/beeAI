@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { testimonials } from "@/data/site";
+import { AssistCard } from "@/components/studio/AssistCard";
 
 /* ---------------------------------- Orb ---------------------------------- */
 
@@ -150,11 +151,16 @@ const categories = [
   },
 ];
 
-function CategoryPanel() {
+function CategoryPanel({
+  active,
+  setActive,
+}: {
+  active: string;
+  setActive: (id: string) => void;
+}) {
   const first = categories[0]!;
-  const [active, setActive] = useState(first.id);
   const [fading, setFading] = useState(false);
-  const [shown, setShown] = useState(first.id);
+  const [shown, setShown] = useState(active);
 
   useEffect(() => {
     if (active === shown) return;
@@ -205,6 +211,10 @@ function CategoryPanel() {
 /* ------------------------------- Section --------------------------------- */
 
 export function StudioSection() {
+  const first = categories[0]!;
+  const [active, setActive] = useState(first.id);
+  const activeCat = categories.find((c) => c.id === active) ?? first;
+
   return (
     <section className="studio work-section" aria-labelledby="studio-heading">
       <div className="studio-inner">
@@ -225,8 +235,14 @@ export function StudioSection() {
         <DictionaryPills />
 
         <div className="studio-grid">
-          <CategoryPanel />
-          <SnippetCard />
+          <CategoryPanel active={active} setActive={setActive} />
+          <div className="studio-stack">
+            <SnippetCard />
+            <AssistCard
+              category={activeCat.label}
+              categoryBrief={`${activeCat.title}. ${activeCat.body}`}
+            />
+          </div>
         </div>
 
         <TestimonialStrip />
