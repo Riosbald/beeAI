@@ -5,6 +5,8 @@ import { AskAiBlock } from "@/components/AskAiBlock";
 import { StudioSection } from "@/components/studio/StudioSection";
 import { CtaBand, Eyebrow, FaqList, FrameworkGrid, useReveal } from "@/components/site-ui";
 import { buildItems, homeFaqs, insights, services, testimonials } from "@/data/site";
+import { serviceImages } from "@/data/service-images";
+import showcase from "@/assets/beame-showcase.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -173,8 +175,14 @@ function Index() {
             Four practices that move a brand from invisible to transactable.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {services.map((s) => (
+            {services.map((s, i) => (
               <article key={s.title} className="card-beame reveal p-5">
+                <img
+                  src={serviceImages[i]?.src}
+                  alt={serviceImages[i]?.alt ?? s.title}
+                  loading="lazy"
+                  className="mb-4 h-40 w-full rounded-2xl object-cover"
+                />
                 <p className="text-xs font-bold uppercase tracking-widest text-primary">
                   {s.kicker}
                 </p>
@@ -199,6 +207,12 @@ function Index() {
           <div className="card-beame reveal p-6 text-center md:p-8">
             <Eyebrow>The platform</Eyebrow>
             <h2 className="section-title">A.G.E.N.T.I.C. Commerce OS</h2>
+            <img
+              src={showcase}
+              alt="Beame.ng A.G.E.N.T.I.C. Commerce OS dashboard overview"
+              loading="lazy"
+              className="mx-auto mt-6 w-full max-w-[900px] rounded-3xl object-cover"
+            />
             <p className="section-lead">
               One operating system for AI visibility: audit, knowledge graph, structured
               content, agent integrations, tracking, trust signals and agentic checkout —
