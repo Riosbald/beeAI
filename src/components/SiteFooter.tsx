@@ -29,7 +29,7 @@ export function SiteFooter() {
           </Link>
         </nav>
         <p className="mt-5 text-sm opacity-70">
-          © {new Date().getFullYear()} Beame.ng — Kansas City, USA
+          © {new Date().getFullYear()} Beame.ng — Lagos, Nigeria
         </p>
       </div>
     </footer>
