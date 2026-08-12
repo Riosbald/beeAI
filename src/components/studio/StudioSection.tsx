@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { testimonials } from "@/data/site";
+import { AssistCard } from "@/components/studio/AssistCard";
 
 /* ---------------------------------- Orb ---------------------------------- */
 
