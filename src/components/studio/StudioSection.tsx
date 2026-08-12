@@ -151,9 +151,10 @@ const categories = [
 ];
 
 function CategoryPanel() {
-  const [active, setActive] = useState(categories[0].id);
+  const first = categories[0]!;
+  const [active, setActive] = useState(first.id);
   const [fading, setFading] = useState(false);
-  const [shown, setShown] = useState(categories[0].id);
+  const [shown, setShown] = useState(first.id);
 
   useEffect(() => {
     if (active === shown) return;
@@ -166,8 +167,8 @@ function CategoryPanel() {
   }, [active, shown]);
 
   const panel = useMemo(
-    () => categories.find((c) => c.id === shown) ?? categories[0],
-    [shown],
+    () => categories.find((c) => c.id === shown) ?? first,
+    [shown, first],
   );
 
   return (
