@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { CtaBand, Eyebrow, FaqList, FrameworkGrid, useReveal } from "@/components/site-ui";
-import { homeFaqs, insights, services, testimonials } from "@/data/site";
+import { buildItems, homeFaqs, insights, services, testimonials } from "@/data/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -131,6 +131,21 @@ function Index() {
               <p className="mt-2 text-[0.95rem] text-muted-foreground">{s.label}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section id="build" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>What we build</Eyebrow>
+          <h2 className="section-title reveal">Everything you need to turn conversations into customers.</h2>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {buildItems.map((b) => (
+              <article key={b.title} className="card-beame reveal p-5">
+                <h3 className="text-lg">{b.title}</h3>
+                <p className="mt-2 text-[0.95rem] text-muted-foreground">{b.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
