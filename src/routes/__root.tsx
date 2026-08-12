@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ExpertChat } from "@/components/ExpertChat";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -133,6 +134,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <SiteFooter />
+      <ExpertChat />
     </QueryClientProvider>
   );
 }
