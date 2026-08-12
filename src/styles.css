@@ -385,6 +385,53 @@
     text-align: center;
   }
 
+  .ask-ai-card {
+    border: 2px solid var(--foreground);
+    border-radius: 28px;
+    background: var(--surface);
+    padding: 32px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .ai-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    max-width: 320px;
+    margin: 24px auto 0;
+  }
+
+  .ai-btn {
+    min-height: 48px;
+    width: 100%;
+  }
+
+  .ai-btn:focus-visible,
+  .btn-beame:focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  @media (min-width: 640px) {
+    .ai-btns {
+      flex-direction: row;
+      max-width: none;
+      justify-content: center;
+    }
+
+    .ai-btn {
+      width: auto;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .ask-ai-card {
+      padding: 48px 40px;
+    }
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(24px) scale(0.985);
