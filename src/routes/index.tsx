@@ -44,7 +44,6 @@ const stats = [
   { value: "$0", label: "for your first AI Visibility Health Check" },
 ];
 
-const longform = [
 const steps = [
   {
     n: "01",
@@ -254,7 +253,7 @@ function Index() {
 
       <section className="section-beame pt-0">
         <div className="container-beame grid gap-5 md:grid-cols-2">
-          {longform.map((l) => (
+          {longformSections.map((l) => (
             <article key={l.title} className="card-beame reveal p-6">
               <h2 className="text-2xl">{l.title}</h2>
               <p className="mt-3 text-[0.98rem] leading-relaxed text-muted-foreground">
