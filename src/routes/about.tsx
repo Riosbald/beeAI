@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { CtaBand, Eyebrow, FrameworkGrid, useReveal } from "@/components/site-ui";
 import { testimonials } from "@/data/site";
+import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -19,8 +20,12 @@ export const Route = createFileRoute("/about")({
           "Who we are, how we work, and why agentic commerce changes the rules for every brand.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/about` },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/about" }],
   }),
   component: AboutPage,
 });

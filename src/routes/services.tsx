@@ -4,6 +4,7 @@ import { CtaBand, Eyebrow, FaqList, FrameworkGrid, useReveal } from "@/component
 import { services } from "@/data/site";
 import { serviceFaqs } from "@/data/site";
 import { serviceImages } from "@/data/service-images";
+import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -21,8 +22,12 @@ export const Route = createFileRoute("/services")({
           "Four practices that make your brand discoverable, recommendable and transactable by AI agents.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/services` },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/services" }],
   }),
   component: ServicesPage,
 });

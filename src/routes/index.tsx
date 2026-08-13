@@ -7,6 +7,7 @@ import { CtaBand, Eyebrow, FaqList, FrameworkGrid, useReveal } from "@/component
 import { buildItems, homeFaqs, insights, services, testimonials } from "@/data/site";
 import { serviceImages } from "@/data/service-images";
 import showcase from "@/assets/beame-showcase.jpg";
+import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,6 +28,9 @@ export const Route = createFileRoute("/")({
           "AEO, GEO and agentic commerce engineering that gets your brand cited by ChatGPT, Gemini, Perplexity and Copilot.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
