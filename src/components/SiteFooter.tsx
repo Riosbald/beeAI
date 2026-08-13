@@ -7,7 +7,7 @@ function WaveMark() {
       className="foot-wave"
       viewBox="0 0 64 24"
       role="img"
-      aria-label="Beame.ng waveform mark"
+      aria-label="BeameAI waveform mark"
     >
       {[4, 12, 20, 28, 36, 44, 52, 60].map((x, i) => (
         <rect
@@ -24,10 +24,10 @@ function WaveMark() {
 }
 
 const socials = [
-  { label: "Beame.ng on X", href: "https://x.com", Icon: Twitter },
-  { label: "Beame.ng on LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
-  { label: "Beame.ng on YouTube", href: "https://youtube.com", Icon: Youtube },
-  { label: "Beame.ng on GitHub", href: "https://github.com", Icon: Github },
+  { label: "BeameAI on X", href: "https://x.com", Icon: Twitter },
+  { label: "BeameAI on LinkedIn", href: "https://linkedin.com", Icon: Linkedin },
+  { label: "BeameAI on YouTube", href: "https://youtube.com", Icon: Youtube },
+  { label: "BeameAI on GitHub", href: "https://github.com", Icon: Github },
 ];
 
 export function SiteFooter() {
@@ -38,7 +38,7 @@ export function SiteFooter() {
           <div className="footer-brand">
             <div className="footer-wordmark">
               <WaveMark />
-              <span>Beame.ng</span>
+              <span>BeameAI</span>
             </div>
             <p className="footer-tagline">
               Agentic Commerce Optimization — discoverable, recommendable,
@@ -89,7 +89,7 @@ export function SiteFooter() {
         </div>
 
         <div className="footer-legal">
-          <p>© {new Date().getFullYear()} Beame.ng — Lagos, Nigeria</p>
+          <p>© {new Date().getFullYear()} BeameAI — Lagos, Nigeria</p>
           <div className="footer-legal-links">
             <Link to="/about">Privacy</Link>
             <Link to="/about">Terms</Link>

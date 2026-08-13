@@ -7,10 +7,10 @@ export const Route = createFileRoute("/about.txt")({
   server: {
     handlers: {
       GET: async () =>
-        txt(`About Beame.ng
+        txt(`About BeameAI
 URL: /about
 
-Beame.ng is an Agentic Commerce Optimization company. We make businesses
+BeameAI is an Agentic Commerce Optimization company. We make businesses
 discoverable, recommendable and transactable by AI shopping agents, combining
 strategy with hands-on engineering.
 

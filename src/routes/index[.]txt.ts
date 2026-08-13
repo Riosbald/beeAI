@@ -7,10 +7,10 @@ export const Route = createFileRoute("/index.txt")({
   server: {
     handlers: {
       GET: async () =>
-        txt(`Beame.ng — Agentic Commerce Optimization & AI Search Visibility
+        txt(`BeameAI — Agentic Commerce Optimization & AI Search Visibility
 URL: /
 
-Get your brand recommended by AI agents. Beame.ng makes businesses discoverable,
+Get your brand recommended by AI agents. BeameAI makes businesses discoverable,
 recommendable and transactable across ChatGPT, Gemini, Perplexity, Claude and
 Copilot — then wires them into the agentic checkout layer.
 

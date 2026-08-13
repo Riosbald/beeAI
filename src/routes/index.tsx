@@ -11,15 +11,15 @@ import showcase from "@/assets/beame-showcase.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Beame.ng — Agentic Commerce Optimization & AI Search Visibility" },
+      { title: "BeameAI — Agentic Commerce Optimization & AI Search Visibility" },
       {
         name: "description",
         content:
-          "Beame.ng makes your brand discoverable, recommendable and transactable by AI shopping agents. Start with a free AI Visibility Health Check.",
+          "BeameAI makes your brand discoverable, recommendable and transactable by AI shopping agents. Start with a free AI Visibility Health Check.",
       },
       {
         property: "og:title",
-        content: "Beame.ng — Agentic Commerce Optimization & AI Search Visibility",
+        content: "BeameAI — Agentic Commerce Optimization & AI Search Visibility",
       },
       {
         property: "og:description",
@@ -42,7 +42,7 @@ const stats = [
 const longform = [
   {
     title: "Search didn't die — it moved inside the assistant",
-    body: "Your customers no longer scan ten blue links. They ask an assistant, get one synthesized answer, and act on it. If your brand is not part of that answer, you are not in the consideration set at all. Beame.ng rebuilds how machines read your business: entities, claims, evidence and structured data that models can quote with confidence.",
+    body: "Your customers no longer scan ten blue links. They ask an assistant, get one synthesized answer, and act on it. If your brand is not part of that answer, you are not in the consideration set at all. BeameAI rebuilds how machines read your business: entities, claims, evidence and structured data that models can quote with confidence.",
   },
   {
     title: "Agents buy differently than humans",
@@ -112,7 +112,7 @@ function Index() {
             Get your brand recommended by AI agents
           </h1>
           <p className="reveal mx-auto mt-4 max-w-[720px] text-[clamp(1rem,1.8vw,1.15rem)] opacity-95">
-            Beame.ng makes businesses discoverable, recommendable and transactable across
+            BeameAI makes businesses discoverable, recommendable and transactable across
             ChatGPT, Gemini, Perplexity, Claude and Copilot — then wires them into the
             agentic checkout layer.
           </p>
@@ -209,7 +209,7 @@ function Index() {
             <h2 className="section-title">A.G.E.N.T.I.C. Commerce OS</h2>
             <img
               src={showcase}
-              alt="Beame.ng A.G.E.N.T.I.C. Commerce OS dashboard overview"
+              alt="BeameAI A.G.E.N.T.I.C. Commerce OS dashboard overview"
               loading="lazy"
               className="mx-auto mt-6 w-full max-w-[900px] rounded-3xl object-cover"
             />
@@ -267,7 +267,7 @@ function Index() {
       <section id="insights" className="section-beame pt-0">
         <div className="container-beame">
           <Eyebrow>Insights</Eyebrow>
-          <h2 className="section-title reveal">From the Beame.ng desk</h2>
+          <h2 className="section-title reveal">From the BeameAI desk</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {insights.map((i) => (
               <article key={i.title} className="card-beame reveal p-5">

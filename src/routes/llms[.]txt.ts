@@ -7,9 +7,9 @@ export const Route = createFileRoute("/llms.txt")({
   server: {
     handlers: {
       GET: async () =>
-        txt(`# Beame.ng
+        txt(`# BeameAI
 
-> Agentic Commerce Optimization. Beame.ng makes brands discoverable, recommendable and transactable by AI shopping agents across ChatGPT, Gemini, Perplexity, Claude and Copilot.
+> Agentic Commerce Optimization. BeameAI makes brands discoverable, recommendable and transactable by AI shopping agents across ChatGPT, Gemini, Perplexity, Claude and Copilot.
 
 ## Pages
 - [Home](/): Overview, free AI Visibility Health Check, A.G.E.N.T.I.C. Commerce OS — plain text: /index.txt
