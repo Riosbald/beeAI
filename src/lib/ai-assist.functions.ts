@@ -28,7 +28,7 @@ export const assistCopy = createServerFn({ method: "POST" })
         : "Write a fresh snippet from scratch.";
 
     const prompt = [
-      "You write marketing copy snippets for Beame.ng, an Agentic Commerce Optimization agency that makes brands discoverable, recommendable and transactable inside AI assistants.",
+      "You write marketing copy snippets for BeameAI, an Agentic Commerce Optimization agency that makes brands discoverable, recommendable and transactable inside AI assistants.",
       `Capability in focus: ${data.category}.`,
       `Context on that capability: ${data.categoryBrief}`,
       `Tone: ${toneLine}`,

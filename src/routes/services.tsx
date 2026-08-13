@@ -8,13 +8,13 @@ import { serviceImages } from "@/data/service-images";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — AEO, GEO & Agentic Commerce | Beame.ng" },
+      { title: "Services — AEO, GEO & Agentic Commerce | BeameAI" },
       {
         name: "description",
         content:
-          "Knowledge graph architecture, AI search optimization, agentic commerce integration and AI search analytics from Beame.ng.",
+          "Knowledge graph architecture, AI search optimization, agentic commerce integration and AI search analytics from BeameAI.",
       },
-      { property: "og:title", content: "Services — AEO, GEO & Agentic Commerce | Beame.ng" },
+      { property: "og:title", content: "Services — AEO, GEO & Agentic Commerce | BeameAI" },
       {
         property: "og:description",
         content:

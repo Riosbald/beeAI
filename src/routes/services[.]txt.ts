@@ -7,7 +7,7 @@ export const Route = createFileRoute("/services.txt")({
   server: {
     handlers: {
       GET: async () =>
-        txt(`Beame.ng Services — AEO, GEO & Agentic Commerce
+        txt(`BeameAI Services — AEO, GEO & Agentic Commerce
 URL: /services
 
 Engineering for the agentic era: structured data, integrations and measurement

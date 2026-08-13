@@ -6,13 +6,13 @@ import { testimonials } from "@/data/site";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Beame.ng — Agentic Commerce Optimization" },
+      { title: "About BeameAI — Agentic Commerce Optimization" },
       {
         name: "description",
         content:
-          "Beame.ng is an Agentic Commerce Optimization company combining AEO/GEO strategy with real engineering: MCP, structured data and agent checkout protocols.",
+          "BeameAI is an Agentic Commerce Optimization company combining AEO/GEO strategy with real engineering: MCP, structured data and agent checkout protocols.",
       },
-      { property: "og:title", content: "About Beame.ng — Agentic Commerce Optimization" },
+      { property: "og:title", content: "About BeameAI — Agentic Commerce Optimization" },
       {
         property: "og:description",
         content:
@@ -52,7 +52,7 @@ function AboutPage() {
             We make brands legible to machines
           </h1>
           <p className="reveal mx-auto mt-4 max-w-[700px] opacity-95">
-            Beame.ng is an Agentic Commerce Optimization company. Our mission is simple:
+            BeameAI is an Agentic Commerce Optimization company. Our mission is simple:
             make your business discoverable, recommendable and transactable by the AI
             agents your customers now trust.
           </p>
@@ -76,7 +76,7 @@ function AboutPage() {
             <Eyebrow>Our story</Eyebrow>
             <h2 className="section-title">From SEO to agentic commerce</h2>
             <p className="mx-auto mt-4 max-w-[860px] text-[0.99rem] leading-relaxed text-muted-foreground">
-              Beame.ng started by helping businesses answer customers faster with chat and
+              BeameAI started by helping businesses answer customers faster with chat and
               automation. As buying journeys moved inside AI assistants, the same question
               came back in a new form: can a machine find you, understand you, trust you,
               and buy from you? Today we combine strategy with hands-on engineering —
