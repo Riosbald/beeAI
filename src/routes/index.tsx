@@ -7,6 +7,7 @@ import { CtaBand, Eyebrow, FaqList, FrameworkGrid, useReveal } from "@/component
 import { buildItems, homeFaqs, insights, services, testimonials } from "@/data/site";
 import { serviceImages } from "@/data/service-images";
 import showcase from "@/assets/beame-showcase.jpg";
+import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,8 +28,12 @@ export const Route = createFileRoute("/")({
           "AEO, GEO and agentic commerce engineering that gets your brand cited by ChatGPT, Gemini, Perplexity and Copilot.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });
@@ -39,7 +44,31 @@ const stats = [
   { value: "$0", label: "for your first AI Visibility Health Check" },
 ];
 
-const longform = [
+const steps = [
+  {
+    n: "01",
+    title: "Free health check",
+    body: "We run your brand through the prompts your buyers actually use and show you exactly where the assistants send them instead.",
+  },
+  {
+    n: "02",
+    title: "Engineer the answer layer",
+    body: "Entities, schema, evidence and feeds get rebuilt so models can quote you with confidence — implemented, not advised.",
+  },
+  {
+    n: "03",
+    title: "Wire the agentic checkout",
+    body: "MCP servers and ACP/UCP/AP2 support connect your catalog so an agent can go from recommendation to purchase.",
+  },
+];
+
+const proofPoints = [
+  "No contract to start",
+  "Results in 2 business days",
+  "Built and shipped by engineers",
+];
+
+const longformSections = [
   {
     title: "Search didn't die — it moved inside the assistant",
     body: "Your customers no longer scan ten blue links. They ask an assistant, get one synthesized answer, and act on it. If your brand is not part of that answer, you are not in the consideration set at all. BeameAI rebuilds how machines read your business: entities, claims, evidence and structured data that models can quote with confidence.",
@@ -163,6 +192,32 @@ function Index() {
               back what the assistants say — and who they recommend instead.
             </p>
             <AuditForm />
+            <ul className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold text-muted-foreground">
+              {proofPoints.map((p) => (
+                <li key={p}>✓ {p}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>How it works</Eyebrow>
+          <h2 className="section-title reveal">Three steps from invisible to transactable</h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {steps.map((s) => (
+              <article key={s.n} className="card-beame reveal p-6">
+                <p className="text-sm font-extrabold tracking-widest text-primary">{s.n}</p>
+                <h3 className="mt-2 text-xl">{s.title}</h3>
+                <p className="mt-3 text-[0.96rem] text-muted-foreground">{s.body}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-7 text-center">
+            <a href="#audit" className="btn-beame btn-solid">
+              Start with the free health check
+            </a>
           </div>
         </div>
       </section>
@@ -224,7 +279,7 @@ function Index() {
 
       <section className="section-beame pt-0">
         <div className="container-beame grid gap-5 md:grid-cols-2">
-          {longform.map((l) => (
+          {longformSections.map((l) => (
             <article key={l.title} className="card-beame reveal p-6">
               <h2 className="text-2xl">{l.title}</h2>
               <p className="mt-3 text-[0.98rem] leading-relaxed text-muted-foreground">

@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-// TODO: replace with your project URL once a project name or custom domain is set.
-const BASE_URL = "";
+const BASE_URL = "https://project--ee5c8f64-5c69-471b-aacd-1340992d391a.lovable.app";
 
 const entries = [
   { path: "/", changefreq: "weekly", priority: "1.0" },

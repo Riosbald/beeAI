@@ -9,6 +9,7 @@ import {
   protocolLayers,
   recentNews,
 } from "@/data/protocols";
+import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 
 export const Route = createFileRoute("/protocols")({
   head: () => ({
@@ -26,8 +27,12 @@ export const Route = createFileRoute("/protocols")({
           "Who supports ACP, UCP, AP2, MPP, x402, MCP and A2A — updated support matrices for AI assistants and commerce platforms.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/protocols` },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/protocols" }],
   }),
   component: ProtocolsPage,
 });
