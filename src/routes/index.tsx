@@ -192,6 +192,32 @@ function Index() {
               back what the assistants say — and who they recommend instead.
             </p>
             <AuditForm />
+            <ul className="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-semibold text-muted-foreground">
+              {proofPoints.map((p) => (
+                <li key={p}>✓ {p}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>How it works</Eyebrow>
+          <h2 className="section-title reveal">Three steps from invisible to transactable</h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {steps.map((s) => (
+              <article key={s.n} className="card-beame reveal p-6">
+                <p className="text-sm font-extrabold tracking-widest text-primary">{s.n}</p>
+                <h3 className="mt-2 text-xl">{s.title}</h3>
+                <p className="mt-3 text-[0.96rem] text-muted-foreground">{s.body}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-7 text-center">
+            <a href="#audit" className="btn-beame btn-solid">
+              Start with the free health check
+            </a>
           </div>
         </div>
       </section>
