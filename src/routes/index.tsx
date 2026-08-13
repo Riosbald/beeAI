@@ -45,6 +45,31 @@ const stats = [
 ];
 
 const longform = [
+const steps = [
+  {
+    n: "01",
+    title: "Free health check",
+    body: "We run your brand through the prompts your buyers actually use and show you exactly where the assistants send them instead.",
+  },
+  {
+    n: "02",
+    title: "Engineer the answer layer",
+    body: "Entities, schema, evidence and feeds get rebuilt so models can quote you with confidence — implemented, not advised.",
+  },
+  {
+    n: "03",
+    title: "Wire the agentic checkout",
+    body: "MCP servers and ACP/UCP/AP2 support connect your catalog so an agent can go from recommendation to purchase.",
+  },
+];
+
+const proofPoints = [
+  "No contract to start",
+  "Results in 2 business days",
+  "Built and shipped by engineers",
+];
+
+const longformSections = [
   {
     title: "Search didn't die — it moved inside the assistant",
     body: "Your customers no longer scan ten blue links. They ask an assistant, get one synthesized answer, and act on it. If your brand is not part of that answer, you are not in the consideration set at all. BeameAI rebuilds how machines read your business: entities, claims, evidence and structured data that models can quote with confidence.",
