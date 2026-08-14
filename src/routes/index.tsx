@@ -339,9 +339,49 @@ function Index() {
 
       <section id="framework" className="section-beame pt-0">
         <div className="container-beame">
-          <Eyebrow>Framework</Eyebrow>
-          <h2 className="section-title reveal">The seven A.G.E.N.T.I.C. phases</h2>
+          <Eyebrow>The refinery pipeline</Eyebrow>
+          <h2 className="section-title reveal">From raw data to agent-ready knowledge</h2>
+          <p className="section-lead reveal">
+            The A.G.E.N.T.I.C. pipeline — seven phases, one outcome: your business becomes
+            the verified source agents pay to query.
+          </p>
           <FrameworkGrid />
+        </div>
+      </section>
+
+      <section id="integration" className="section-beame pt-0">
+        <div className="container-beame">
+          <div className="card-beame reveal p-6 text-center md:p-8">
+            <Eyebrow>One combined offer</Eyebrow>
+            <h2 className="section-title">Data refinery + agentic checkout</h2>
+            <p className="section-lead">
+              Most businesses need two things: clean data and a way to monetize it. We
+              structure your data, verify your claims, wire up x402 / Cloudflare
+              monetization and make your content agent-ready in one engagement — the full
+              value chain without the infrastructure headache.
+            </p>
+            <a href="#audit" className="btn-beame btn-solid mt-6">
+              Book a free audit
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="tiers" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>Engagement tiers</Eyebrow>
+          <h2 className="section-title reveal">Start small, prove it, then scale</h2>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {tiers.map((t) => (
+              <article key={t.name} className="card-beame reveal p-5">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary">
+                  {t.price}
+                </p>
+                <h3 className="mt-2 text-lg">{t.name}</h3>
+                <p className="mt-2 text-[0.95rem] text-muted-foreground">{t.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -362,7 +402,7 @@ function Index() {
       <section id="faq" className="section-beame pt-0">
         <div className="container-beame">
           <h2 className="section-title reveal">Frequently asked questions</h2>
-          <FaqList items={homeFaqs} />
+          <FaqList items={[...refineryFaqs, ...homeFaqs]} />
         </div>
       </section>
 
