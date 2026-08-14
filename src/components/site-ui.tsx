@@ -85,7 +85,7 @@ export function CtaBand() {
     <section className="cta-beame section-beame">
       <div className="container-beame">
         <div className="cta-panel reveal">
-          <h2 className="section-title text-[inherit]">Ready to get found on ChatGPT?</h2>
+        <h2 className="section-title text-[inherit]">Ready to become the source of truth?</h2>
           <p className="section-lead text-[inherit] opacity-95">
             Stop being invisible to the agents that matter most. Schedule your audit today.
           </p>

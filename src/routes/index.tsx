@@ -4,7 +4,17 @@ import { useState } from "react";
 import { AskAiBlock } from "@/components/AskAiBlock";
 import { StudioSection } from "@/components/studio/StudioSection";
 import { CtaBand, Eyebrow, FaqList, FrameworkGrid, useReveal } from "@/components/site-ui";
-import { buildItems, homeFaqs, insights, services, testimonials } from "@/data/site";
+import {
+  homeFaqs,
+  ideas,
+  insights,
+  pillars,
+  problemPoints,
+  refineryFaqs,
+  services,
+  testimonials,
+  tiers,
+} from "@/data/site";
 import { serviceImages } from "@/data/service-images";
 import showcase from "@/assets/beame-showcase.jpg";
 import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
@@ -12,20 +22,20 @@ import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BeameAI — Agentic Commerce Optimization & AI Search Visibility" },
+      { title: "BeameAI — The Data Refinery for the Agentic Web" },
       {
         name: "description",
         content:
-          "BeameAI makes your brand discoverable, recommendable and transactable by AI shopping agents. Start with a free AI Visibility Health Check.",
+          "AI agents query verified knowledge, not web pages. BeameAI structures your business data so agents find, trust and recommend you. Free AI Visibility Audit.",
       },
       {
         property: "og:title",
-        content: "BeameAI — Agentic Commerce Optimization & AI Search Visibility",
+        content: "BeameAI — The Data Refinery for the Agentic Web",
       },
       {
         property: "og:description",
         content:
-          "AEO, GEO and agentic commerce engineering that gets your brand cited by ChatGPT, Gemini, Perplexity and Copilot.",
+          "Turn messy business knowledge into structured, citable, agent-ready data — then plug it into the agentic commerce layer.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/` },
@@ -40,7 +50,11 @@ export const Route = createFileRoute("/")({
 
 const stats = [
   { value: "40%", label: "of buying journeys now start inside an AI assistant" },
-  { value: "AEO / GEO", label: "answer and generative engine optimization, engineered" },
+  {
+    value: "Rails are live",
+    label:
+      "Cloudflare pay-per-crawl and x402 already exist — agents still need something worth paying for",
+  },
   { value: "$0", label: "for your first AI Visibility Health Check" },
 ];
 
@@ -136,23 +150,26 @@ function Index() {
     <div ref={root}>
       <section className="hero-beame">
         <div className="container-beame relative mx-auto max-w-[900px] text-center">
-          <span className="hero-badge reveal">● Agentic Commerce Optimization</span>
+          <span className="hero-badge reveal">● The Data Refinery</span>
           <h1 className="reveal mt-5 text-[clamp(2.2rem,5vw,4.25rem)] leading-[1.02]">
-            Get your brand recommended by AI agents
+            The internet just got a new currency — and it's clean data
           </h1>
           <p className="reveal mx-auto mt-4 max-w-[720px] text-[clamp(1rem,1.8vw,1.15rem)] opacity-95">
-            BeameAI makes businesses discoverable, recommendable and transactable across
-            ChatGPT, Gemini, Perplexity, Claude and Copilot — then wires them into the
-            agentic checkout layer.
+            AI agents don't browse websites. They query verified knowledge. BeameAI
+            structures your business data so agents can find it, trust it and recommend it
+            — across ChatGPT, Gemini, Perplexity, Claude and Copilot.
           </p>
           <div className="reveal mt-8 flex flex-wrap justify-center gap-3">
             <a href="#audit" className="btn-beame">
-              Free AI Visibility Health Check
+              Book a free AI Visibility Audit
             </a>
             <Link to="/protocols" className="btn-beame">
               Protocol Tracker
             </Link>
           </div>
+          <p className="reveal mt-4 text-sm opacity-90">
+            No contract. Results in 2 business days.
+          </p>
         </div>
       </section>
 
@@ -167,15 +184,45 @@ function Index() {
         </div>
       </section>
 
+      <section id="problem" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>The gap</Eyebrow>
+          <h2 className="section-title reveal">Why AI agents ignore most businesses</h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {problemPoints.map((p) => (
+              <article key={p.title} className="card-beame reveal p-6">
+                <h3 className="text-xl">{p.title}</h3>
+                <p className="mt-3 text-[0.96rem] text-muted-foreground">{p.body}</p>
+              </article>
+            ))}
+          </div>
+          <p className="section-lead reveal mt-7 font-semibold text-foreground">
+            The businesses that solve this first won't just rank higher. They'll become
+            the licensable source of truth for their niche.
+          </p>
+        </div>
+      </section>
+
       <section id="build" className="section-beame pt-0">
         <div className="container-beame">
-          <Eyebrow>What we build</Eyebrow>
-          <h2 className="section-title reveal">Everything you need to turn conversations into customers.</h2>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {buildItems.map((b) => (
-              <article key={b.title} className="card-beame reveal p-5">
-                <h3 className="text-lg">{b.title}</h3>
-                <p className="mt-2 text-[0.95rem] text-muted-foreground">{b.body}</p>
+          <Eyebrow>The Data Refinery</Eyebrow>
+          <h2 className="section-title reveal">Your business, refinery-grade</h2>
+          <p className="section-lead reveal">
+            We don't build payment rails. We build the thing worth paying for: clean,
+            verified, structured knowledge in your niche — then plug it into the agentic
+            commerce layer (Cloudflare, x402, MCP) so agents can discover, quote and
+            transact.
+          </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {pillars.map((p) => (
+              <article key={p.title} className="card-beame reveal p-6">
+                <h3 className="text-xl">{p.title}</h3>
+                <p className="mt-3 text-[0.96rem] text-muted-foreground">{p.body}</p>
+                <ul className="mt-4 grid gap-1.5 text-[0.92rem] font-semibold text-muted-foreground">
+                  {p.points.map((pt) => (
+                    <li key={pt}>✓ {pt}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
@@ -292,9 +339,49 @@ function Index() {
 
       <section id="framework" className="section-beame pt-0">
         <div className="container-beame">
-          <Eyebrow>Framework</Eyebrow>
-          <h2 className="section-title reveal">The seven A.G.E.N.T.I.C. phases</h2>
+          <Eyebrow>The refinery pipeline</Eyebrow>
+          <h2 className="section-title reveal">From raw data to agent-ready knowledge</h2>
+          <p className="section-lead reveal">
+            The A.G.E.N.T.I.C. pipeline — seven phases, one outcome: your business becomes
+            the verified source agents pay to query.
+          </p>
           <FrameworkGrid />
+        </div>
+      </section>
+
+      <section id="integration" className="section-beame pt-0">
+        <div className="container-beame">
+          <div className="card-beame reveal p-6 text-center md:p-8">
+            <Eyebrow>One combined offer</Eyebrow>
+            <h2 className="section-title">Data refinery + agentic checkout</h2>
+            <p className="section-lead">
+              Most businesses need two things: clean data and a way to monetize it. We
+              structure your data, verify your claims, wire up x402 / Cloudflare
+              monetization and make your content agent-ready in one engagement — the full
+              value chain without the infrastructure headache.
+            </p>
+            <a href="#audit" className="btn-beame btn-solid mt-6">
+              Book a free audit
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="tiers" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>Engagement tiers</Eyebrow>
+          <h2 className="section-title reveal">Start small, prove it, then scale</h2>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {tiers.map((t) => (
+              <article key={t.name} className="card-beame reveal p-5">
+                <p className="text-xs font-bold uppercase tracking-widest text-primary">
+                  {t.price}
+                </p>
+                <h3 className="mt-2 text-lg">{t.name}</h3>
+                <p className="mt-2 text-[0.95rem] text-muted-foreground">{t.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -315,7 +402,7 @@ function Index() {
       <section id="faq" className="section-beame pt-0">
         <div className="container-beame">
           <h2 className="section-title reveal">Frequently asked questions</h2>
-          <FaqList items={homeFaqs} />
+          <FaqList items={[...refineryFaqs, ...homeFaqs]} />
         </div>
       </section>
 
@@ -338,6 +425,24 @@ function Index() {
       </section>
 
       <StudioSection />
+
+      <section id="ideas" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>Ideas</Eyebrow>
+          <h2 className="section-title reveal">
+            The ideas that shape how we think about AI and business
+          </h2>
+          <p className="section-lead reveal">If these resonate, you're our people.</p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {ideas.map((i) => (
+              <article key={i.title} className="card-beame reveal p-5">
+                <h3 className="text-lg">{i.title}</h3>
+                <p className="mt-2 text-[0.95rem] text-muted-foreground">{i.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <AskAiBlock />
 

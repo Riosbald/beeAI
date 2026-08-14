@@ -41,8 +41,7 @@ export function SiteFooter() {
               <span>BeameAI</span>
             </div>
             <p className="footer-tagline">
-              Agentic Commerce Optimization — discoverable, recommendable,
-              transactable.
+              The Data Refinery — verified knowledge for the agentic web.
             </p>
           </div>
 
