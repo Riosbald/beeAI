@@ -184,15 +184,45 @@ function Index() {
         </div>
       </section>
 
+      <section id="problem" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>The gap</Eyebrow>
+          <h2 className="section-title reveal">Why AI agents ignore most businesses</h2>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {problemPoints.map((p) => (
+              <article key={p.title} className="card-beame reveal p-6">
+                <h3 className="text-xl">{p.title}</h3>
+                <p className="mt-3 text-[0.96rem] text-muted-foreground">{p.body}</p>
+              </article>
+            ))}
+          </div>
+          <p className="section-lead reveal mt-7 font-semibold text-foreground">
+            The businesses that solve this first won't just rank higher. They'll become
+            the licensable source of truth for their niche.
+          </p>
+        </div>
+      </section>
+
       <section id="build" className="section-beame pt-0">
         <div className="container-beame">
-          <Eyebrow>What we build</Eyebrow>
-          <h2 className="section-title reveal">Everything you need to turn conversations into customers.</h2>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {buildItems.map((b) => (
-              <article key={b.title} className="card-beame reveal p-5">
-                <h3 className="text-lg">{b.title}</h3>
-                <p className="mt-2 text-[0.95rem] text-muted-foreground">{b.body}</p>
+          <Eyebrow>The Data Refinery</Eyebrow>
+          <h2 className="section-title reveal">Your business, refinery-grade</h2>
+          <p className="section-lead reveal">
+            We don't build payment rails. We build the thing worth paying for: clean,
+            verified, structured knowledge in your niche — then plug it into the agentic
+            commerce layer (Cloudflare, x402, MCP) so agents can discover, quote and
+            transact.
+          </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {pillars.map((p) => (
+              <article key={p.title} className="card-beame reveal p-6">
+                <h3 className="text-xl">{p.title}</h3>
+                <p className="mt-3 text-[0.96rem] text-muted-foreground">{p.body}</p>
+                <ul className="mt-4 grid gap-1.5 text-[0.92rem] font-semibold text-muted-foreground">
+                  {p.points.map((pt) => (
+                    <li key={pt}>✓ {pt}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
