@@ -426,6 +426,24 @@ function Index() {
 
       <StudioSection />
 
+      <section id="ideas" className="section-beame pt-0">
+        <div className="container-beame">
+          <Eyebrow>Ideas</Eyebrow>
+          <h2 className="section-title reveal">
+            The ideas that shape how we think about AI and business
+          </h2>
+          <p className="section-lead reveal">If these resonate, you're our people.</p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {ideas.map((i) => (
+              <article key={i.title} className="card-beame reveal p-5">
+                <h3 className="text-lg">{i.title}</h3>
+                <p className="mt-2 text-[0.95rem] text-muted-foreground">{i.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <AskAiBlock />
 
       <CtaBand />
