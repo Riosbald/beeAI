@@ -150,23 +150,26 @@ function Index() {
     <div ref={root}>
       <section className="hero-beame">
         <div className="container-beame relative mx-auto max-w-[900px] text-center">
-          <span className="hero-badge reveal">● Agentic Commerce Optimization</span>
+          <span className="hero-badge reveal">● The Data Refinery</span>
           <h1 className="reveal mt-5 text-[clamp(2.2rem,5vw,4.25rem)] leading-[1.02]">
-            Get your brand recommended by AI agents
+            The internet just got a new currency — and it's clean data
           </h1>
           <p className="reveal mx-auto mt-4 max-w-[720px] text-[clamp(1rem,1.8vw,1.15rem)] opacity-95">
-            BeameAI makes businesses discoverable, recommendable and transactable across
-            ChatGPT, Gemini, Perplexity, Claude and Copilot — then wires them into the
-            agentic checkout layer.
+            AI agents don't browse websites. They query verified knowledge. BeameAI
+            structures your business data so agents can find it, trust it and recommend it
+            — across ChatGPT, Gemini, Perplexity, Claude and Copilot.
           </p>
           <div className="reveal mt-8 flex flex-wrap justify-center gap-3">
             <a href="#audit" className="btn-beame">
-              Free AI Visibility Health Check
+              Book a free AI Visibility Audit
             </a>
             <Link to="/protocols" className="btn-beame">
               Protocol Tracker
             </Link>
           </div>
+          <p className="reveal mt-4 text-sm opacity-90">
+            No contract. Results in 2 business days.
+          </p>
         </div>
       </section>
 
