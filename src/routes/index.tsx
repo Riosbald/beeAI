@@ -4,7 +4,17 @@ import { useState } from "react";
 import { AskAiBlock } from "@/components/AskAiBlock";
 import { StudioSection } from "@/components/studio/StudioSection";
 import { CtaBand, Eyebrow, FaqList, FrameworkGrid, useReveal } from "@/components/site-ui";
-import { buildItems, homeFaqs, insights, services, testimonials } from "@/data/site";
+import {
+  homeFaqs,
+  ideas,
+  insights,
+  pillars,
+  problemPoints,
+  refineryFaqs,
+  services,
+  testimonials,
+  tiers,
+} from "@/data/site";
 import { serviceImages } from "@/data/service-images";
 import showcase from "@/assets/beame-showcase.jpg";
 import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
@@ -40,7 +50,11 @@ export const Route = createFileRoute("/")({
 
 const stats = [
   { value: "40%", label: "of buying journeys now start inside an AI assistant" },
-  { value: "AEO / GEO", label: "answer and generative engine optimization, engineered" },
+  {
+    value: "Rails are live",
+    label:
+      "Cloudflare pay-per-crawl and x402 already exist — agents still need something worth paying for",
+  },
   { value: "$0", label: "for your first AI Visibility Health Check" },
 ];
 
