@@ -22,20 +22,20 @@ import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BeameAI — Agentic Commerce Optimization & AI Search Visibility" },
+      { title: "BeameAI — The Data Refinery for the Agentic Web" },
       {
         name: "description",
         content:
-          "BeameAI makes your brand discoverable, recommendable and transactable by AI shopping agents. Start with a free AI Visibility Health Check.",
+          "AI agents query verified knowledge, not web pages. BeameAI structures your business data so agents find, trust and recommend you. Free AI Visibility Audit.",
       },
       {
         property: "og:title",
-        content: "BeameAI — Agentic Commerce Optimization & AI Search Visibility",
+        content: "BeameAI — The Data Refinery for the Agentic Web",
       },
       {
         property: "og:description",
         content:
-          "AEO, GEO and agentic commerce engineering that gets your brand cited by ChatGPT, Gemini, Perplexity and Copilot.",
+          "Turn messy business knowledge into structured, citable, agent-ready data — then plug it into the agentic commerce layer.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/` },
