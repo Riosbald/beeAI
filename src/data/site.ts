@@ -215,3 +215,130 @@ export const testimonials = [
     quote: "My hair salon business is constantly being mentioned in local AI search results",
   },
 ];
+
+export const problemPoints = [
+  {
+    title: "Messy data",
+    body: "AI makes more mistakes when data is scattered, inconsistent or unverified. Most business websites are built for human eyes — not machine parsing.",
+  },
+  {
+    title: "No verification",
+    body: "Models cross-check what you claim against what the rest of the web says. If your claims don't survive verification, you don't get cited.",
+  },
+  {
+    title: "No structure",
+    body: "An AI shopping agent needs machine-readable inventory, pricing, availability and policies — not a beautiful product page.",
+  },
+];
+
+export const pillars = [
+  {
+    title: "Knowledge Architecture",
+    body: "We architect your brand's semantic foundation — explicit entity relationships, comprehensive schema markup and structured data that establishes your authority in the AI knowledge ecosystem.",
+    points: [
+      "Entity & schema mapping",
+      "AEO / GEO formatting",
+      "Canonical JSON pipelines",
+      "Structured knowledge base integration",
+    ],
+  },
+  {
+    title: "Trust Layer",
+    body: "Models corroborate, they don't just accept claims. We build the external trust layer so your claims survive verification and your brand keeps getting cited.",
+    points: [
+      "Citation & share of voice tracking",
+      "Sentiment monitoring across LLM platforms",
+      "External corroboration strategy",
+      "Trust signal architecture",
+    ],
+  },
+  {
+    title: "Agentic Readiness",
+    body: "We connect your catalog to the agentic layer through MCP servers, clean feeds and transaction protocols — so an agent can go from recommendation to purchase without a human in the loop.",
+    points: [
+      "MCP server implementation",
+      "Feed hygiene & structured product data",
+      "Agent-consumable API design",
+      "x402 / Cloudflare pay-per-crawl integration",
+    ],
+  },
+  {
+    title: "Conversation Engine",
+    body: "Trained on your refined business knowledge so every customer gets an instant, on-brand answer — day or night. Capture leads, follow up automatically and track what actually converts.",
+    points: [
+      "AI chatbots on WhatsApp, Messenger and web",
+      "Sales automation & lead capture",
+      "Human handover when it matters",
+      "Unified support desk",
+    ],
+  },
+];
+
+export const tiers = [
+  {
+    name: "Audit Only",
+    price: "Free",
+    body: "AI visibility health check plus a gap report on the data you're already sitting on.",
+  },
+  {
+    name: "Refinery Lite",
+    price: "Tier 2",
+    body: "Audit, knowledge graph architecture and schema implementation across your core pages.",
+  },
+  {
+    name: "Full Refinery",
+    price: "Tier 3",
+    body: "All seven A.G.E.N.T.I.C. phases, MCP integration and ongoing maintenance and tracking.",
+  },
+  {
+    name: "Refinery + Monetization",
+    price: "Tier 4",
+    body: "Full pipeline plus x402 / Cloudflare pay-per-crawl wiring so agents can pay to query you.",
+  },
+];
+
+export const ideas = [
+  {
+    title: "Neuroplasticity",
+    body: "Your business model isn't fixed. It's a habit you can rewrite.",
+  },
+  {
+    title: "Memento Mori",
+    body: "Death awareness as a clarity tool for founders. What would you build if you had no time to waste?",
+  },
+  {
+    title: "The Myth of Sisyphus",
+    body: "Meaning isn't found, it's assigned. The grind is the point.",
+  },
+  {
+    title: "Wu Wei",
+    body: "Strength through non-resistance. The most productive move is sometimes the one you don't force.",
+  },
+  {
+    title: "The Hedonic Treadmill",
+    body: "The next milestone won't feel as good as you think. Build for the process, not the prize.",
+  },
+];
+
+export const refineryFaqs = [
+  {
+    q: "Are you building payment infrastructure like x402 or Cloudflare?",
+    a: "No — and that's the point. We build the verified knowledge that makes payment infrastructure worth using. Think \"the store,\" not \"Visa.\"",
+  },
+  {
+    q: "What's the difference between AEO/GEO and what you do?",
+    a: "AEO/GEO is the tactic. The Data Refinery is the system. We don't just optimize content — we structure, verify and maintain your entire knowledge layer so AI agents can query it with confidence.",
+  },
+  {
+    q: "How long before I see results?",
+    a: "The free audit shows where you stand in 2 business days. Full pipeline implementation typically shows citation improvements within 30–60 days.",
+  },
+  {
+    q: "Do I need technical knowledge to work with you?",
+    a: "No. We handle the schema, MCP servers, feed hygiene and protocol integration. You bring the domain expertise; we make it machine-readable.",
+  },
+  {
+    q: "What industries benefit most?",
+    a: "Any business where customers research before buying — local services, e-commerce, B2B SaaS, hospitality and professional services. If your buyers ask questions, we make sure agents answer with your name.",
+  },
+];
