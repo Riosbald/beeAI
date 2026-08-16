@@ -10,7 +10,8 @@ export const Route = createFileRoute("/about.txt")({
         txt(`About BeameAI
 URL: /about
 
-BeameAI is an Agentic Commerce Optimization company. We make businesses
+BeameAI is the Agentic Commerce Optimization platform by LOG_ON (BeameAI is a
+sub-brand of LOG_ON). We make businesses
 discoverable, recommendable and transactable by AI shopping agents, combining
 strategy with hands-on engineering.
 

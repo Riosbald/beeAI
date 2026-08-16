@@ -7,11 +7,11 @@ import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About BeameAI — Agentic Commerce Optimization" },
+      { title: "About BeameAI by LOG_ON — Agentic Commerce Optimization" },
       {
         name: "description",
         content:
-          "BeameAI is an Agentic Commerce Optimization company combining AEO/GEO strategy with real engineering: MCP, structured data and agent checkout protocols.",
+          "BeameAI, the agentic commerce platform by LOG_ON, combines AEO/GEO strategy with real engineering: MCP, structured data and agent checkout protocols.",
       },
       { property: "og:title", content: "About BeameAI — Agentic Commerce Optimization" },
       {
@@ -57,7 +57,8 @@ function AboutPage() {
             We make brands legible to machines
           </h1>
           <p className="reveal mx-auto mt-4 max-w-[700px] opacity-95">
-            BeameAI is an Agentic Commerce Optimization company. Our mission is simple:
+            BeameAI is the Agentic Commerce Optimization platform by LOG_ON. Our mission is
+            simple:
             make your business discoverable, recommendable and transactable by the AI
             agents your customers now trust.
           </p>
@@ -81,7 +82,7 @@ function AboutPage() {
             <Eyebrow>Our story</Eyebrow>
             <h2 className="section-title">From SEO to agentic commerce</h2>
             <p className="mx-auto mt-4 max-w-[860px] text-[0.99rem] leading-relaxed text-muted-foreground">
-              BeameAI started by helping businesses answer customers faster with chat and
+              BeameAI started inside LOG_ON by helping businesses answer customers faster with chat and
               automation. As buying journeys moved inside AI assistants, the same question
               came back in a new form: can a machine find you, understand you, trust you,
               and buy from you? Today we combine strategy with hands-on engineering —

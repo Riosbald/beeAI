@@ -120,7 +120,7 @@ export const homeFaqs = [
   },
   {
     q: "Who is BeameAI and what is your core mission?",
-    a: "BeameAI is an Agentic Commerce Optimization company that makes businesses discoverable, recommendable, and transactable by AI shopping agents.",
+    a: "BeameAI is the Agentic Commerce Optimization platform by LOG_ON, its parent brand. It makes businesses discoverable, recommendable, and transactable by AI shopping agents.",
   },
   {
     q: "What sets BeameAI apart from traditional SEO agencies?",
@@ -167,7 +167,7 @@ export const serviceFaqs = [
   },
   {
     q: "What is BeameAI?",
-    a: "An Agentic Commerce Optimization company preparing brands for the agentic commerce era.",
+    a: "BeameAI is the Agentic Commerce Optimization platform by LOG_ON, preparing brands for the agentic commerce era.",
   },
   {
     q: "What is the A.G.E.N.T.I.C. Framework?",

@@ -18,20 +18,20 @@ import {
 import { serviceImages } from "@/data/service-images";
 import { pillarImages } from "@/data/card-images";
 import showcase from "@/assets/beame-showcase.jpg";
-import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
+import { BRAND_FULL, OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BeameAI — The Data Refinery for the Agentic Web" },
+      { title: "BeameAI by LOG_ON — The Data Refinery for the Agentic Web" },
       {
         name: "description",
         content:
-          "AI agents query verified knowledge, not web pages. BeameAI structures your business data so agents find, trust and recommend you. Free AI Visibility Audit.",
+          "AI agents query verified knowledge, not web pages. BeameAI by LOG_ON structures your business data so agents find, trust and recommend you. Free AI Visibility Audit.",
       },
       {
         property: "og:title",
-        content: "BeameAI — The Data Refinery for the Agentic Web",
+        content: "BeameAI by LOG_ON — The Data Refinery for the Agentic Web",
       },
       {
         property: "og:description",
@@ -45,6 +45,21 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          name: `${BRAND_FULL} — frequently asked questions`,
+          mainEntity: [...refineryFaqs, ...homeFaqs].map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: Index,
 });
