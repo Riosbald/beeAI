@@ -14,6 +14,8 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ExpertChat } from "@/components/ExpertChat";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Analytics } from "@/components/Analytics";
+import { BRAND, BRAND_FULL, PARENT_BRAND, SITE_URL } from "@/lib/site-meta";
 
 function NotFoundComponent() {
   return (
@@ -80,14 +82,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "BeameAI — Agentic Commerce Optimization" },
-      { name: "description", content: "BeameAI makes brands discoverable, recommendable and transactable by AI shopping agents." },
-      { name: "author", content: "BeameAI" },
-      { property: "og:title", content: "BeameAI — Agentic Commerce Optimization" },
+      { title: `${BRAND_FULL} — Agentic Commerce Optimization` },
+      { name: "description", content: `${BRAND} by ${PARENT_BRAND} makes brands discoverable, recommendable and transactable by AI shopping agents.` },
+      { name: "author", content: PARENT_BRAND },
+      { name: "publisher", content: PARENT_BRAND },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+      { property: "og:site_name", content: BRAND_FULL },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:title", content: `${BRAND_FULL} — Agentic Commerce Optimization` },
       { property: "og:description", content: "AEO, GEO and agentic commerce engineering for the AI-first buying journey." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      
     ],
     links: [
       {
@@ -105,6 +110,50 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "alternate", type: "text/plain", href: "/llms.txt", title: "llms.txt" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": `${SITE_URL}/#parent`,
+              name: PARENT_BRAND,
+              description: `${PARENT_BRAND} is the parent company behind the ${BRAND} agentic commerce platform.`,
+            },
+            {
+              "@type": "Organization",
+              "@id": `${SITE_URL}/#organization`,
+              name: BRAND,
+              alternateName: BRAND_FULL,
+              url: SITE_URL,
+              logo: `${SITE_URL}/og-beameai.jpg`,
+              description: `${BRAND} is the Agentic Commerce Optimization platform by ${PARENT_BRAND}, making brands discoverable, recommendable and transactable by AI agents.`,
+              parentOrganization: { "@id": `${SITE_URL}/#parent` },
+              brand: { "@type": "Brand", name: BRAND, parentOrganization: { "@id": `${SITE_URL}/#parent` } },
+              areaServed: "Worldwide",
+              address: { "@type": "PostalAddress", addressLocality: "Lagos", addressCountry: "NG" },
+              sameAs: [
+                "https://x.com",
+                "https://linkedin.com",
+                "https://youtube.com",
+                "https://github.com",
+              ],
+            },
+            {
+              "@type": "WebSite",
+              "@id": `${SITE_URL}/#website`,
+              url: SITE_URL,
+              name: BRAND_FULL,
+              inLanguage: "en",
+              publisher: { "@id": `${SITE_URL}/#organization` },
+            },
+          ],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -132,6 +181,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Analytics />
       <SiteHeader />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <main>
