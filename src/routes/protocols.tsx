@@ -14,13 +14,13 @@ import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 export const Route = createFileRoute("/protocols")({
   head: () => ({
     meta: [
-      { title: "Agentic Commerce Protocol Tracker | BeameAI" },
+      { title: "Agentic Commerce Protocol Tracker | BeameAI by LOG_ON" },
       {
         name: "description",
         content:
           "Live tracker of agentic commerce and agent infrastructure protocols — ACP, UCP, AP2, MPP, x402, MCP, WebMCP and A2A — plus AI and commerce platform support matrices.",
       },
-      { property: "og:title", content: "Agentic Commerce Protocol Tracker | BeameAI" },
+      { property: "og:title", content: "Agentic Commerce Protocol Tracker | BeameAI by LOG_ON" },
       {
         property: "og:description",
         content:

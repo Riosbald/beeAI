@@ -7,7 +7,7 @@ export const Route = createFileRoute("/protocols.txt")({
   server: {
     handlers: {
       GET: async () =>
-        txt(`BeameAI — Agentic Commerce Protocol Tracker
+        txt(`BeameAI by LOG_ON — Agentic Commerce Protocol Tracker
 URL: /protocols
 
 Live tracker of agentic commerce and agent infrastructure protocols — ACP, UCP,

@@ -4,16 +4,16 @@ import { CtaBand, Eyebrow, FaqList, FrameworkGrid, useReveal } from "@/component
 import { services } from "@/data/site";
 import { serviceFaqs } from "@/data/site";
 import { serviceImages } from "@/data/service-images";
-import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
+import { BRAND, BRAND_FULL, OG_IMAGE, PARENT_BRAND, SITE_URL } from "@/lib/site-meta";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — AEO, GEO & Agentic Commerce | BeameAI" },
+      { title: "Services — AEO, GEO & Agentic Commerce | BeameAI by LOG_ON" },
       {
         name: "description",
         content:
-          "Knowledge graph architecture, AI search optimization, agentic commerce integration and AI search analytics from BeameAI.",
+          "Knowledge graph architecture, AI search optimization, agentic commerce integration and AI search analytics from BeameAI by LOG_ON.",
       },
       { property: "og:title", content: "Services — AEO, GEO & Agentic Commerce | BeameAI" },
       {
@@ -28,6 +28,38 @@ export const Route = createFileRoute("/services")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/services" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            ...services.map((s) => ({
+              "@type": "Service",
+              name: s.title,
+              serviceType: s.tag,
+              description: s.body,
+              provider: {
+                "@type": "Organization",
+                name: BRAND,
+                alternateName: BRAND_FULL,
+                url: SITE_URL,
+                parentOrganization: { "@type": "Organization", name: PARENT_BRAND },
+              },
+              areaServed: "Worldwide",
+            })),
+            {
+              "@type": "FAQPage",
+              mainEntity: serviceFaqs.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: ServicesPage,
 });

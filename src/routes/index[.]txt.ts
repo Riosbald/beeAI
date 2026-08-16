@@ -7,7 +7,7 @@ export const Route = createFileRoute("/index.txt")({
   server: {
     handlers: {
       GET: async () =>
-        txt(`BeameAI — The Data Refinery for the Agentic Web
+        txt(`BeameAI by LOG_ON — The Data Refinery for the Agentic Web
 URL: /
 
 The internet just got a new currency — clean data. AI agents don't browse

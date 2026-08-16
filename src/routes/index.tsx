@@ -16,21 +16,22 @@ import {
   tiers,
 } from "@/data/site";
 import { serviceImages } from "@/data/service-images";
+import { pillarImages } from "@/data/card-images";
 import showcase from "@/assets/beame-showcase.jpg";
-import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
+import { BRAND_FULL, OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BeameAI — The Data Refinery for the Agentic Web" },
+      { title: "BeameAI by LOG_ON — The Data Refinery for the Agentic Web" },
       {
         name: "description",
         content:
-          "AI agents query verified knowledge, not web pages. BeameAI structures your business data so agents find, trust and recommend you. Free AI Visibility Audit.",
+          "AI agents query verified knowledge, not web pages. BeameAI by LOG_ON structures your business data so agents find, trust and recommend you. Free AI Visibility Audit.",
       },
       {
         property: "og:title",
-        content: "BeameAI — The Data Refinery for the Agentic Web",
+        content: "BeameAI by LOG_ON — The Data Refinery for the Agentic Web",
       },
       {
         property: "og:description",
@@ -44,6 +45,21 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          name: `${BRAND_FULL} — frequently asked questions`,
+          mainEntity: [...refineryFaqs, ...homeFaqs].map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: Index,
 });
@@ -214,8 +230,18 @@ function Index() {
             transact.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {pillars.map((p) => (
-              <article key={p.title} className="card-beame reveal p-6">
+            {pillars.map((p, i) => (
+              <article key={p.title} className="card-beame reveal overflow-hidden p-6">
+                {pillarImages[i] && (
+                  <img
+                    src={pillarImages[i]!.src}
+                    alt={pillarImages[i]!.alt}
+                    loading="lazy"
+                    width={1024}
+                    height={640}
+                    className="mb-5 h-44 w-full rounded-2xl object-cover"
+                  />
+                )}
                 <h3 className="text-xl">{p.title}</h3>
                 <p className="mt-3 text-[0.96rem] text-muted-foreground">{p.body}</p>
                 <ul className="mt-4 grid gap-1.5 text-[0.92rem] font-semibold text-muted-foreground">

@@ -23,9 +23,15 @@ export function SiteHeader() {
   return (
     <header ref={header} className="site-header">
       <div className="container-beame flex items-center justify-between py-3.5">
-        <Link to="/" className="brand-mark">
-          beame<span className="text-foreground">AI</span>
+        <Link to="/" className="brand-mark flex items-baseline gap-2" aria-label="BeameAI by LOG_ON — home">
+          <span>
+            beame<span className="text-foreground">AI</span>
+          </span>
+          <span className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+            by LOG_ON
+          </span>
         </Link>
+
         <nav className="hidden gap-7 text-sm font-semibold text-muted-foreground md:flex">
           {nav.map((n) => (
             <Link
