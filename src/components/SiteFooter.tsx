@@ -40,10 +40,14 @@ export function SiteFooter() {
               <WaveMark />
               <span>BeameAI</span>
             </div>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] opacity-80">
+              A LOG_ON company
+            </p>
             <p className="footer-tagline">
               The Data Refinery — verified knowledge for the agentic web.
             </p>
           </div>
+
 
           <nav className="footer-col" aria-label="Company">
             <h2 className="footer-heading">Company</h2>
