@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, type ReactNode } from "react";
 
 import { agenticPhases } from "@/data/site";
+import { phaseImages } from "@/data/card-images";
+
 
 export function useReveal() {
   const root = useRef<HTMLDivElement>(null);
