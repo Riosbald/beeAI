@@ -46,7 +46,17 @@ export function FrameworkGrid() {
   return (
     <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {agenticPhases.map((p) => (
-        <article key={p.letter} className="card-beame reveal p-5">
+        <article key={p.letter} className="card-beame reveal overflow-hidden p-5">
+          {phaseImages[p.letter] && (
+            <img
+              src={phaseImages[p.letter]!.src}
+              alt={phaseImages[p.letter]!.alt}
+              loading="lazy"
+              width={768}
+              height={512}
+              className="mb-4 h-28 w-full rounded-2xl object-cover"
+            />
+          )}
           <span className="grid h-11 w-11 place-items-center rounded-2xl bg-primary text-lg font-extrabold text-primary-foreground">
             {p.letter}
           </span>
@@ -57,6 +67,7 @@ export function FrameworkGrid() {
           </p>
         </article>
       ))}
+
     </div>
   );
 }
