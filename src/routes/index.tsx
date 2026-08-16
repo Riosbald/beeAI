@@ -16,6 +16,7 @@ import {
   tiers,
 } from "@/data/site";
 import { serviceImages } from "@/data/service-images";
+import { pillarImages } from "@/data/card-images";
 import showcase from "@/assets/beame-showcase.jpg";
 import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 
@@ -214,8 +215,18 @@ function Index() {
             transact.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {pillars.map((p) => (
-              <article key={p.title} className="card-beame reveal p-6">
+            {pillars.map((p, i) => (
+              <article key={p.title} className="card-beame reveal overflow-hidden p-6">
+                {pillarImages[i] && (
+                  <img
+                    src={pillarImages[i]!.src}
+                    alt={pillarImages[i]!.alt}
+                    loading="lazy"
+                    width={1024}
+                    height={640}
+                    className="mb-5 h-44 w-full rounded-2xl object-cover"
+                  />
+                )}
                 <h3 className="text-xl">{p.title}</h3>
                 <p className="mt-3 text-[0.96rem] text-muted-foreground">{p.body}</p>
                 <ul className="mt-4 grid gap-1.5 text-[0.92rem] font-semibold text-muted-foreground">
