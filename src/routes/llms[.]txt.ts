@@ -15,6 +15,7 @@ export const Route = createFileRoute("/llms.txt")({
 - [Home](/): Overview, free AI Visibility Health Check, A.G.E.N.T.I.C. Commerce OS — plain text: /index.txt
 - [Services](/services): AEO, GEO, knowledge graph and agentic commerce engineering — plain text: /services.txt
 - [About](/about): Who we are and how we work — plain text: /about.txt
+- [Insights](/insights): AI search, GEO and LLMO guides, playbooks and research — plain text: /insights.txt
 - [Protocol Tracker](/protocols): ACP, UCP, AP2, MPP, x402 readiness — plain text: /protocols.txt
 
 ## Services

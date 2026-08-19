@@ -58,9 +58,7 @@ export function SiteFooter() {
 
           <nav className="footer-col" aria-label="Resources">
             <h2 className="footer-heading">Resources</h2>
-            <Link to="/" hash="insights">
-              Blog
-            </Link>
+            <Link to="/insights">Insights</Link>
             <Link to="/services" hash="faq">
               FAQs
             </Link>
