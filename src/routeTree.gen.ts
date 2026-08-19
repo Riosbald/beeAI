@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AboutDottxtRouteImport } from './routes/about[.]txt'
 import { Route as IndexDottxtRouteImport } from './routes/index[.]txt'
+import { Route as InsightsDottxtRouteImport } from './routes/insights[.]txt'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as ProtocolsRouteImport } from './routes/protocols'
 import { Route as ProtocolsDottxtRouteImport } from './routes/protocols[.]txt'
@@ -40,6 +41,11 @@ const AboutDottxtRoute = AboutDottxtRouteImport.update({
 const IndexDottxtRoute = IndexDottxtRouteImport.update({
   id: '/index.txt',
   path: '/index.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsDottxtRoute = InsightsDottxtRouteImport.update({
+  id: '/insights.txt',
+  path: '/insights.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/about.txt': typeof AboutDottxtRoute
   '/index.txt': typeof IndexDottxtRoute
+  '/insights.txt': typeof InsightsDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/protocols': typeof ProtocolsRoute
   '/protocols.txt': typeof ProtocolsDottxtRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/about.txt': typeof AboutDottxtRoute
   '/index.txt': typeof IndexDottxtRoute
+  '/insights.txt': typeof InsightsDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/protocols': typeof ProtocolsRoute
   '/protocols.txt': typeof ProtocolsDottxtRoute
@@ -117,6 +125,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/about.txt': typeof AboutDottxtRoute
   '/index.txt': typeof IndexDottxtRoute
+  '/insights.txt': typeof InsightsDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/protocols': typeof ProtocolsRoute
   '/protocols.txt': typeof ProtocolsDottxtRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/about.txt'
     | '/index.txt'
+    | '/insights.txt'
     | '/llms.txt'
     | '/protocols'
     | '/protocols.txt'
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/about.txt'
     | '/index.txt'
+    | '/insights.txt'
     | '/llms.txt'
     | '/protocols'
     | '/protocols.txt'
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/about.txt'
     | '/index.txt'
+    | '/insights.txt'
     | '/llms.txt'
     | '/protocols'
     | '/protocols.txt'
@@ -176,6 +188,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AboutDottxtRoute: typeof AboutDottxtRoute
   IndexDottxtRoute: typeof IndexDottxtRoute
+  InsightsDottxtRoute: typeof InsightsDottxtRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
   ProtocolsRoute: typeof ProtocolsRoute
   ProtocolsDottxtRoute: typeof ProtocolsDottxtRoute
@@ -214,6 +227,13 @@ declare module '@tanstack/react-router' {
       path: '/index.txt'
       fullPath: '/index.txt'
       preLoaderRoute: typeof IndexDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights.txt': {
+      id: '/insights.txt'
+      path: '/insights.txt'
+      fullPath: '/insights.txt'
+      preLoaderRoute: typeof InsightsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/llms.txt': {
@@ -280,6 +300,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AboutDottxtRoute: AboutDottxtRoute,
   IndexDottxtRoute: IndexDottxtRoute,
+  InsightsDottxtRoute: InsightsDottxtRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
   ProtocolsRoute: ProtocolsRoute,
   ProtocolsDottxtRoute: ProtocolsDottxtRoute,
