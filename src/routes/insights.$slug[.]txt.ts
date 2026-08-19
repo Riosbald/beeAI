@@ -7,7 +7,8 @@ export const Route = createFileRoute("/insights/$slug.txt")({
   server: {
     handlers: {
       GET: async ({ params }) => {
-        const article = findArticle(params.slug);
+        const slug = (params as Record<string, string>)["slug.txt"];
+        const article = findArticle(slug);
         if (!article) return new Response("Not found\n", { status: 404 });
 
         return txt(`${article.title}
