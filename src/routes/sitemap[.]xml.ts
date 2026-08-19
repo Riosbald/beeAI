@@ -12,7 +12,7 @@ const entries = [
   { path: "/insights", changefreq: "weekly", priority: "0.9" },
   ...articles.flatMap((a) => [
     { path: `/insights/${a.slug}`, changefreq: "monthly", priority: "0.8" },
-    { path: `/insights/${a.slug}.txt`, changefreq: "monthly", priority: "0.4" },
+    { path: `/insights/txt/${a.slug}`, changefreq: "monthly", priority: "0.4" },
   ]),
   { path: "/llms.txt", changefreq: "weekly", priority: "0.5" },
   { path: "/index.txt", changefreq: "weekly", priority: "0.5" },

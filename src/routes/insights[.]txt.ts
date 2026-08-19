@@ -21,7 +21,7 @@ ${clusters
       c.description,
       "",
       ...articlesByCluster(c.id).map(
-        (a) => `- ${a.title} (${a.type}, updated ${a.updated})\n  /insights/${a.slug}\n  ${a.dek}`,
+        (a) => `- ${a.title} (${a.type}, updated ${a.updated})\n  /insights/${a.slug} (plain text: /insights/txt/${a.slug})\n  ${a.dek}`,
       ),
     ].join("\n"),
   )

@@ -3,16 +3,17 @@ import type {} from "@tanstack/react-start";
 import { txt } from "@/lib/txt-response";
 import { AUTHOR, findArticle } from "@/data/insights";
 
-export const Route = createFileRoute("/insights/$slug.txt")({
+export const Route = createFileRoute("/insights/txt/$slug")({
   server: {
     handlers: {
       GET: async ({ params }) => {
-        const slug = (params as Record<string, string>)["slug.txt"];
+        const slug = params.slug;
         const article = findArticle(slug);
         if (!article) return new Response("Not found\n", { status: 404 });
 
         return txt(`${article.title}
 URL: /insights/${article.slug}
+Plain text: /insights/txt/${article.slug}
 Type: ${article.type} | Published: ${article.published} | Updated: ${article.updated}
 Author: ${AUTHOR.name} — ${AUTHOR.role} (${AUTHOR.linkedin})
 
