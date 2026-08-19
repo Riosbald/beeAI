@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 const nav = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
+  { to: "/insights", label: "Insights" },
   { to: "/protocols", label: "Protocol Tracker" },
   { to: "/about", label: "About" },
 ] as const;
