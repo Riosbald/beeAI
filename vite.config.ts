@@ -12,4 +12,11 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    server: {
+      // The Arena live preview proxies the site under a per-sandbox *.e2b.app host.
+      allowedHosts: true,
+      host: "0.0.0.0",
+    },
+  },
 });

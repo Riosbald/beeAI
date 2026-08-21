@@ -1,6 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { CtaBand, Eyebrow, useReveal } from "@/components/site-ui";
+import { CtaBand, Eyebrow, Tabs, useReveal } from "@/components/site-ui";
+import { useState } from "react";
 import {
   commerceMatrix,
   headlineStats,
@@ -14,13 +15,13 @@ import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 export const Route = createFileRoute("/protocols")({
   head: () => ({
     meta: [
-      { title: "Agentic Commerce Protocol Tracker | BeameAI by LOG_ON" },
+      { title: "Agentic Commerce Protocol Tracker | BeameAI by LOGON" },
       {
         name: "description",
         content:
           "Live tracker of agentic commerce and agent infrastructure protocols — ACP, UCP, AP2, MPP, x402, MCP, WebMCP and A2A — plus AI and commerce platform support matrices.",
       },
-      { property: "og:title", content: "Agentic Commerce Protocol Tracker | BeameAI by LOG_ON" },
+      { property: "og:title", content: "Agentic Commerce Protocol Tracker | BeameAI by LOGON" },
       {
         property: "og:description",
         content:
@@ -46,6 +47,7 @@ function statusClass(s: string) {
 
 function ProtocolsPage() {
   const root = useReveal();
+  const [activeLayer, setActiveLayer] = useState(protocolLayers[0]!.layer);
 
   return (
     <div ref={root}>
@@ -56,8 +58,8 @@ function ProtocolsPage() {
             Agentic Commerce Protocol Tracker
           </h1>
           <p className="reveal mx-auto mt-4 max-w-[720px] opacity-95">
-            The standards that decide whether an AI agent can find, trust and buy from your
-            business — and who has shipped support for each one.
+            The standards that decide whether an AI agent can find, trust and buy from your business
+            — and who has shipped support for each one.
           </p>
         </div>
       </section>
@@ -71,7 +73,7 @@ function ProtocolsPage() {
               <a
                 href={s.href}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="mt-3 inline-block text-xs font-semibold uppercase tracking-widest text-primary"
               >
                 {s.source}
@@ -85,48 +87,58 @@ function ProtocolsPage() {
         <div className="container-beame">
           <Eyebrow>The stack</Eyebrow>
           <h2 className="section-title reveal">Protocols in production</h2>
-          {protocolLayers.map((layer) => (
-            <div key={layer.layer} className="mt-10">
-              <h3 className="text-xl">{layer.layer}</h3>
-              <p className="text-[0.95rem] text-muted-foreground">{layer.blurb}</p>
-              <div className="mt-5 grid gap-4 md:grid-cols-2">
-                {layer.protocols.map((p) => (
-                  <article key={p.abbr} className="card-beame reveal p-5">
-                    <div className="flex items-center justify-between gap-3">
-                      <h4 className="text-lg font-extrabold text-primary">{p.abbr}</h4>
-                      <span className={p.state === "Active" ? "status-pill status-yes" : "status-pill status-wip"}>
-                        {p.state}
-                      </span>
+          <Tabs
+            label="Protocol layers"
+            tabs={protocolLayers.map((l) => ({ id: l.layer, label: l.layer }))}
+            active={activeLayer}
+            onChange={setActiveLayer}
+          />
+          {protocolLayers
+            .filter((layer) => layer.layer === activeLayer)
+            .map((layer) => (
+              <div key={layer.layer} className="tab-panel reveal">
+                <p className="text-[0.95rem] text-muted-foreground">{layer.blurb}</p>
+                <table className="ledger mt-4">
+                  <thead>
+                    <tr>
+                      <th>protocol</th>
+                      <th>name</th>
+                      <th>state</th>
+                      <th>developer</th>
+                      <th>license</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {layer.protocols.map((p) => (
+                      <tr key={p.abbr}>
+                        <td>{p.abbr}</td>
+                        <td>{p.name}</td>
+                        <td>{p.state}</td>
+                        <td>{p.developer}</td>
+                        <td>{p.license}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                  {layer.protocols.map((p) => (
+                    <div key={p.abbr} className="check-item">
+                      <p className="font-semibold">
+                        {p.abbr} — {p.fact}
+                      </p>
+                      <div className="mt-1 flex flex-wrap gap-4 text-xs font-bold uppercase tracking-widest text-primary">
+                        <a href={p.docs} target="_blank" rel="noopener noreferrer">
+                          Docs
+                        </a>
+                        <a href={p.source} target="_blank" rel="noopener noreferrer">
+                          Source
+                        </a>
+                      </div>
                     </div>
-                    <p className="mt-1 font-semibold">{p.name}</p>
-                    <dl className="mt-3 grid gap-1 text-[0.9rem] text-muted-foreground">
-                      <div className="flex gap-2">
-                        <dt className="font-semibold">Launched:</dt>
-                        <dd>{p.launch}</dd>
-                      </div>
-                      <div className="flex gap-2">
-                        <dt className="font-semibold">Developer:</dt>
-                        <dd>{p.developer}</dd>
-                      </div>
-                      <div className="flex gap-2">
-                        <dt className="font-semibold">License:</dt>
-                        <dd>{p.license}</dd>
-                      </div>
-                    </dl>
-                    <p className="mt-3 text-[0.92rem] text-muted-foreground">{p.fact}</p>
-                    <div className="mt-4 flex flex-wrap gap-4 text-xs font-bold uppercase tracking-widest text-primary">
-                      <a href={p.docs} target="_blank" rel="noreferrer">
-                        Docs
-                      </a>
-                      <a href={p.source} target="_blank" rel="noreferrer">
-                        Source
-                      </a>
-                    </div>
-                  </article>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </section>
 
@@ -211,7 +223,7 @@ function ProtocolsPage() {
                   <a
                     href={v.href}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="mt-1 block text-xs font-semibold uppercase tracking-widest text-primary"
                   >
                     {v.label} · {v.date}
@@ -238,13 +250,38 @@ function ProtocolsPage() {
                 <a
                   href={n.href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="mt-3 inline-block text-xs font-bold uppercase tracking-widest text-primary"
                 >
                   {n.label}
                 </a>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-beame pt-0">
+        <div className="container-beame">
+          <div className="cta-panel reveal">
+            <Eyebrow>What this means for you</Eyebrow>
+            <h2 className="section-title text-[inherit]">
+              Your brand is being discovered by agents whether you're ready or not
+            </h2>
+            <p className="section-lead mx-auto max-w-[820px] text-[inherit] opacity-95">
+              Every protocol on this page represents a new way an AI agent can find, compare and
+              buy. The brands that prepare their entity graph, structured data and crawler access
+              now will be the ones agents recommend first. Start with a free AI Visibility Audit —
+              we'll show you exactly where you stand today.
+            </p>
+            <div className="mt-6 hero-ctas">
+              <Link to="/" hash="audit" className="btn-beame">
+                Book a free AI Visibility Audit
+              </Link>
+              <Link to="/ai-crawlability" className="btn-beame-ghost">
+                Explore AI Crawlability
+              </Link>
+            </div>
           </div>
         </div>
       </section>

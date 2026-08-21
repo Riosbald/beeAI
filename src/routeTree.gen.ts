@@ -12,14 +12,18 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AboutDottxtRouteImport } from './routes/about[.]txt'
+import { Route as AiCrawlabilityRouteImport } from './routes/ai-crawlability'
 import { Route as IndexDottxtRouteImport } from './routes/index[.]txt'
 import { Route as InsightsDottxtRouteImport } from './routes/insights[.]txt'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProtocolsRouteImport } from './routes/protocols'
 import { Route as ProtocolsDottxtRouteImport } from './routes/protocols[.]txt'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ServicesDottxtRouteImport } from './routes/services[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as AiSearchForRouteImport } from './routes/ai-search.$for'
 import { Route as InsightsIndexRouteImport } from './routes/insights.index'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as InsightsTxtSlugRouteImport } from './routes/insights.txt.$slug'
@@ -39,6 +43,11 @@ const AboutDottxtRoute = AboutDottxtRouteImport.update({
   path: '/about.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AiCrawlabilityRoute = AiCrawlabilityRouteImport.update({
+  id: '/ai-crawlability',
+  path: '/ai-crawlability',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexDottxtRoute = IndexDottxtRouteImport.update({
   id: '/index.txt',
   path: '/index.txt',
@@ -52,6 +61,11 @@ const InsightsDottxtRoute = InsightsDottxtRouteImport.update({
 const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
   id: '/llms.txt',
   path: '/llms.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProtocolsRoute = ProtocolsRouteImport.update({
@@ -79,6 +93,16 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiSearchForRoute = AiSearchForRouteImport.update({
+  id: '/ai-search/$for',
+  path: '/ai-search/$for',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InsightsIndexRoute = InsightsIndexRouteImport.update({
   id: '/insights/',
   path: '/insights/',
@@ -99,14 +123,18 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/about.txt': typeof AboutDottxtRoute
+  '/ai-crawlability': typeof AiCrawlabilityRoute
   '/index.txt': typeof IndexDottxtRoute
   '/insights.txt': typeof InsightsDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/privacy': typeof PrivacyRoute
   '/protocols': typeof ProtocolsRoute
   '/protocols.txt': typeof ProtocolsDottxtRoute
   '/services': typeof ServicesRoute
   '/services.txt': typeof ServicesDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
+  '/ai-search/$for': typeof AiSearchForRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights/': typeof InsightsIndexRoute
   '/insights/txt/$slug': typeof InsightsTxtSlugRoute
@@ -115,14 +143,18 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/about.txt': typeof AboutDottxtRoute
+  '/ai-crawlability': typeof AiCrawlabilityRoute
   '/index.txt': typeof IndexDottxtRoute
   '/insights.txt': typeof InsightsDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/privacy': typeof PrivacyRoute
   '/protocols': typeof ProtocolsRoute
   '/protocols.txt': typeof ProtocolsDottxtRoute
   '/services': typeof ServicesRoute
   '/services.txt': typeof ServicesDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
+  '/ai-search/$for': typeof AiSearchForRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights': typeof InsightsIndexRoute
   '/insights/txt/$slug': typeof InsightsTxtSlugRoute
@@ -132,14 +164,18 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/about.txt': typeof AboutDottxtRoute
+  '/ai-crawlability': typeof AiCrawlabilityRoute
   '/index.txt': typeof IndexDottxtRoute
   '/insights.txt': typeof InsightsDottxtRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/privacy': typeof PrivacyRoute
   '/protocols': typeof ProtocolsRoute
   '/protocols.txt': typeof ProtocolsDottxtRoute
   '/services': typeof ServicesRoute
   '/services.txt': typeof ServicesDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
+  '/ai-search/$for': typeof AiSearchForRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/insights/': typeof InsightsIndexRoute
   '/insights/txt/$slug': typeof InsightsTxtSlugRoute
@@ -150,14 +186,18 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/about.txt'
+    | '/ai-crawlability'
     | '/index.txt'
     | '/insights.txt'
     | '/llms.txt'
+    | '/privacy'
     | '/protocols'
     | '/protocols.txt'
     | '/services'
     | '/services.txt'
     | '/sitemap.xml'
+    | '/terms'
+    | '/ai-search/$for'
     | '/insights/$slug'
     | '/insights/'
     | '/insights/txt/$slug'
@@ -166,14 +206,18 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/about.txt'
+    | '/ai-crawlability'
     | '/index.txt'
     | '/insights.txt'
     | '/llms.txt'
+    | '/privacy'
     | '/protocols'
     | '/protocols.txt'
     | '/services'
     | '/services.txt'
     | '/sitemap.xml'
+    | '/terms'
+    | '/ai-search/$for'
     | '/insights/$slug'
     | '/insights'
     | '/insights/txt/$slug'
@@ -182,14 +226,18 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/about.txt'
+    | '/ai-crawlability'
     | '/index.txt'
     | '/insights.txt'
     | '/llms.txt'
+    | '/privacy'
     | '/protocols'
     | '/protocols.txt'
     | '/services'
     | '/services.txt'
     | '/sitemap.xml'
+    | '/terms'
+    | '/ai-search/$for'
     | '/insights/$slug'
     | '/insights/'
     | '/insights/txt/$slug'
@@ -199,14 +247,18 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AboutDottxtRoute: typeof AboutDottxtRoute
+  AiCrawlabilityRoute: typeof AiCrawlabilityRoute
   IndexDottxtRoute: typeof IndexDottxtRoute
   InsightsDottxtRoute: typeof InsightsDottxtRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProtocolsRoute: typeof ProtocolsRoute
   ProtocolsDottxtRoute: typeof ProtocolsDottxtRoute
   ServicesRoute: typeof ServicesRoute
   ServicesDottxtRoute: typeof ServicesDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TermsRoute: typeof TermsRoute
+  AiSearchForRoute: typeof AiSearchForRoute
   InsightsSlugRoute: typeof InsightsSlugRoute
   InsightsIndexRoute: typeof InsightsIndexRoute
   InsightsTxtSlugRoute: typeof InsightsTxtSlugRoute
@@ -235,6 +287,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ai-crawlability': {
+      id: '/ai-crawlability'
+      path: '/ai-crawlability'
+      fullPath: '/ai-crawlability'
+      preLoaderRoute: typeof AiCrawlabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/index.txt': {
       id: '/index.txt'
       path: '/index.txt'
@@ -254,6 +313,13 @@ declare module '@tanstack/react-router' {
       path: '/llms.txt'
       fullPath: '/llms.txt'
       preLoaderRoute: typeof LlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/protocols': {
@@ -291,6 +357,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-search/$for': {
+      id: '/ai-search/$for'
+      path: '/ai-search/$for'
+      fullPath: '/ai-search/$for'
+      preLoaderRoute: typeof AiSearchForRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/insights/': {
       id: '/insights/'
       path: '/insights'
@@ -319,14 +399,18 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AboutDottxtRoute: AboutDottxtRoute,
+  AiCrawlabilityRoute: AiCrawlabilityRoute,
   IndexDottxtRoute: IndexDottxtRoute,
   InsightsDottxtRoute: InsightsDottxtRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
+  PrivacyRoute: PrivacyRoute,
   ProtocolsRoute: ProtocolsRoute,
   ProtocolsDottxtRoute: ProtocolsDottxtRoute,
   ServicesRoute: ServicesRoute,
   ServicesDottxtRoute: ServicesDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TermsRoute: TermsRoute,
+  AiSearchForRoute: AiSearchForRoute,
   InsightsSlugRoute: InsightsSlugRoute,
   InsightsIndexRoute: InsightsIndexRoute,
   InsightsTxtSlugRoute: InsightsTxtSlugRoute,

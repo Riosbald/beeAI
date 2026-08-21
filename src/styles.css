@@ -1,6 +1,5 @@
 @import "tailwindcss" source(none);
 @source "../src";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -62,59 +61,135 @@
   --radius: 1.125rem;
 
   /* Brand */
-  --primary: oklch(0.583 0.205 24.5);
-  --primary-dark: oklch(0.525 0.196 23.5);
-  --primary-foreground: oklch(1 0 0);
+  --primary: var(--red);
+  --primary-dark: #b81d29;
+  --primary-foreground: var(--paper);
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.26 0.005 285);
-  --off-white: oklch(0.985 0.008 20);
-  --surface: oklch(1 0 0);
-  --surface-2: oklch(0.972 0.017 18);
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --off-white: var(--paper);
+  --surface: var(--paper);
+  --surface-2: var(--tan);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.26 0.005 285);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.26 0.005 285);
-  --secondary: oklch(0.972 0.017 18);
-  --secondary-foreground: oklch(0.26 0.005 285);
-  --muted: oklch(0.972 0.017 18);
-  --muted-foreground: oklch(0.53 0.008 285);
-  --accent: oklch(0.972 0.017 18);
-  --accent-foreground: oklch(0.583 0.205 24.5);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --secondary: var(--tan);
+  --secondary-foreground: var(--ink);
+  --muted: var(--tan);
+  --muted-foreground: var(--gray);
+  --accent: var(--tan);
+  --accent-foreground: var(--red);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
-  --border: color-mix(in oklab, var(--primary) 14%, transparent);
-  --input: color-mix(in oklab, var(--primary) 18%, transparent);
-  --ring: var(--primary);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--red);
 
-  --chart-1: oklch(0.583 0.205 24.5);
+  --chart-1: #d9212e;
   --chart-2: oklch(0.68 0.15 24.5);
   --chart-3: oklch(0.78 0.1 24.5);
   --chart-4: oklch(0.86 0.06 24.5);
   --chart-5: oklch(0.26 0.005 285);
-  --sidebar: oklch(0.985 0.008 20);
-  --sidebar-foreground: oklch(0.26 0.005 285);
-  --sidebar-primary: oklch(0.583 0.205 24.5);
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: #d9212e;
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.972 0.017 18);
-  --sidebar-accent-foreground: oklch(0.583 0.205 24.5);
-  --sidebar-border: color-mix(in oklab, var(--primary) 14%, transparent);
+  --sidebar-accent: var(--tan);
+  --sidebar-accent-foreground: #d9212e;
+  --sidebar-border: var(--line);
   --sidebar-ring: var(--primary);
 
-  /* Typography */
+  /* ── Chamfer design system (45°, radius 0 — geometry never negotiates) ── */
+  /* Cut sizes: 8 · 14 · 28 · 72 (+10 tab) */
+  --cut-s: 8px;
+  --cut-m: 14px;
+  --cut-l: 28px;
+  --cut-xl: 72px;
+  --cut-tab: 10px;
+
+  /* sheet.base — two opposite corners cut (28px) */
+  --chamfer-2: polygon(
+    0 var(--cut-l),
+    var(--cut-l) 0,
+    100% 0,
+    100% calc(100% - var(--cut-l)),
+    calc(100% - var(--cut-l)) 100%,
+    0 100%
+  );
+
+  /* sheet.inset — four corners cut (14px) */
+  --chamfer-4: polygon(
+    0 var(--cut-m),
+    var(--cut-m) 0,
+    calc(100% - var(--cut-m)) 0,
+    100% var(--cut-m),
+    100% calc(100% - var(--cut-m)),
+    calc(100% - var(--cut-m)) 100%,
+    var(--cut-m) 100%,
+    0 calc(100% - var(--cut-m))
+  );
+
+  /* sheet.chip — four corners cut (8px) */
+  --chamfer-chip: polygon(
+    0 var(--cut-s),
+    var(--cut-s) 0,
+    calc(100% - var(--cut-s)) 0,
+    100% var(--cut-s),
+    100% calc(100% - var(--cut-s)),
+    calc(100% - var(--cut-s)) 100%,
+    var(--cut-s) 100%,
+    0 calc(100% - var(--cut-s))
+  );
+
+  /* tab — top-left cut only (10px), interlocks with the sheet below */
+  --chamfer-tab: polygon(
+    0 var(--cut-tab),
+    var(--cut-tab) 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+
+  /* sheet.xl — large sheet, two opposite corners cut 72px */
+  --chamfer-72: polygon(
+    0 var(--cut-xl),
+    var(--cut-xl) 0,
+    100% 0,
+    100% calc(100% - var(--cut-xl)),
+    calc(100% - var(--cut-xl)) 100%,
+    0 100%
+  );
+
+  /* ── 7 flat inks ── */
+  --ink: #211d16;
+  --paper: #f5f2ea;
+  --tan: #e9e3d5;
+  --orange: #f04e23;
+  --red: #d9212e;
+  --gray: #6b675e;
+  --line: #d8d2c4;
+
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  /* Drop-shadows — follow the chamfered clip shape */
+  --dropshadow-sm: 0 10px 25px oklch(0 0 0 / 0.06);
+  --dropshadow-md: 0 14px 30px oklch(0 0 0 / 0.09);
+  --dropshadow-lg: 0 24px 52px oklch(0 0 0 / 0.12);
+  --dropshadow-glow: 0 14px 34px color-mix(in oklab, var(--primary) 24%,
+    transparent);
+
+  /* Typography — serif headlines over monospace ledgers */
   --font-body: "Sofia Sans", "Inter", system-ui, Arial, sans-serif;
-  --font-display: "Poppins", "Faro", Georgia, serif;
+  --font-display: "Cormorant Garamond", "Fraunces", Georgia, serif;
 
   /* Elevation + motion */
   --shadow-sm: 0 10px 25px oklch(0 0 0 / 0.06);
   --shadow-md: 0 18px 50px oklch(0 0 0 / 0.1);
   --shadow-red: 0 0 0 10px color-mix(in oklab, var(--primary) 12%, transparent);
-  --gradient-hero: linear-gradient(
-    135deg,
-    var(--primary),
-    var(--primary-dark)
-  );
+  --gradient-hero: var(--ink); /* flat ink sheet — no gradients in this system */
   --transition: 300ms ease;
   --transition-slow: 500ms ease;
 }
@@ -148,6 +223,25 @@
     scroll-behavior: smooth;
   }
 
+  /* Skip link — visible only on keyboard focus (WCAG 2.4.1 Level A) */
+  .skip-link {
+    position: fixed;
+    top: -100px;
+    left: 16px;
+    z-index: 100;
+    padding: 12px 20px;
+    border-radius: 0 0 14px 14px;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 160ms ease;
+  }
+
+  .skip-link:focus-visible {
+    top: 0;
+  }
+
   body {
     font-family: var(--font-body);
     color: var(--color-foreground);
@@ -173,6 +267,18 @@
     font-family: var(--font-display);
     letter-spacing: -0.03em;
   }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 85%, white);
+    color: var(--primary-foreground);
+  }
+
+  input,
+  textarea,
+  select {
+    border-radius: 0;
+    clip-path: var(--chamfer-4);
+  }
 }
 
 @layer components {
@@ -185,12 +291,9 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    background: color-mix(in oklab, var(--background) 78%, transparent);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    transition:
-      box-shadow var(--transition),
-      background var(--transition);
+    background: var(--paper);
+    border-bottom: 1px solid var(--ink);
+    transition: box-shadow var(--transition);
   }
 
   .site-header.scrolled {
@@ -212,20 +315,48 @@
   .hero-beame {
     position: relative;
     padding: 96px 0 84px;
-    background: var(--gradient-hero);
-    color: var(--primary-foreground);
+    background: var(--ink);
+    color: var(--paper);
     overflow: hidden;
+  }
+
+  .hero-beame > .container-beame {
+    position: relative;
+    z-index: 1;
   }
 
   .hero-beame::before {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(circle at 20% 20%, oklch(1 0 0 / 0.18), transparent 22%),
-      radial-gradient(circle at 80% 10%, oklch(1 0 0 / 0.12), transparent 20%),
-      radial-gradient(circle at 70% 80%, oklch(1 0 0 / 0.1), transparent 24%);
+    background-image: linear-gradient(
+        to right,
+        color-mix(in oklab, var(--paper) 5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--paper) 5%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 34px 34px;
+    mask-image: radial-gradient(
+      ellipse 90% 80% at 50% 0%,
+      oklch(0 0 0 / 0.7),
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 90% 80% at 50% 0%,
+      oklch(0 0 0 / 0.7),
+      transparent 70%
+    );
     pointer-events: none;
+  }
+
+  .hero-beame h1 {
+    color: var(--paper);
+    text-shadow: 0 1px 0 oklch(0 0 0 / 0.2);
+    text-wrap: balance;
   }
 
   .hero-badge {
@@ -233,11 +364,15 @@
     align-items: center;
     gap: 8px;
     padding: 8px 14px;
-    border-radius: 999px;
-    background: oklch(1 0 0 / 0.16);
-    border: 1px solid oklch(1 0 0 / 0.24);
+    border-radius: 0;
+    clip-path: var(--chamfer-chip);
+    background: var(--orange);
+    color: var(--ink);
+    border: none;
     font-size: 0.92rem;
-    backdrop-filter: blur(12px);
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+    font-weight: 600;
   }
 
   .btn-beame {
@@ -246,24 +381,59 @@
     justify-content: center;
     gap: 10px;
     cursor: pointer;
-    border-radius: 999px;
+    border-radius: 0;
+    clip-path: var(--chamfer-chip);
     padding: 14px 24px;
     font-weight: 700;
-    background: var(--background);
-    color: var(--primary);
-    border: 1px solid oklch(1 0 0 / 0.65);
-    box-shadow: var(--shadow-sm);
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    filter: drop-shadow(var(--dropshadow-sm));
     transition:
       transform var(--transition),
-      box-shadow var(--transition),
+      filter var(--transition),
       background var(--transition);
-    will-change: transform;
+    will-change: transform, filter;
   }
 
   .btn-beame:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-red);
+    filter: drop-shadow(var(--dropshadow-md)) drop-shadow(var(--dropshadow-glow));
     background: var(--off-white);
+  }
+
+  /* Ghost variant — works on both dark hero and light card backgrounds */
+  .btn-beame-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 0;
+    clip-path: var(--chamfer-chip);
+    padding: 14px 24px;
+    font-weight: 700;
+    background: var(--paper);
+    color: var(--red);
+    border: 1px solid var(--red);
+    filter: drop-shadow(var(--dropshadow-sm));
+    transition:
+      background var(--transition),
+      border-color var(--transition),
+      transform var(--transition),
+      filter var(--transition);
+  }
+
+  .btn-beame-ghost:hover {
+    background: color-mix(in oklab, var(--primary) 18%, transparent);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    filter: drop-shadow(var(--dropshadow-md));
+  }
+
+  .btn-beame-ghost:focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
   }
 
   .btn-solid {
@@ -285,6 +455,7 @@
     font-size: clamp(1.7rem, 3vw, 2.8rem);
     margin-bottom: 14px;
     text-align: center;
+    text-wrap: balance;
   }
 
   .section-lead {
@@ -296,15 +467,32 @@
 
   .card-beame {
     position: relative;
-    overflow: hidden;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    box-shadow: var(--shadow-sm);
+    overflow: clip;
+    min-width: 0;
+    padding: 1.25rem; /* default safe area — keeps content off the chamfered corners */
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 0;
+    clip-path: var(--chamfer-2); /* sheet.base — two opposite corners cut 28px */
+    filter: drop-shadow(var(--dropshadow-sm));
     transition:
       transform var(--transition),
-      box-shadow var(--transition),
+      filter var(--transition),
       border-color var(--transition);
+  }
+
+  .card-beame > * {
+    min-width: 0;
+  }
+
+  .card-beame h1,
+  .card-beame h2,
+  .card-beame h3,
+  .card-beame h4,
+  .card-beame p,
+  .card-beame li,
+  .card-beame blockquote {
+    overflow-wrap: break-word;
   }
 
   .card-beame::after {
@@ -312,12 +500,8 @@
     position: absolute;
     inset: auto auto 0 0;
     width: 100%;
-    height: 4px;
-    background: linear-gradient(
-      90deg,
-      var(--primary),
-      color-mix(in oklab, var(--primary) 15%, transparent)
-    );
+    height: 2px;
+    background: var(--orange);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform var(--transition-slow);
@@ -325,7 +509,7 @@
 
   .card-beame:hover {
     transform: translateY(-6px);
-    box-shadow: var(--shadow-md);
+    filter: drop-shadow(var(--dropshadow-lg));
     border-color: color-mix(in oklab, var(--primary) 24%, transparent);
   }
 
@@ -337,8 +521,9 @@
     position: relative;
     padding: 14px 16px 14px 48px;
     background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    clip-path: var(--chamfer-4); /* sheet.inset — four corners cut 14px */
   }
 
   .check-item::before {
@@ -348,11 +533,12 @@
     top: 16px;
     width: 22px;
     height: 22px;
-    border-radius: 50%;
+    border-radius: 0;
+    clip-path: var(--chamfer-chip);
     display: grid;
     place-items: center;
-    background: var(--primary);
-    color: var(--primary-foreground);
+    background: var(--red);
+    color: var(--paper);
     font-size: 0.78rem;
   }
 
@@ -365,17 +551,139 @@
   }
 
   .cta-beame {
-    background: var(--gradient-hero);
-    color: var(--primary-foreground);
+    background: var(--ink);
+    color: var(--paper);
     text-align: center;
   }
 
   .cta-panel {
-    background: oklch(1 0 0 / 0.1);
-    border: 1px solid oklch(1 0 0 / 0.18);
-    border-radius: 24px;
-    backdrop-filter: blur(14px);
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 0;
+    clip-path: var(--chamfer-4); /* sheet.inset — four corners cut 14px */
+    color: var(--ink);
+    filter: drop-shadow(var(--dropshadow-md));
     padding: 32px 26px;
+  }
+
+  /* Hero CTA cluster — never overlaps, never clips */
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-ctas .btn-beame,
+  .hero-ctas .btn-beame-ghost {
+    max-width: 100%;
+    min-width: 0;
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Card rail — carousel-style horizontal scroll with snap */
+  .card-rail {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 6px 48px 18px;
+    margin: -6px -48px -18px;
+  }
+
+  .card-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card-rail > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+
+  .card-rail .card-beame {
+    height: 100%;
+  }
+
+  .rail-scroll {
+    position: relative;
+  }
+
+  .rail-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    transform: translateY(-50%);
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 0;
+    clip-path: var(--chamfer-chip);
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    color: var(--red);
+    filter: drop-shadow(var(--dropshadow-sm));
+    cursor: pointer;
+    transition:
+      background var(--transition),
+      color var(--transition),
+      opacity var(--transition),
+      transform var(--transition),
+      filter var(--transition);
+    opacity: 0.95;
+  }
+
+  .rail-btn:hover {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    transform: translateY(-50%) scale(1.06);
+    filter: drop-shadow(var(--dropshadow-md));
+  }
+
+  .rail-btn.prev {
+    left: -14px;
+  }
+
+  .rail-btn.next {
+    right: -14px;
+  }
+
+  .rail-btn[hidden] {
+    display: none;
+  }
+
+  /* Header machine-file links (llms.txt / robots.txt / sitemap) */
+  .machine-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono, ui-monospace, monospace);
+  }
+
+  .machine-links a {
+    color: var(--muted-foreground);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color var(--transition);
+  }
+
+  .machine-links a:hover {
+    color: var(--primary);
+  }
+
+  .machine-links .sep {
+    width: 3px;
+    height: 3px;
+    border-radius: 0;
+    clip-path: var(--chamfer-chip);
+    background: var(--line);
   }
 
   .footer-beame {
@@ -386,12 +694,13 @@
   }
 
   .ask-ai-card {
-    border: 2px solid var(--foreground);
-    border-radius: 28px;
-    background: var(--surface);
+    border: 2px solid var(--ink);
+    border-radius: 0;
+    clip-path: var(--chamfer-4); /* sheet.inset */
+    background: var(--paper);
     padding: 32px 20px;
     text-align: center;
-    box-shadow: var(--shadow-sm);
+    filter: drop-shadow(var(--dropshadow-sm));
   }
 
   .ai-btns {
@@ -455,9 +764,36 @@
     padding: 54px 0;
   }
 
-  .btn-beame {
+  .hero-ctas .btn-beame,
+  .hero-ctas .btn-beame-ghost,
+  .cta-panel .btn-beame,
+  .cta-panel .btn-beame-ghost {
     width: 100%;
-    max-width: 320px;
+    max-width: 340px;
+  }
+
+  .rail-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .card-rail {
+    padding-right: 38px;
+    padding-left: 38px;
+    margin-right: -38px;
+    margin-left: -38px;
+  }
+
+  .rail-btn.prev {
+    left: -8px;
+  }
+
+  .rail-btn.next {
+    right: -8px;
+  }
+
+  .machine-links {
+    display: none;
   }
 }
 
@@ -500,7 +836,8 @@
   .status-pill {
     display: inline-block;
     padding: 3px 10px;
-    border-radius: 999px;
+    border-radius: 0;
+    clip-path: var(--chamfer-chip);
     font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -675,7 +1012,8 @@
   display: block;
   width: 5px;
   height: 10px;
-  border-radius: 3px;
+  border-radius: 0;
+  clip-path: var(--chamfer-chip);
   background: var(--purple);
   animation: wave-pulse 1.4s ease-in-out infinite;
 }
@@ -708,7 +1046,8 @@
   letter-spacing: 0.04em;
   background: var(--teal);
   color: var(--cream);
-  border-radius: 999px;
+  border-radius: 0;
+  clip-path: var(--chamfer-chip);
   padding: 9px 16px;
 }
 
@@ -729,7 +1068,8 @@
   min-height: 44px;
   min-width: 44px;
   padding: 10px 18px;
-  border-radius: 999px;
+  border-radius: 0;
+  clip-path: var(--chamfer-chip);
   border: 1px solid var(--ink);
   background: transparent;
   color: var(--ink);
@@ -760,7 +1100,8 @@
   margin-top: 16px;
   min-height: 190px;
   border: 1px solid color-mix(in oklab, #141412 20%, transparent);
-  border-radius: 20px;
+  border-radius: 0;
+  clip-path: var(--chamfer-4);
   padding: 22px;
   background: color-mix(in oklab, #ffffff 55%, transparent);
   opacity: 1;
@@ -785,7 +1126,8 @@
 .snip-card {
   background: var(--ink);
   color: var(--cream);
-  border-radius: 20px;
+  border-radius: 0;
+  clip-path: var(--chamfer-4);
   overflow: hidden;
 }
 
@@ -804,7 +1146,8 @@
 .snip-dot {
   width: 9px;
   height: 9px;
-  border-radius: 50%;
+  border-radius: 0;
+  clip-path: var(--chamfer-chip);
   background: var(--purple);
 }
 
@@ -833,7 +1176,8 @@
 .tq {
   background: var(--teal);
   color: var(--cream);
-  border-radius: 18px;
+  border-radius: 0;
+  clip-path: var(--chamfer-4);
   padding: 20px;
   margin: 0;
 }
@@ -899,10 +1243,12 @@
   outline-offset: 3px;
 }
 
-/* Footer */
+/* Footer — synced to the chamfer ink/paper/tan/orange system */
 .footer-beame {
   text-align: left;
-  padding: 44px 0 28px;
+  padding: 56px 0 28px;
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .footer-grid {
@@ -924,11 +1270,11 @@
 }
 
 .footer-wordmark span {
-  font-family: var(--studio-display);
+  font-family: var(--font-display);
   font-size: clamp(1.6rem, 6vw, 2.6rem);
   line-height: 1.1;
   font-weight: 600;
-  color: var(--cream);
+  color: var(--paper);
   overflow-wrap: anywhere;
 }
 
@@ -936,22 +1282,23 @@
   width: clamp(40px, 8vw, 60px);
   height: auto;
   flex-shrink: 0;
-  fill: var(--lav);
+  fill: var(--orange);
 }
 
 .footer-tagline {
   margin-top: 8px;
   font-size: 0.9rem;
-  max-width: 40ch;
-  opacity: 0.75;
+  max-width: 42ch;
+  color: var(--tan);
+  opacity: 0.9;
 }
 
 .footer-heading {
-  font-family: var(--studio-mono);
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--lav);
+  color: var(--orange);
   margin-bottom: 10px;
 }
 
@@ -967,15 +1314,39 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  opacity: 0.85;
+  color: var(--paper);
+  opacity: 0.9;
+  transition: color var(--transition);
 }
 
 .footer-col a:hover {
+  color: var(--orange);
   opacity: 1;
 }
 
+.footer-cta {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 10px 16px;
+  border-radius: 0;
+  clip-path: var(--chamfer-chip);
+  background: var(--orange);
+  color: var(--ink) !important;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 1 !important;
+  transition: background var(--transition);
+}
+
+.footer-cta:hover {
+  background: color-mix(in oklab, var(--orange) 84%, white);
+  color: var(--ink) !important;
+}
+
 .footer-beame a:focus-visible {
-  outline: 3px solid var(--lav);
+  outline: 3px solid var(--orange);
   outline-offset: 3px;
 }
 
@@ -984,7 +1355,7 @@
   gap: 8px;
   list-style: none;
   padding: 0;
-  margin: 6px 0 0;
+  margin: 10px 0 0;
 }
 
 .footer-socials a {
@@ -992,19 +1363,32 @@
   place-items: center;
   width: 44px;
   height: 44px;
-  border-radius: 999px;
-  border: 1px solid oklch(1 0 0 / 0.2);
+  border-radius: 0;
+  clip-path: var(--chamfer-chip);
+  border: 1px solid var(--tan);
+  color: var(--tan);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition);
+}
+
+.footer-socials a:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--ink);
 }
 
 .footer-legal {
-  margin-top: 28px;
+  margin-top: 32px;
   padding-top: 16px;
-  border-top: 1px solid oklch(1 0 0 / 0.14);
+  border-top: 1px solid var(--tan);
   display: flex;
   flex-direction: column;
   gap: 8px;
   font-size: 0.82rem;
-  opacity: 0.75;
+  color: var(--tan);
+  opacity: 0.9;
 }
 
 .footer-legal-links {
@@ -1012,17 +1396,15 @@
   gap: 16px;
 }
 
+.footer-legal-links a {
+  color: var(--tan);
+}
+
+.footer-legal-links a:hover {
+  color: var(--orange);
+}
+
 @media (min-width: 640px) {
-  .teal-cards {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .tq {
-    flex: 1;
-    min-width: 260px;
-  }
-
   .footer-legal {
     flex-direction: row;
     align-items: center;
@@ -1038,20 +1420,6 @@
   .footer-brand {
     grid-column: 1 / -1;
   }
-
-  .studio {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-
-  .studio-hero {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  .studio-grid {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    align-items: start;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -1061,10 +1429,6 @@
 
   .footer-brand {
     grid-column: auto;
-  }
-
-  .studio {
-    padding: 64px 56px 48px;
   }
 }
 
@@ -1076,7 +1440,8 @@
 
 .assist-card {
   border: 1px solid color-mix(in oklab, #141412 20%, transparent);
-  border-radius: 20px;
+  border-radius: 0;
+  clip-path: var(--chamfer-4);
   background: color-mix(in oklab, #ffffff 62%, transparent);
   overflow: hidden;
 }
@@ -1108,7 +1473,8 @@
 .assist-tone {
   min-height: 36px;
   padding: 6px 14px;
-  border-radius: 999px;
+  border-radius: 0;
+  clip-path: var(--chamfer-chip);
   border: 1px solid color-mix(in oklab, #141412 30%, transparent);
   background: transparent;
   color: var(--ink);
@@ -1135,7 +1501,8 @@
 .assist-btn {
   min-height: 44px;
   padding: 10px 18px;
-  border-radius: 999px;
+  border-radius: 0;
+  clip-path: var(--chamfer-chip);
   border: 1px solid var(--ink);
   background: transparent;
   color: var(--ink);
@@ -1157,7 +1524,8 @@
 
 .assist-out {
   min-height: 96px;
-  border-radius: 16px;
+  border-radius: 0;
+  clip-path: var(--chamfer-chip);
   padding: 14px 16px;
   background: color-mix(in oklab, #9b78e8 12%, transparent);
 }
@@ -1189,4 +1557,176 @@
   color: color-mix(in oklab, #141412 70%, transparent);
   cursor: pointer;
   text-decoration: underline;
+
+  /* ── Tabs — active tab interlocks with the sheet below (cut runs continuously) ── */
+  .tabs-beame {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+  }
+
+  .tab-beame {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px 10px;
+    border-radius: 0;
+    clip-path: var(--chamfer-tab); /* top-left cut 10px */
+    background: var(--tan);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    border-bottom: none;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transform: translateY(2px); /* inactive tabs sit a hair lower */
+    cursor: pointer;
+    transition:
+      background var(--transition),
+      transform var(--transition);
+  }
+
+  .tab-beame.active {
+    background: var(--paper);
+    transform: translateY(0); /* shares the edge with the sheet below */
+  }
+
+  .tab-panel {
+    border: 1px solid var(--ink);
+    border-radius: 0;
+    clip-path: var(--chamfer-4);
+    background: var(--paper);
+    padding: 20px;
+    margin-top: -1px;
+  }
+
+  /* ── Ledger — monospace carries the data ── */
+  .ledger {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--ink);
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .ledger th,
+  .ledger td {
+    padding: 6px 10px;
+    text-align: left;
+    vertical-align: top;
+    font-weight: 400;
+  }
+
+  .ledger thead th {
+    border-bottom: 1px solid var(--ink);
+    font-weight: 600;
+    text-transform: lowercase;
+    letter-spacing: 0.06em;
+  }
+
+  .ledger tbody tr + tr td {
+    border-top: 1px solid var(--ink); /* 1px ink hairline rules */
+  }
+
+  .ledger .total {
+    font-weight: 600;
+    color: var(--orange);
+  }
+
+  .ledger .rule {
+    border-top: 1px solid var(--ink);
+  }
+
+  /* Chips (sheet.chip) — 8px four-corner cut, mono labels */
+  .chip-beame {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 0;
+    clip-path: var(--chamfer-chip);
+    background: var(--tan);
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  .chip-beame.accent {
+    background: var(--orange);
+    color: var(--ink);
+  }
+
+  /* chip hover — flat ink shift */
+  .chip-beame:hover {
+    background: var(--line);
+  }
+
+  /* Protocol matrices → ledger (mono 13/20, 1px ink hairline rules) */
+  .matrix-table {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--ink);
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .matrix-table th,
+  .matrix-table td {
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .matrix-table th {
+    border-bottom: 1px solid var(--ink);
+    font-weight: 600;
+    text-transform: lowercase;
+    letter-spacing: 0.06em;
+  }
+
+  .matrix-table tbody tr + tr td {
+    border-top: 1px solid var(--ink);
+  }
+
+  .matrix-table td:first-child {
+    font-weight: 600;
+  }
+
+  /* Studio tone row → tab geometry (active tab interlocks with sheet below) */
+  .assist-tones {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .assist-tone {
+    border-radius: 0;
+    clip-path: var(--chamfer-tab); /* tab.active / tab.rest — top-left cut 10px */
+    border: 1px solid var(--ink);
+    border-bottom: none;
+    background: var(--tan);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    transform: translateY(2px); /* inactive tabs sit a hair lower */
+  }
+
+  .assist-tone.is-active {
+    background: var(--paper);
+    transform: translateY(0); /* shares the edge with the sheet below */
+  }
+
+  /* sheet.xl — large chamfered sheet (72px, two corners) */
+  .sheet-xl {
+    border-radius: 0;
+    clip-path: var(--chamfer-72);
+  }
 }
+

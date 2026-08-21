@@ -20,18 +20,15 @@ function Orb() {
     <div className="orb-wrap">
       <svg className="orb" viewBox="0 0 220 220" role="img" aria-label="Agentic commerce orb">
         <defs>
-          <path
-            id="orb-circle"
-            d="M110,110 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0"
-          />
+          <path id="orb-circle" d="M110,110 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0" />
         </defs>
         <circle cx="110" cy="110" r="62" className="orb-core" />
         <circle cx="110" cy="110" r="84" className="orb-ring" />
         <g className="orb-spin">
           <text className="orb-text">
             <textPath href="#orb-circle" startOffset="0%">
-              DISCOVERABLE · RECOMMENDABLE · TRANSACTABLE · DISCOVERABLE ·
-              RECOMMENDABLE · TRANSACTABLE ·
+              DISCOVERABLE · RECOMMENDABLE · TRANSACTABLE · DISCOVERABLE · RECOMMENDABLE ·
+              TRANSACTABLE ·
             </textPath>
           </text>
         </g>
@@ -55,7 +52,12 @@ function TestimonialStrip() {
         {shown.map((t) => (
           <blockquote key={t.name} className="tq">
             <p>“{t.quote}”</p>
-            <footer>{t.name}</footer>
+            <footer>
+              {t.name}
+              <span className="block text-xs font-semibold uppercase tracking-widest opacity-70">
+                {t.role}
+              </span>
+            </footer>
           </blockquote>
         ))}
         {overflow > 0 && (
@@ -151,13 +153,7 @@ const categories = [
   },
 ];
 
-function CategoryPanel({
-  active,
-  setActive,
-}: {
-  active: string;
-  setActive: (id: string) => void;
-}) {
+function CategoryPanel({ active, setActive }: { active: string; setActive: (id: string) => void }) {
   const first = categories[0]!;
   const [fading, setFading] = useState(false);
   const [shown, setShown] = useState(active);
@@ -172,10 +168,7 @@ function CategoryPanel({
     return () => clearTimeout(t);
   }, [active, shown]);
 
-  const panel = useMemo(
-    () => categories.find((c) => c.id === shown) ?? first,
-    [shown, first],
-  );
+  const panel = useMemo(() => categories.find((c) => c.id === shown) ?? first, [shown, first]);
 
   return (
     <div className="cat-block">
@@ -225,8 +218,8 @@ export function StudioSection() {
               Built to be quoted by machines
             </h2>
             <p className="studio-lead">
-              A working view of the system behind every engagement — the language, the
-              markup and the moments where an assistant decides whether to name you.
+              A working view of the system behind every engagement — the language, the markup and
+              the moments where an assistant decides whether to name you.
             </p>
           </div>
           <Orb />
