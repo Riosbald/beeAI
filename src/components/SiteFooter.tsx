@@ -69,8 +69,11 @@ export function SiteFooter() {
             <Link to="/" hash="audit" className="footer-cta">
               Book a free AI Visibility Audit
             </Link>
-            <a href="mailto:hello@beameai.ng" className="footer-email">
-              hello@beameai.ng
+            <a href="mailto:logonthepage@gmail.com" className="footer-email">
+              logonthepage@gmail.com
+            </a>
+            <a href="tel:+2348143066320" className="footer-email">
+              +234 814 306 6320
             </a>
             <ul className="footer-socials">
               {socials.map(({ label, href, Icon }) => (

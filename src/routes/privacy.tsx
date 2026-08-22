@@ -71,7 +71,7 @@ const sections = [
   {
     h: "Contact",
     p: [
-      "For any privacy request, email privacy@beameai.ng or write to BeameAI by LOGON, Lagos, Nigeria. We respond to verified requests within 30 days.",
+      "For any privacy request, email logonthepage@gmail.com or write to BeameAI by LOGON, Lagos, Nigeria. We respond to verified requests within 30 days.",
     ],
   },
 ];
@@ -99,10 +99,10 @@ function PrivacyPage() {
                   <p key={p} className="mt-2 leading-relaxed text-muted-foreground">
                     For any privacy request, email{" "}
                     <a
-                      href="mailto:privacy@beameai.ng"
+                      href="mailto:logonthepage@gmail.com"
                       className="underline underline-offset-2 hover:text-primary"
                     >
-                      privacy@beameai.ng
+                      logonthepage@gmail.com
                     </a>{" "}
                     or write to BeameAI by LOGON, Lagos, Nigeria. We respond to verified requests
                     within 30 days.
