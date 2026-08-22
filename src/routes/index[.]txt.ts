@@ -1,19 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { txt } from "@/lib/txt-response";
-import { homeFaqs, pillars, problemPoints, refineryFaqs, services, testimonials, tiers } from "@/data/site";
 
 export const Route = createFileRoute("/index.txt")({
   server: {
     handlers: {
-      GET: async () =>
-        txt(`BeameAI by LOG_ON — The Data Refinery for the Agentic Web
+      GET: async () => {
+        const { homeFaqs, pillars, problemPoints, refineryFaqs, services, testimonials, tiers } =
+          await import("@/data/site");
+        const { AUTHOR } = await import("@/data/insights/author");
+        return txt(`BeameAI by LOGON — AI Insights & Consultancy (Lagos, Nigeria)
 URL: /
 
-The internet just got a new currency — clean data. AI agents don't browse
-websites, they query verified knowledge. BeameAI structures business data so
-agents can find it, trust it and recommend it across ChatGPT, Gemini,
-Perplexity, Claude and Copilot.
+AI agents don't browse websites, they query verified knowledge. BeameAI by LOGON
+structures business data so ChatGPT, Perplexity, Claude, Copilot and Google AI
+Overviews can find it, trust it and cite it — and the BeameAI platform extends
+that same foundation to agent transactions. Anchored in Lagos for African and
+global markets. Authored by ${AUTHOR.name} (${AUTHOR.role}) — ${AUTHOR.linkedin}
 
 ## Why AI agents ignore most businesses
 ${problemPoints.map((p) => `- ${p.title}: ${p.body}`).join("\n")}
@@ -27,12 +30,22 @@ ${tiers.map((t) => `- ${t.name} (${t.price}): ${t.body}`).join("\n")}
 ## Services
 ${services.map((s) => `- ${s.title} (${s.tag}): ${s.body}`).join("\n")}
 
+## AI Crawlability
+URL: /ai-crawlability — the access layer every citation depends on: every AI
+crawler, robots.txt, WAF rules, Bing indexation, entity schema, llms.txt and
+continuous monitoring across six layers.
+
+## Insights Hub
+URL: /insights — 42 research-backed articles on AI search & LLMO, authored by
+${AUTHOR.name} and reviewed on a 90-day cadence.
+
 ## Testimonials
-${testimonials.map((t) => `- "${t.quote}" — ${t.name}`).join("\n")}
+${testimonials.map((t) => `- "${t.quote}" — ${t.name} (${t.role})`).join("\n")}
 
 ## FAQ
 ${[...refineryFaqs, ...homeFaqs].map((f) => `Q: ${f.q}\nA: ${f.a}`).join("\n\n")}
-`),
+`);
+      },
     },
   },
 });

@@ -1,0 +1,22 @@
+{
+  "ci": {
+    "collect": {
+      "settings": {
+        "formFactor": "mobile",
+        "screenEmulation": { "mobile": true, "width": 390, "height": 844, "deviceScaleFactor": 2 },
+        "throttling": { "rttMs": 150, "throughputKbps": 1638, "cpuSlowdownMultiplier": 4 }
+      },
+      "numberOfRuns": 1
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["warn", { "minScore": 0.6 }],
+        "categories:accessibility": ["error", { "minScore": 0.95 }],
+        "categories:best-practices": ["warn", { "minScore": 0.9 }],
+        "categories:seo": ["error", { "minScore": 0.95 }],
+        "lcp": ["warn", { "maxNumericValue": 2500 }],
+        "cls": ["warn", { "maxNumericValue": 0.1 }]
+      }
+    }
+  }
+}

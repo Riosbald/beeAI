@@ -221,14 +221,7 @@ export const commerceMatrix = {
     },
     {
       platform: "Salesforce Commerce Cloud",
-      cells: [
-        "Supported",
-        "Supported",
-        "Supported",
-        "Not Confirmed",
-        "Supported",
-        "Not Confirmed",
-      ],
+      cells: ["Supported", "Supported", "Supported", "Not Confirmed", "Supported", "Not Confirmed"],
     },
     {
       platform: "BigCommerce",
@@ -243,14 +236,7 @@ export const commerceMatrix = {
     },
     {
       platform: "Adobe Commerce",
-      cells: [
-        "Supported",
-        "Supported",
-        "Supported",
-        "Not Confirmed",
-        "Supported",
-        "Not Confirmed",
-      ],
+      cells: ["Supported", "Supported", "Supported", "Not Confirmed", "Supported", "Not Confirmed"],
     },
     {
       platform: "Wix",
@@ -345,8 +331,7 @@ export const recentNews = [
   {
     date: "Jul 29, 2026",
     tag: "Commerce",
-    title:
-      "Salesforce Ships July 2026 B2C Commerce Release With AI-Native Agentic Commerce Search",
+    title: "Salesforce Ships July 2026 B2C Commerce Release With AI-Native Agentic Commerce Search",
     body: "Agentic Commerce Search is an AI-native search engine trained on catalog data, real shopper behaviour, and simulated queries to decode intent rather than match keywords, natively integrated into the Agentforce Shopper Agent.",
     label: "Salesforce Blog",
     href: "https://www.salesforce.com/blog/",

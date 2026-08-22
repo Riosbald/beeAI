@@ -7,15 +7,20 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { ExpertChat } from "@/components/ExpertChat";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Analytics } from "@/components/Analytics";
-import { BRAND, BRAND_FULL, PARENT_BRAND, SITE_URL } from "@/lib/site-meta";
+import { BRAND, BRAND_FULL, PARENT_BRAND, PLATFORM_BRAND, SITE_URL } from "@/lib/site-meta";
+
+const ExpertChat = lazy(() =>
+  import("@/components/ExpertChat").then((m) => ({
+    default: m.ExpertChat,
+  })),
+);
 
 function NotFoundComponent() {
   return (
@@ -29,7 +34,7 @@ function NotFoundComponent() {
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-none [clip-path:var(--chamfer-chip)] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Go home
           </Link>
@@ -61,13 +66,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-none [clip-path:var(--chamfer-chip)] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Try again
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="inline-flex items-center justify-center rounded-none [clip-path:var(--chamfer-chip)] border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             Go home
           </a>
@@ -82,15 +87,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: `${BRAND_FULL} — Agentic Commerce Optimization` },
-      { name: "description", content: `${BRAND} by ${PARENT_BRAND} makes brands discoverable, recommendable and transactable by AI shopping agents.` },
+      { title: `${BRAND_FULL} — AI Search Optimization & LLMO Consulting` },
+      {
+        name: "description",
+        content: `${BRAND}, anchored in Lagos, Nigeria, helps global enterprises get cited by ChatGPT, Perplexity, Claude, Copilot and Google AI Overviews — AI search (LLMO/GEO), crawlability, entity graphs and agentic commerce via ${PLATFORM_BRAND}.`,
+      },
       { name: "author", content: PARENT_BRAND },
       { name: "publisher", content: PARENT_BRAND },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
       { property: "og:site_name", content: BRAND_FULL },
       { property: "og:locale", content: "en_US" },
-      { property: "og:title", content: `${BRAND_FULL} — Agentic Commerce Optimization` },
-      { property: "og:description", content: "AEO, GEO and agentic commerce engineering for the AI-first buying journey." },
+      { property: "og:title", content: `${BRAND_FULL} — AI Search Optimization & LLMO Consulting` },
+      {
+        property: "og:description",
+        content:
+          "Research-backed AI strategy, LLMO/GEO implementation, AI crawlability and agentic commerce — from Lagos to the world.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -103,13 +115,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Sofia+Sans:wght@400;500;600;700&display=swap",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Sofia+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      {
+        rel: "apple-touch-icon",
+        href: "/og-beameai.jpg",
+      },
+      { name: "theme-color", content: "#211d16" },
+      { name: "color-scheme", content: "light dark" },
       { rel: "alternate", type: "text/plain", href: "/llms.txt", title: "llms.txt" },
     ],
     scripts: [
@@ -120,27 +135,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@graph": [
             {
               "@type": "Organization",
-              "@id": `${SITE_URL}/#parent`,
-              name: PARENT_BRAND,
-              description: `${PARENT_BRAND} is the parent company behind the ${BRAND} agentic commerce platform.`,
-            },
-            {
-              "@type": "Organization",
               "@id": `${SITE_URL}/#organization`,
               name: BRAND,
               alternateName: BRAND_FULL,
               url: SITE_URL,
               logo: `${SITE_URL}/og-beameai.jpg`,
-              description: `${BRAND} is the Agentic Commerce Optimization platform by ${PARENT_BRAND}, making brands discoverable, recommendable and transactable by AI agents.`,
-              parentOrganization: { "@id": `${SITE_URL}/#parent` },
-              brand: { "@type": "Brand", name: BRAND, parentOrganization: { "@id": `${SITE_URL}/#parent` } },
-              areaServed: "Worldwide",
+              description: `${BRAND} is an AI Insights & Consultancy anchored in Lagos, Nigeria — AI search (LLMO/GEO), AI crawlability, entity graphs, structured data and agentic commerce for African and global enterprises. ${PLATFORM_BRAND} is its agentic-commerce platform.`,
+              founder: {
+                "@type": "Person",
+                name: "Oluwamayowalogo",
+                jobTitle: "Lead AI Strategist",
+                sameAs: [
+                  "https://www.linkedin.com/in/oluwamayowa",
+                  "https://www.linkedin.com/pub/dir/Logo/Oluwamayowa",
+                ],
+              },
+              brand: {
+                "@type": "Brand",
+                name: PLATFORM_BRAND,
+                description: `${PLATFORM_BRAND} is the agentic-commerce platform by ${BRAND}.`,
+              },
+              areaServed: ["NG", "KE", "ZA", "GH", "EG", "Worldwide"],
               address: { "@type": "PostalAddress", addressLocality: "Lagos", addressCountry: "NG" },
               sameAs: [
-                "https://x.com",
-                "https://linkedin.com",
-                "https://youtube.com",
-                "https://github.com",
+                "https://www.linkedin.com/in/oluwamayowa",
+                "https://www.linkedin.com/pub/dir/Logo/Oluwamayowa",
               ],
             },
             {
@@ -181,14 +200,19 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <Analytics />
       <SiteHeader />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <main>
+      <main id="main">
         <Outlet />
       </main>
       <SiteFooter />
-      <ExpertChat />
+      <Suspense fallback={null}>
+        <ExpertChat />
+      </Suspense>
     </QueryClientProvider>
   );
 }

@@ -11,19 +11,85 @@ export const part2: Article[] = [
     published: "Apr 2026",
     updated: "Aug 2026",
     takeaways: [
-      "ChatGPT's browsing mode leans on a conventional search index — indexation is the prerequisite.",
+      "ChatGPT's browsing mode leans on a conventional search index — indexation (Bing especially) is the prerequisite.",
       "OAI-SearchBot and GPTBot are separate agents with separate purposes; allow deliberately.",
       "Short, sourced, self-contained passages are what actually get quoted.",
+      "The 12 steps are ordered: access gates entity, entity gates content, content gates citation.",
     ],
+    definition:
+      "Getting cited by ChatGPT is the practice of making your content retrievable, extractable and attributable in ChatGPT Search — grounded in the Bing index, gated by OAI-SearchBot access, and won with entity clarity and sourced, self-contained passages.",
+    aka: ["ChatGPT citation playbook", "OAI-SearchBot optimization", "ChatGPT Search visibility"],
+    quickFacts: [
+      { label: "Grounding index", value: "Bing — submit and verify in Bing Webmaster Tools" },
+      { label: "Grounding crawler", value: "OAI-SearchBot — allow for citations" },
+      { label: "Training crawler", value: "GPTBot — decide and document separately" },
+      { label: "Review cadence", value: "90-day, with monthly prompt audits" },
+    ],
+    tldr: [
+      "The prerequisite is indexation (Bing first), not content: a site invisible to Bing is invisible to ChatGPT Search.",
+      "OAI-SearchBot drives citations; GPTBot drives training — allow deliberately and document the policy.",
+      "The 12 steps are ordered: access gates entity, entity gates content, content gates citation.",
+    ],
+    examples: [
+      "A B2B software vendor discovered a WAF rule returning 403 to OAI-SearchBot while robots.txt said Allow; fixing the edge rule produced first citations within three weeks.",
+      "A consultancy rebuilt its ten highest-intent pages into 40–60 word direct answers with named sources; its share of citation in ChatGPT answers doubled over one quarter.",
+    ],
+    relatedTerms: [
+      { term: "AI crawler management", slug: "ai-crawler-management" },
+      { term: "Citation optimization", slug: "citation-optimization-for-ai" },
+      { term: "Schema.org for AI", slug: "schema-org-for-ai" },
+      { term: "llms.txt guide", slug: "llms-txt-guide-2026" },
+      { term: "AI search analytics", slug: "ai-search-analytics" },
+    ],
+    keyPoints: [
+      "ChatGPT's browsing mode leans on a conventional search index — indexation (Bing especially) is the prerequisite.",
+      "OAI-SearchBot and GPTBot are separate agents with separate purposes; allow deliberately.",
+      "Short, sourced, self-contained passages are what actually get quoted.",
+      "The 12 steps are ordered: access gates entity, entity gates content, content gates citation.",
+    ],
+    faq: [
+      {
+        q: "Why is Bing indexation the prerequisite?",
+        a: "ChatGPT Search grounds answers in a conventional index with the Bing stack at its core. If Bingbot cannot reach you — or the site was never submitted to Bing Webmaster Tools — ChatGPT Search cannot retrieve you, regardless of content quality.",
+      },
+      {
+        q: "Should we allow GPTBot?",
+        a: "That is a training-data decision, separate from search visibility. Allowing OAI-SearchBot is the citation decision; GPTBot feeds training. Many organisations allow grounding and block training, documenting the policy.",
+      },
+      {
+        q: "How long until we are cited?",
+        a: "Access and entity fixes show in weeks; first citations typically within 90 days. Track a frozen prompt set monthly to see movement.",
+      },
+      {
+        q: "What about OpenAI publisher deals?",
+        a: "Licensed publishers get structurally higher citation share. You cannot imitate the deal; you win by being the best organic alternative — specific, dated, sourced and entity-verified.",
+      },
+    ],
+    sources: [
+      {
+        label: "OpenAI — Platform bots documentation",
+        url: "https://platform.openai.com/docs/bots",
+      },
+      { label: "Bing Webmaster Tools", url: "https://www.bing.com/webmasters" },
+      { label: "Answer.AI — llms.txt specification", url: "https://llmstxt.org/" },
+      { label: "Aggarwal et al. (2024) — GEO research", url: "https://arxiv.org/abs/2311.09735" },
+    ],
+    reviewedBy: "Oluwamayowalogo",
+    nextInCluster: "how-to-get-cited-by-perplexity",
     sections: [
       {
         h: "Get the plumbing right first",
+        inshort:
+          "Indexation is the prerequisite: invisible to Bing means invisible to ChatGPT Search; allow OAI-SearchBot; decide GPTBot separately.",
         p: [
-          "Nothing in this playbook works if the retrieval layer cannot reach you. Confirm the site is indexed in Bing Webmaster Tools as well as Google, allow OAI-SearchBot for search grounding, decide separately whether to allow GPTBot for training, and check that no CDN bot-mitigation rule is silently returning 403s to those user agents. This single audit resolves a surprising share of 'we are invisible in ChatGPT' cases.",
+          "Nothing in this playbook works if the retrieval layer cannot reach you. ChatGPT Search grounds answers in a conventional index — the Bing stack above all — so a site invisible to Bing is effectively invisible to ChatGPT Search, no matter how strong the content. Confirm indexation in Bing Webmaster Tools as well as Google, allow OAI-SearchBot for search grounding, decide separately whether to allow GPTBot for training, and check that no CDN or bot-mitigation rule is silently returning 403s to those user agents. This single audit resolves a surprising share of 'we are invisible in ChatGPT' cases.",
+          "In 2026 the gap between grounding and training matters more than ever. OAI-SearchBot is the agent that drives citations in ChatGPT Search; GPTBot feeds training data. Allowing one does not require allowing the other, and a documented crawler policy is increasingly part of enterprise AI governance under ISO 42001 and NDPA-aligned data-handling expectations.",
         ],
       },
       {
         h: "The twelve steps",
+        inshort:
+          "Twelve ordered steps — access gates entity, entity gates content, content gates citation.",
         p: ["Work them in order; the early ones gate the later ones."],
         bullets: [
           "Verify indexation in Bing and Google.",
@@ -41,9 +107,78 @@ export const part2: Article[] = [
         ],
       },
       {
-        h: "Why some pages never get quoted",
+        h: "Phase A — Access (steps 1–4): the robots.txt that earns retrieval",
+        inshort:
+          "Allow OAI-SearchBot and Bingbot in robots.txt, then confirm 200s at the WAF — a 403 undoes the file.",
         p: [
-          "The most common failure is prose that cannot survive extraction. If a paragraph starts with 'this means that' or 'as we saw above', it depends on context the model will not carry across. Rewrite so every paragraph is intelligible alone. The second most common failure is unattributed confidence: strong claims with no source are exactly what a cautious assistant declines to repeat.",
+          "Steps 1–4 decide whether you exist to the model at all. This robots.txt pattern is the BeameAI by LOGON default for organisations that want search visibility while retaining training-data control:",
+          "Then confirm at the edge, not just in the file: WAF and CDN rules must pass OAI-SearchBot with 200s, and the site must be submitted and verified in Bing Webmaster Tools with clean sitemaps. A robots.txt that says 'Allow' while the firewall says 403 is the single most common access failure we audit.",
+        ],
+        code: `# Allow search grounding — this is what drives citations
+User-agent: OAI-SearchBot
+Allow: /
+
+# Bing is the index ChatGPT Search grounds in
+User-agent: Bingbot
+Allow: /
+
+# Training policy is a business decision, not a default
+User-agent: GPTBot
+Disallow: /`,
+      },
+      {
+        h: "Phase B — Entity (steps 5 and 11): who the model thinks you are",
+        inshort:
+          "The model must resolve you before it cites you: Organization + Person schema with sameAs, plus corroboration.",
+        p: [
+          "Before a model will cite you, it must resolve you: who is the organisation, who is the author, and can any of it be verified elsewhere? The schema that answers those questions is small but non-negotiable:",
+          "Pair the markup with corroboration (step 11): consistent naming across LinkedIn, industry directories, Wikidata and press coverage. The model cross-checks your claims against the rest of the web; the sameAs graph is how you make those checks pass.",
+        ],
+        code: `<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BeameAI by LOGON",
+  "url": "https://beameai.ng",
+  "sameAs": ["https://www.linkedin.com/in/oluwamayowa"],
+  "founder": { "@type": "Person", "name": "Oluwamayowalogo",
+               "jobTitle": "Lead AI Strategist",
+               "sameAs": ["https://www.linkedin.com/in/oluwamayowa"] }
+}
+</script>`,
+      },
+      {
+        h: "Phase C — Content (steps 6–10): passages that survive extraction",
+        inshort:
+          "Write passages that survive extraction: 40–60 word direct answers, named dated sources, comparison tables, honest dates.",
+        p: [
+          "Steps 6–10 convert entity trust into quotable passages. Every key section opens with a 40–60 word answer that is intelligible alone — no 'as discussed above' dependencies. Every factual claim carries a named, dated source. Evaluative queries get comparison tables. llms.txt at the root points the model at your highest-value pages, and dateModified reflects genuine review on a 90-day cadence.",
+          "The pattern is simple to state and hard to fake: write like a source, not like a landing page. A model cannot safely restate marketing prose; it can restate a dated, attributed claim.",
+        ],
+      },
+      {
+        h: "Step 12 — measurement, and the publisher-deal context",
+        inshort:
+          "Measure share of citation with a frozen prompt set monthly — and expect licensed publishers to hold structural advantage.",
+        p: [
+          "Freeze a set of 40–60 buyer prompts, run them monthly against ChatGPT Search (and, for comparison, Perplexity and Google AI Overviews), and log every cited domain. Share of citation is the metric; competitor citation patterns are the gap list. Re-verify the access layer monthly — crawler policy changes and WAF updates regress silently.",
+          "Two 2026 developments belong in the model: ChatGPT Search now runs on the GPT-5 family with tighter, faster grounding, and OpenAI has signed content-licensing partnerships with major publishers that give select sources a privileged retrieval position. If a category leader is licensed, expect their citation share to be structurally higher; your response is not to imitate the deal but to make your organic answer the best available alternative — specific, dated, sourced and entity-verified.",
+        ],
+      },
+      {
+        h: "Why some pages never get quoted",
+        inshort:
+          "Pages lose citations three ways: context-dependent prose, unattributed claims, and 403s nobody checked.",
+        p: [
+          "The most common failure is prose that cannot survive extraction. If a paragraph starts with 'this means that' or 'as we saw above', it depends on context the model will not carry across. Rewrite so every paragraph is intelligible alone. The second most common failure is unattributed confidence: strong claims with no source are exactly what a cautious assistant declines to repeat. The third, and the one most teams never suspect, is the 403: the page is perfect, and the crawler cannot open it.",
+        ],
+      },
+      {
+        h: "The 90-day loop",
+        inshort:
+          "Month 1 access and entity, month 2 content rebuild, month 3 re-run prompts — the loop is the playbook.",
+        p: [
+          "Month one: fix access and entity. Month two: rebuild the ten highest-intent pages into extractable formats. Month three: re-run the frozen prompt set and compare share of citation against the baseline. Expect the first citation wins on the pages you rebuilt, and expect brand search to move a quarter behind them. That ordering — access, entity, content, measure, repeat — is the whole playbook, and it is the same loop regardless of whether the buyer sits in Lagos, Nairobi, Johannesburg or London.",
         ],
       },
     ],

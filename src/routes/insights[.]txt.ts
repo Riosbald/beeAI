@@ -1,17 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { txt } from "@/lib/txt-response";
-import { AUTHOR, articlesByCluster, clusters } from "@/data/insights";
 
 export const Route = createFileRoute("/insights.txt")({
   server: {
     handlers: {
-      GET: async () =>
-        txt(`BeameAI by LOG_ON — AI Search & LLMO Insights
+      GET: async () => {
+        const { AUTHOR, articlesByCluster, clusters } = await import("@/data/insights");
+        return txt(`BeameAI by LOGON — AI Search & LLMO Insights Hub
 URL: /insights
 
-Research, playbooks and definitions for getting cited by ChatGPT, Perplexity,
-Claude and Google AI Overviews. Written by ${AUTHOR.name} (${AUTHOR.role}).
+Research-backed guides on AI strategy, implementation, AI search (LLMO/GEO),
+agents, statistics and governance. Written by ${AUTHOR.name} (${AUTHOR.role}),
+anchored in Lagos, Nigeria, for African and global markets.
 LinkedIn: ${AUTHOR.linkedin}
 
 ${clusters
@@ -21,12 +22,14 @@ ${clusters
       c.description,
       "",
       ...articlesByCluster(c.id).map(
-        (a) => `- ${a.title} (${a.type}, updated ${a.updated})\n  /insights/${a.slug} (plain text: /insights/txt/${a.slug})\n  ${a.dek}`,
+        (a) =>
+          `- ${a.title} (${a.type}, updated ${a.updated})\n  /insights/${a.slug} (plain text: /insights/txt/${a.slug})\n  ${a.dek}`,
       ),
     ].join("\n"),
   )
   .join("\n\n")}
-`),
+`);
+      },
     },
   },
 });

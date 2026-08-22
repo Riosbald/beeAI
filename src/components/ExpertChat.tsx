@@ -73,8 +73,8 @@ export function ExpertChat() {
                 key={i}
                 className={
                   m.role === "user"
-                    ? "ml-auto max-w-[85%] rounded-2xl bg-primary px-3 py-2 text-sm text-primary-foreground"
-                    : "max-w-[90%] rounded-2xl bg-muted px-3 py-2 text-sm text-muted-foreground"
+                    ? "ml-auto max-w-[85%] rounded-none [clip-path:var(--chamfer-4)] bg-primary px-3 py-2 text-sm text-primary-foreground"
+                    : "max-w-[90%] rounded-none [clip-path:var(--chamfer-4)] bg-muted px-3 py-2 text-sm text-muted-foreground"
                 }
               >
                 {m.text}
@@ -87,7 +87,7 @@ export function ExpertChat() {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask a question…"
               aria-label="Message"
-              className="flex-1 rounded-2xl border border-border bg-background px-3 py-2 text-sm text-foreground"
+              className="flex-1 rounded-none [clip-path:var(--chamfer-4)] border border-border bg-background px-3 py-2 text-sm text-foreground"
             />
             <button type="submit" className="btn-beame btn-solid px-4 py-2 text-sm">
               Send

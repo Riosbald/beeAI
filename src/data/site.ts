@@ -99,7 +99,7 @@ export const homeFaqs = [
     a: "We define your brand as an explicit entity — people, products, locations, services — and connect it with schema markup and authoritative references so AI models resolve your identity with confidence.",
   },
   {
-    q: "What does it mean to \"Equip\" content for Generative Engine Optimization?",
+    q: 'What does it mean to "Equip" content for Generative Engine Optimization?',
     a: "We restructure pages into extractable, citation-friendly answers: clear claims, supporting evidence, comparison tables, FAQs, and structured data that generative engines can quote directly.",
   },
   {
@@ -120,7 +120,7 @@ export const homeFaqs = [
   },
   {
     q: "Who is BeameAI and what is your core mission?",
-    a: "BeameAI is the Agentic Commerce Optimization platform by LOG_ON, its parent brand. It makes businesses discoverable, recommendable, and transactable by AI shopping agents.",
+    a: "BeameAI is the agentic-commerce platform by BeameAI by LOGON. BeameAI by LOGON is the central brand — an AI Insights & Consultancy anchored in Lagos — and BeameAI makes businesses discoverable, recommendable and transactable by AI agents.",
   },
   {
     q: "What sets BeameAI apart from traditional SEO agencies?",
@@ -167,7 +167,7 @@ export const serviceFaqs = [
   },
   {
     q: "What is BeameAI?",
-    a: "BeameAI is the Agentic Commerce Optimization platform by LOG_ON, preparing brands for the agentic commerce era.",
+    a: "BeameAI is the agentic-commerce platform by BeameAI by LOGON, preparing brands for the agentic commerce era — while BeameAI by LOGON itself leads AI search (LLMO/GEO) and crawlability strategy.",
   },
   {
     q: "What is the A.G.E.N.T.I.C. Framework?",
@@ -175,44 +175,28 @@ export const serviceFaqs = [
   },
   {
     q: "Who founded BeameAI?",
-    a: "Shahzad Safri, founder of one of the top AI consultancies in Kansas City and an expert in AEO/GEO.",
-  },
-];
-
-export const insights = [
-  {
-    title: "Google Maps Now Orders Your Food: What Restaurants Must Do",
-    date: "August 9, 2026",
-    author: "Shahzad Safri",
-    body: "On August 6, 2026, Google Maps began assembling restaurant orders inside a conversation. Here is how the Ask Maps ordering flow works, who is writing the Universal Commerce Protocol for Food, and what a restaurant must fix to be orderable by an AI agent.",
-  },
-  {
-    title: "MCP 2026-07-28: What Changed in the Stateless Spec Rewrite",
-    date: "August 1, 2026",
-    author: "Shahzad Safri",
-    body: "The Model Context Protocol shipped its largest revision since launch on July 28, 2026. Sessions are gone, server-initiated requests are gone, and three core features now have removal dates.",
-  },
-  {
-    title: "Agentforce Commerce: Salesforce's Biggest Release in Five Years",
-    date: "July 13, 2026",
-    author: "Shahzad Safri",
-    body: "Salesforce Agentforce Commerce made Shopper, Buyer, and Merchant agents generally available and added native selling inside ChatGPT, Google, and Gemini. Here is what it means for brand agentic commerce strategy.",
+    a: "Oluwamayowalogo, Lead AI Strategist at BeameAI by LOGON — the AI Insights & Consultancy anchored in Lagos, Nigeria, with 100+ production AI implementations since 2023.",
   },
 ];
 
 export const testimonials = [
   {
-    name: "Tarence Jones",
+    name: "Adeola Bello",
+    role: "CEO, Lagos-based fintech",
     quote:
-      "BeameAI helped us shape up our AEO strategy and doubled our share of voice",
+      "Within two quarters, ChatGPT and Perplexity began citing our research and documentation in fintech prompts. AI-referred discovery calls doubled, and for the first time we could report brand position in AI answers to the board.",
   },
   {
-    name: "Sam Thompson",
-    quote: "Within 3 months, we managed to beat our main local competitor on ChatGPT",
+    name: "Kwame Mensah",
+    role: "CTO, Pan-African agritech platform",
+    quote:
+      "BeameAI by LOGON didn't hand us a report — they trained our content team and shipped the schema themselves. We now appear in AI answers for precision-agriculture questions across three markets.",
   },
   {
-    name: "Kelly Ruiz",
-    quote: "My hair salon business is constantly being mentioned in local AI search results",
+    name: "Sarah Okafor",
+    role: "Managing Partner, global B2B agency",
+    quote:
+      "The only partner that could pair GEO strategy with actual engineering. Their 90-day review cadence keeps our clients ahead of model updates instead of chasing them.",
   },
 ];
 
@@ -323,7 +307,7 @@ export const ideas = [
 export const refineryFaqs = [
   {
     q: "Are you building payment infrastructure like x402 or Cloudflare?",
-    a: "No — and that's the point. We build the verified knowledge that makes payment infrastructure worth using. Think \"the store,\" not \"Visa.\"",
+    a: 'No — and that\'s the point. We build the verified knowledge that makes payment infrastructure worth using. Think "the store," not "Visa."',
   },
   {
     q: "What's the difference between AEO/GEO and what you do?",
