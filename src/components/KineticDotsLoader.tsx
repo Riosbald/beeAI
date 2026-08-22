@@ -20,12 +20,19 @@ import { memo } from "react";
  * lazy-loaded itself; it is the fallback shown while lazy sections/routes load):
  *   <Suspense fallback={<KineticDotsLoader label="Loading studio" />}>…
  */
-function KineticDotsLoader({ label = "Loading" }: { label?: string }) {
+function KineticDotsLoader({
+  label = "Loading",
+  className = "",
+}: {
+  label?: string;
+  /** Extra classes for the root (e.g. `min-h-[50vh]` for full-page transitions). */
+  className?: string;
+}) {
   const dots = 4;
 
   return (
     <div
-      className="flex min-h-[250px] items-center justify-center p-8"
+      className={`flex min-h-[250px] items-center justify-center p-8 ${className}`}
       role="status"
       aria-label={label}
     >

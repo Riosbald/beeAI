@@ -602,7 +602,7 @@ function Index() {
         </div>
       </section>
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<KineticDotsLoader label="Loading" />}>
         <AskAiBlock />
       </Suspense>
 
