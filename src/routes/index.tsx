@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense, useState } from "react";
 
+import KineticDotsLoader from "@/components/KineticDotsLoader";
 import { CtaBand, Eyebrow, FaqList, FrameworkGrid, Rail, useReveal } from "@/components/site-ui";
 import {
   DiffFromSeo,
@@ -575,7 +576,7 @@ function Index() {
         </div>
       </section>
 
-      <Suspense fallback={null}>
+      <Suspense fallback={<KineticDotsLoader label="Loading studio" />}>
         <StudioSection />
       </Suspense>
 

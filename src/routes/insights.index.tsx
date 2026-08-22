@@ -2,6 +2,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { CtaBand, Eyebrow, Rail, useReveal } from "@/components/site-ui";
 import { InsightLinks } from "@/components/ai-search-sections";
+import KineticDotsLoader from "@/components/KineticDotsLoader";
 import { AUTHOR } from "@/data/insights/author";
 import type { Article, Cluster } from "@/data/insights/types";
 import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
@@ -43,6 +44,7 @@ export const Route = createFileRoute("/insights/")({
     ],
     links: [{ rel: "canonical", href: "/insights" }],
   }),
+  pendingComponent: () => <KineticDotsLoader label="Loading the hub" />,
   component: InsightsIndex,
 });
 

@@ -1,28 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
 
-function WaveMark() {
-  return (
-    <svg
-      className="foot-wave"
-      viewBox="0 0 64 24"
-      role="img"
-      aria-label="BeameAI by LOGON waveform mark"
-    >
-      {[4, 12, 20, 28, 36, 44, 52, 60].map((x, i) => (
-        <rect
-          key={x}
-          x={x}
-          y={12 - [5, 9, 3, 11, 7, 10, 4, 8][i]!}
-          width="4"
-          height={[10, 18, 6, 22, 14, 20, 8, 16][i]!}
-          rx="2"
-        />
-      ))}
-    </svg>
-  );
-}
-
 const socials = [
   { label: "BeameAI on X", href: "https://x.com", Icon: Twitter },
   {
@@ -41,8 +19,12 @@ export function SiteFooter() {
         <div className="footer-grid">
           <div className="footer-brand">
             <div className="footer-wordmark">
-              <WaveMark />
-              <span>BeameAI</span>
+              <Link to="/" className="footer-brand-text" aria-label="BeameAI by LOGON — home">
+                <span>
+                  beame<span className="footer-brand-ai">AI</span>
+                </span>
+                <span className="footer-brand-suffix">by LOGON</span>
+              </Link>
             </div>
             <p className="text-xs font-bold uppercase tracking-[0.18em] opacity-80">
               A LOGON company · Lagos, Nigeria

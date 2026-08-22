@@ -1233,3 +1233,24 @@ Applied the Consumer-Psychology / Mechanism-First copy stack (audit in `docs/cop
 - **CTA unification**: every page's final band now reads "Book a free AI Visibility Audit"; removed dead `ReadyBand` ("Book a Discovery Call") and `JourneyCta` ("Book a Meeting") components — five different CTA verbs collapsed to one universal offer.
 - **Services hero tightened** with audience anchor + outcome ("cite you instead of your competitors").
 - **Honesty gate passed**: no invented statistics; all claims sourced or first-party; urgency bounded.
+
+## Part 9 Addendum — KineticDotsLoader integration (2026-08-21)
+
+Integrated the kinetic-dots loader sample with lazy loading and the chamfer color scheme.
+
+### Compatibility assessment (sample vs codebase)
+
+| Sample requirement | Codebase state | Action |
+|---|---|---|
+| `cn` from `@/lib/utils` | File removed (ADR-044 cleanup); import unused in body | Dropped the import |
+| `<style jsx>` (styled-jsx) | Not installed — Vite/TanStack, not Next.js | Keyframes moved to `src/styles.css` at top level (LightningCSS-safe) |
+| `'use client'` | Not required by TanStack Start | Removed |
+| `@/components/ui/` path | Directory intentionally removed (dead shadcn) | Placed at `src/components/KineticDotsLoader.tsx` — our components live in `src/components/`; recreating `ui/` would reintroduce the dead-code pattern |
+| cyan-300/blue-600 palette | Chamfer 7-flat inks | Orange `--orange` dot, `--paper` highlight, `--tan` ripple, `--ink` shadow |
+| `rounded-full` | Radius 0 always | Chamfer chips `[clip-path:var(--chamfer-chip)]` |
+
+### Integration with lazy loading
+- `src/components/KineticDotsLoader.tsx` — small, `memo`ized, exported default; intentionally eager (a loader must appear instantly).
+- Used as **`pendingComponent`** on `/insights` and `/insights/$slug` (which lazy-load the 42-article catalogue) — shows while the async chunk + loader data resolve.
+- Used as the **Suspense fallback** for the lazy `StudioSection` on the home page.
+- `@keyframes kinetic-*` (bounce / morph / shadow / ripple) verified present in the built CSS; bundle gate passes (main ≤ 400 KB, no content leak); all routes 200.

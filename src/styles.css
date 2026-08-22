@@ -1029,6 +1029,76 @@
     opacity: 1;
   }
 }
+@keyframes kinetic-bounce {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  50% {
+    transform: translateY(-40px);
+    animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes kinetic-morph {
+  0% {
+    transform: scale(1.4, 0.6);
+  }
+  5% {
+    transform: scale(0.9, 1.1);
+  }
+  15% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  85% {
+    transform: scale(0.9, 1.1);
+  }
+  100% {
+    transform: scale(1.4, 0.6);
+  }
+}
+
+@keyframes kinetic-shadow {
+  0% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
+@keyframes kinetic-ripple {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+    border-width: 4px;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  30% {
+    transform: scale(1.5);
+    opacity: 0;
+    border-width: 0px;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
 
 /* Dictionary pills */
 .dict-row {
@@ -1264,25 +1334,39 @@
 
 .footer-wordmark {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: baseline;
+  gap: 8px;
   min-width: 0;
 }
 
-.footer-wordmark span {
+/* Footer wordmark — mirrors the header brand-mark (same font, weight,
+   casing and "by LOGON" suffix; colors adapted to the ink sheet) */
+.footer-brand-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 6vw, 2.6rem);
-  line-height: 1.1;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
   color: var(--paper);
-  overflow-wrap: anywhere;
+  transition: opacity var(--transition);
 }
 
-.foot-wave {
-  width: clamp(40px, 8vw, 60px);
-  height: auto;
-  flex-shrink: 0;
-  fill: var(--orange);
+.footer-brand-text:hover {
+  opacity: 0.85;
+}
+
+.footer-brand-ai {
+  color: var(--orange);
+}
+
+.footer-brand-suffix {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tan);
 }
 
 .footer-tagline {
