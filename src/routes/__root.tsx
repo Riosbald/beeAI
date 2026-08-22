@@ -117,11 +117,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Sofia+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap",
       },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap",
-      },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      {
+        rel: "apple-touch-icon",
+        href: "/og-beameai.jpg",
+      },
+      { name: "theme-color", content: "#211d16" },
+      { name: "color-scheme", content: "light dark" },
       { rel: "alternate", type: "text/plain", href: "/llms.txt", title: "llms.txt" },
     ],
     scripts: [

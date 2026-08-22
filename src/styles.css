@@ -1812,5 +1812,21 @@
     border-radius: 0;
     clip-path: var(--chamfer-72);
   }
+
+  .footer-email {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--orange);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    opacity: 0.95;
+    transition: opacity var(--transition);
+  }
+
+  .footer-email:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
 }
 

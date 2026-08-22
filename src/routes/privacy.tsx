@@ -94,11 +94,25 @@ function PrivacyPage() {
           {sections.map((s) => (
             <div key={s.h} className="reveal">
               <h2 className="text-xl font-bold md:text-2xl">{s.h}</h2>
-              {s.p?.map((p) => (
-                <p key={p} className="mt-2 leading-relaxed text-muted-foreground">
-                  {p}
-                </p>
-              ))}
+              {s.p?.map((p) =>
+                s.h === "Contact" ? (
+                  <p key={p} className="mt-2 leading-relaxed text-muted-foreground">
+                    For any privacy request, email{" "}
+                    <a
+                      href="mailto:privacy@beameai.ng"
+                      className="underline underline-offset-2 hover:text-primary"
+                    >
+                      privacy@beameai.ng
+                    </a>{" "}
+                    or write to BeameAI by LOGON, Lagos, Nigeria. We respond to verified requests
+                    within 30 days.
+                  </p>
+                ) : (
+                  <p key={p} className="mt-2 leading-relaxed text-muted-foreground">
+                    {p}
+                  </p>
+                ),
+              )}
               {s.bullets?.map((b) => (
                 <li key={b} className="mt-2 flex gap-2 leading-relaxed text-muted-foreground">
                   <span className="text-primary">•</span>
