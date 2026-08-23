@@ -1408,3 +1408,36 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Deployment Guide
+
+### Pushing Commits to GitHub
+If pushing from an offline/restricted sandbox environment, run the following command on a machine with internet access and repository credentials:
+
+```sh
+git push origin main
+```
+
+### Cloudflare Workers / Pages
+Cloudflare builds utilize `bun.lock` for frozen dependency installation. Ensure `bun.lock` is synced before deploying.
+
+Build command:
+```sh
+npm run build
+```
+
+### Vercel Deployment
+To deploy on Vercel:
+1. Connect this repository in the Vercel Dashboard.
+2. Set the **Build Command** to:
+   ```sh
+   NITRO_PRESET=vercel npm run build
+   ```
+3. Set the **Output Directory** to:
+   ```text
+   .vercel/output
+   ```
+4. Alternatively, deploy via Vercel CLI:
+   ```sh
+   NITRO_PRESET=vercel vercel --prod
+   ```
