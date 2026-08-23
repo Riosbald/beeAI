@@ -1429,8 +1429,15 @@ npm run build
 ### Vercel Deployment
 To deploy on Vercel:
 1. Connect this repository in the Vercel Dashboard.
-2. Ensure build command is set to `npm run build` and output directory is set to `.output/public`.
-3. Alternatively, deploy via Vercel CLI:
+2. Set the **Build Command** to:
    ```sh
-   vercel --prod
+   NITRO_PRESET=vercel npm run build
+   ```
+3. Set the **Output Directory** to:
+   ```text
+   .vercel/output
+   ```
+4. Alternatively, deploy via Vercel CLI:
+   ```sh
+   NITRO_PRESET=vercel vercel --prod
    ```
