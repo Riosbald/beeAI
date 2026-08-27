@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
-import { CtaBand, Eyebrow, FaqList, useReveal } from "@/components/site-ui";
+import { CtaBand, Eyebrow, FaqList } from "@/components/site-ui";
+import { useReveal } from "@/lib/use-reveal";
 import type { RoleData } from "@/data/roles";
 import { AUTHOR } from "@/data/insights/author";
 

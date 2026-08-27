@@ -82,3 +82,43 @@ The site is in strong health: **all routes return correct status codes, zero dea
 - **Add a phone number** if the business publishes one (no tel: exists because no number is published — do not invent).
 - **Real lead capture** (forms are client-side "sent" states — intentional privacy posture; wire a backend when ready).
 - **Browser-level Lighthouse/axe** run post-merge via the staged CI job.
+
+---
+
+# Pass 3 — 2026-08-27 · Production Engineering Hardening
+
+**Scope:** make the *production build artifact* provably correct and enforce it in CI. Prior passes validated via `npm run dev`; the built Worker itself had never been exercised end-to-end.
+
+**Headline finding:** the production SSR bundle was **broken for every deploy target** (Lovable/Cloudflare alike) — every request would return the styled 500 page. Invisible to all existing gates because dev mode doesn't bundle and the bundle gate only reads client output.
+
+## Issue Register (this pass)
+
+### P0 — Critical
+
+| # | Issue | Evidence | Root cause | Fix | Verification |
+|---|---|---|---|---|---|
+| 25 | **Built Worker 500s on every route** — circular chunk initialization | `wrangler dev` on fresh `npm run build` output: `TypeError: __exportAll is not a function at server-CXIMen1H2.mjs:1813` → styled 500 on `/`, `/services`, `/insights`, `/llms.txt`; chunk pair: `server-CXIMen1H.mjs:1` imports `server_exports` from `server-CXIMen1H2.mjs` while the latter imports `__exportAll` from the former **and calls it at top level** (TDZ crash when the cycle resolves facade-first) | Rolldown (vite 8 beta toolchain) emits a cyclic facade chunk; not fixed by nitro `3.0.260610-beta` (identical chunking) | `scripts/fix-ssr-cycles.mjs` wired as `postbuild`: detects helper imports that participate in import cycles and inlines them locally; idempotent; exits 1 on unrecognized cyclical calls | Post-patch `wrangler dev` matrix: `/`,`/services`,`/insights`,`/about`,`/llms.txt`,`/sitemap.xml`,`/about.txt` → **200**; `/nonexistent` → **404**; exactly 1 `<h1>` on `/`; wrangler log clean |
+
+### P1 — High
+
+| # | Issue | Evidence | Root cause | Fix | Verification |
+|---|---|---|---|---|---|
+| 26 | **No CI** — gates never enforced; staged workflow never pushed (open item from Pass 2) | `.github/` contained only `lighthouse/lighthouserc.json`; `git ls-files .github/workflows` empty | Workflow file absent from repo | `.github/staged/ci.yml` (activation-ready): 3 jobs — gates (lint→typecheck→build→bundle), smoke (wrangler-served build + matrix), Lighthouse (a11y ≥ .95 err, SEO ≥ .95 err, perf ≥ .90 err per current spec). Pushing `.github/workflows/*` directly was **proven blocked**: `git push` rejected — "refusing to allow a GitHub App to create or update workflow … without `workflows` permission" (same constraint Pass 2 hit) | All three jobs' steps validated locally in this pass (identical commands); activation = maintainer renames staged file to `.github/workflows/ci.yml` in the GitHub UI; first CI run then appears on the next PR |
+| 27 | **No automated route verification** — every prior pass was manual curling | `package.json` had no test/smoke script | Never built | `scripts/smoke.mjs` + `npm run smoke`: sitemap-driven matrix (status codes, single `<h1>`, title/description/canonical, `.txt` twins incl. per-article twin, ≥40 sitemap URLs, 404 behavior); zero dependencies, CI-grade exit codes | Run against wrangler preview: full pass output in PR/CI logs |
+
+### P2 — Medium
+
+| # | Issue | Evidence | Root cause | Fix | Verification |
+|---|---|---|---|---|---|
+| 28 | **`npm run preview` unusable** | `vite preview` → `ERR_MODULE_NOT_FOUND …/dist/server/server.js` (all routes 500); `npx nitro preview` → `ReferenceError` crash in nitro beta CLI | TanStack preview plugin expects default Vite SSR output; this project builds via Nitro `cloudflare-module` to `.output/` | `"preview": "npm run build && wrangler dev"` — wrangler serves the actual Worker artifact via generated `.wrangler/deploy/config.json` | Preview boots to `Ready on http://127.0.0.1:8787`; smoke matrix passes against it |
+| 29 | **Node version unpinned** | no `engines`, no `.nvmrc` | Template default | `.nvmrc` = `22`; `engines.node` = `^20.19.0 \|\| >=22.12.0` (mirrors Vite 8's own support window — no invented constraints) | Both files committed; CI `setup-node` consumes `node-version-file: .nvmrc` |
+| 30 | **Deprecated API** on every dev boot | `createServerFn().inputValidator() is deprecated` SSR warning at `ai-assist.functions.ts:13` | API renamed upstream | `.inputValidator(` → `.validator(` | Dev server boots with no deprecation warning; typecheck + build green |
+| 31 | **Lint warning** `react-refresh/only-export-components` | `site-ui.tsx:7` exported the `useReveal` hook alongside components | Hook co-located with component kit | Hook moved to `src/lib/use-reveal.ts`; 11 import sites updated | `npm run lint` → **0 errors, 0 warnings** |
+| 32 | **README was a legacy chat/CSS dump** | "Remix of Remix of Remix of Sparkling Red Designs" + raw styles.css transcript | Lovable remix lineage | Rewritten: stack table, command reference, cycle-guard warning, CI description, deploy/rollback runbook, repo map | Content review; commands in README verified against `package.json` |
+| 33 | **Lighthouse thresholds not per spec** | perf was `warn @ 0.6`; config had no `collect.url`; no runner | Config staged, never wired | `lighthouserc.json`: perf **error ≥ 0.90**, a11y/SEO error ≥ 0.95, URLs pointed at wrangler-served build; wired via CI job | First CI Lighthouse run on the PR |
+
+### Method notes
+
+- Nitro upgrade to `3.0.260610-beta` was tested first (cleanest-fix principle) and **rejected**: identical chunk hashes, no behavior change → reverted to the Lovable-pinned `3.0.260603-beta` to keep the diff minimal.
+- The cycle guard is a **workaround, not a fix** — revisit on every toolchain bump (it self-reports as a no-op when chunking is fixed, and fails the build if a new cyclical call pattern appears).
+- Live-site verification against the Lovable URL is queued for the deploy phase (post-merge).

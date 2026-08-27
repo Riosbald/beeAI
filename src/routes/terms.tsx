@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { CtaBand, useReveal } from "@/components/site-ui";
+import { CtaBand } from "@/components/site-ui";
+import { useReveal } from "@/lib/use-reveal";
 import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
 
 const TITLE = "Terms of Service — BeameAI by LOGON";
