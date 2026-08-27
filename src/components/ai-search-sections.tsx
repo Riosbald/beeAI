@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
-import { Eyebrow, FaqList, Rail, useReveal } from "@/components/site-ui";
+import { Eyebrow, FaqList, Rail } from "@/components/site-ui";
+import { useReveal } from "@/lib/use-reveal";
 import { aiSearchServices, faqItems, topFirms, topFirmsIntro } from "@/data/ai-search-content";
 import { roles } from "@/data/roles";
 import { useState } from "react";

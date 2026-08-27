@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 
-import { CtaBand, Eyebrow, Rail, useReveal } from "@/components/site-ui";
+import { CtaBand, Eyebrow, Rail } from "@/components/site-ui";
+import { useReveal } from "@/lib/use-reveal";
 import {
   AISearchServices,
   AuditForm,
