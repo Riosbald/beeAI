@@ -122,3 +122,11 @@ The site is in strong health: **all routes return correct status codes, zero dea
 - Nitro upgrade to `3.0.260610-beta` was tested first (cleanest-fix principle) and **rejected**: identical chunk hashes, no behavior change → reverted to the Lovable-pinned `3.0.260603-beta` to keep the diff minimal.
 - The cycle guard is a **workaround, not a fix** — revisit on every toolchain bump (it self-reports as a no-op when chunking is fixed, and fails the build if a new cyclical call pattern appears).
 - Live-site verification against the Lovable URL is queued for the deploy phase (post-merge).
+
+### Addendum — 2026-10-01 · drift catch
+
+| # | Issue | Evidence | Root cause | Fix | Verification |
+|---|---|---|---|---|---|
+| 34 | **Preview/CI workerd rejects build** (date drift) | `wrangler dev` (4.126.0) on a fresh build: `This Worker requires compatibility date "2026-10-01", but the newest date supported by this server binary is "2026-09-01"` → worker exits | Nitro stamps the *build-day* date into `.output/server/wrangler.json`; the pinned wrangler 4.126.0 bundled an older workerd. Would equally break the CI smoke/Lighthouse jobs on current-date runners | wrangler bumped to `4.145.0` (devDependency; also fixes future CI runs) | Preview boots; smoke matrix 13/13 (exit 0) against wrangler-served build |
+
+Operational note: whenever the build fails to serve locally with a compatibility-date error in the future, bump wrangler first.
