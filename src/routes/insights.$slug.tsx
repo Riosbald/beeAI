@@ -1,6 +1,7 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 
-import { CtaBand, Eyebrow, FaqList, useReveal } from "@/components/site-ui";
+import { CtaBand, Eyebrow, FaqList } from "@/components/site-ui";
+import { useReveal } from "@/lib/use-reveal";
 import KineticDotsLoader from "@/components/KineticDotsLoader";
 import { AUTHOR } from "@/data/insights/author";
 import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";

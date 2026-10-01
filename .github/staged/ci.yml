@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    name: Lint · Typecheck · Build · Bundle gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build # postbuild runs scripts/fix-ssr-cycles.mjs on the Worker output
+      - run: npm run check:bundle
+
+  smoke:
+    name: Smoke matrix (production build via wrangler)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Serve the built Worker locally
+        run: nohup npx wrangler dev --port 8787 --ip 127.0.0.1 > /tmp/wrangler.log 2>&1 &
+      - name: Wait for readiness
+        run: |
+          for i in $(seq 1 90); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8787/ || true)
+            if [ "$code" = "200" ]; then echo "ready after ${i}s"; exit 0; fi
+            sleep 1
+          done
+          echo "server never became ready"; cat /tmp/wrangler.log; exit 1
+      - run: npm run smoke -- --base http://127.0.0.1:8787
+      - name: Upload wrangler log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wrangler-smoke-log
+          path: /tmp/wrangler.log
+
+  lighthouse:
+    name: Lighthouse (a11y ≥ .95 · SEO ≥ .95 · perf ≥ .90)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Serve the built Worker locally
+        run: nohup npx wrangler dev --port 8787 --ip 127.0.0.1 > /tmp/wrangler.log 2>&1 &
+      - name: Wait for readiness
+        run: |
+          for i in $(seq 1 90); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8787/ || true)
+            if [ "$code" = "200" ]; then echo "ready after ${i}s"; exit 0; fi
+            sleep 1
+          done
+          echo "server never became ready"; cat /tmp/wrangler.log; exit 1
+      - name: Run Lighthouse CI
+        run: npx --yes @lhci/cli@0.15.1 autorun --config=.github/lighthouse/lighthouserc.json
+      - name: Upload Lighthouse reports on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci

@@ -1,6 +1,12 @@
 {
   "ci": {
     "collect": {
+      "url": [
+        "http://127.0.0.1:8787/",
+        "http://127.0.0.1:8787/services",
+        "http://127.0.0.1:8787/insights",
+        "http://127.0.0.1:8787/about"
+      ],
       "settings": {
         "formFactor": "mobile",
         "screenEmulation": { "mobile": true, "width": 390, "height": 844, "deviceScaleFactor": 2 },
@@ -10,7 +16,7 @@
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["warn", { "minScore": 0.6 }],
+        "categories:performance": ["error", { "minScore": 0.9 }],
         "categories:accessibility": ["error", { "minScore": 0.95 }],
         "categories:best-practices": ["warn", { "minScore": 0.9 }],
         "categories:seo": ["error", { "minScore": 0.95 }],

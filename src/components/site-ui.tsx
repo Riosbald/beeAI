@@ -4,34 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { agenticPhases } from "@/data/site";
 import { phaseImages } from "@/data/card-images";
 
-export function useReveal() {
-  const root = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = root.current;
-    if (!el) return;
-    const targets = Array.from(el.querySelectorAll<HTMLElement>(".reveal"));
-    if (!("IntersectionObserver" in window)) {
-      targets.forEach((t) => t.classList.add("is-visible"));
-      return;
-    }
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
-    );
-    targets.forEach((t) => observer.observe(t));
-    return () => observer.disconnect();
-  }, []);
-
-  return root;
-}
+// useReveal moved to @/lib/use-reveal (component files export components only).
 
 /** Tabs — active tab interlocks with the sheet below (spec: tab cut runs continuously). */
 export function Tabs({

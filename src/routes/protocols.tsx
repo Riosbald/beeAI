@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { CtaBand, Eyebrow, Tabs, useReveal } from "@/components/site-ui";
+import { CtaBand, Eyebrow, Tabs } from "@/components/site-ui";
+import { useReveal } from "@/lib/use-reveal";
 import { useState } from "react";
 import {
   commerceMatrix,

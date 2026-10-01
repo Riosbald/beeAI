@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 
-import { CtaBand, Eyebrow, FrameworkGrid, Rail, useReveal } from "@/components/site-ui";
+import { CtaBand, Eyebrow, FrameworkGrid, Rail } from "@/components/site-ui";
+import { useReveal } from "@/lib/use-reveal";
 import { AUTHOR } from "@/data/insights/author";
 import { testimonials } from "@/data/site";
 import { OG_IMAGE, SITE_URL } from "@/lib/site-meta";
